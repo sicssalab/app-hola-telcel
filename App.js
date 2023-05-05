@@ -21,7 +21,6 @@ export default function App() {
     setTheme(DarkTheme)
   }, [colorScheme])
 
-  console.log(theme, "theme")
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>

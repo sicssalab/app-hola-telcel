@@ -1,5 +1,18 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components/native';
+import { Dimensions } from 'react-native';
+import { 
+    createStackNavigator,
+    CardStyleInterpolators,
+    HeaderStyleInterpolators,
+ } from '@react-navigation/stack';
+import SceneName from '../constants/SceneName';
+import { Text } from 'react-native';
+import EntertainmentView from "../../views/EntertainmentView";
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import EntertainmentIconActive from "../../assets/icons/menu/home-active.svg";
+import EntertainmentIcon from "../../assets/icons/menu/home.svg";
+import NavbarTabHeader from '../../components/NavbarTabHeader/NavbarTabHeader';
 // import {
 //     CardStyleInterpolators,
 //     createStackNavigator,
@@ -7,10 +20,115 @@ import { ThemeContext } from 'styled-components/native';
 // } from '@react-navigation/stack';
 
 //const Stack = createStackNavigator <RootStackParamList>();
+const Stack = createStackNavigator();
+const Tab = createMaterialTopTabNavigator();
+const screenWidth = Dimensions.get('window').width;
+
+const Home = () => {
+    const themeContext = useContext(ThemeContext);
+  
+    return (
+      <>
+        {/* <TopHeader /> */}
+        <Text>header con el radio</Text>
+        <Tab.Navigator
+          //tabBar={(props) => <Navbar {...props} />}
+          tabBar={(props) => <NavbarTabHeader {...props} />}
+          initialLayout={{ width: screenWidth }}
+          screenOptions={{
+            tabBarInactiveTintColor: themeContext.colors.text,
+          }}
+          initialRouteName={SceneName.Authentication}
+          >
+          <Tab.Screen
+            name={SceneName.Entertainment}
+            options={{
+              tabBarIcon: ({ focused, color }) => focused 
+                ? <EntertainmentIconActive />
+                : <EntertainmentIcon fill={color} />
+                // focused ? (
+                //   <Text>icono</Text> //"<EntertainmentIconActive />"
+                // ) : (
+                //   <Text>iconon</Text> //<EntertainmentIcon fill={color} />
+                // )
+            }}
+            component={EntertainmentView}
+          />
+          {/* <Tab.Screen
+            name={SceneName.Avenues}
+            options={{
+              tabBarIcon: ({ focused, color }) =>
+                focused ? <AvenuesIconActive /> : <AvenuesIcon fill={color} />,
+            }}
+            component={AvenuesView}
+          /> */}
+          {/* <Tab.Screen
+            name={SceneName.Experience}
+            options={{
+              tabBarIcon: ({ focused, color }) =>
+                focused ? (
+                  <ExperienceIconActive />
+                ) : (
+                  <ExperienceIcon fill={color} />
+                ),
+            }}
+            component={ExperienceView}
+          /> */}
+          {/* <Tab.Screen
+            name={SceneName.MagicTowns}
+            options={{
+              tabBarIcon: ({ focused, color }) =>
+                focused ? (
+                  <MagicTownsIconActive />
+                ) : (
+                  <MagicTownsIcon fill={color} />
+                ),
+            }}
+            component={MagicTownsView}
+          /> */}
+          {/* <Tab.Screen
+            name={SceneName.MenuProfile}
+            options={{
+              tabBarIcon: ({ focused, color }) =>
+                focused ? (
+                  <MenuProfileIconActive />
+                ) : (
+                  <MenuProfileIcon fill={color} />
+                ),
+            }}
+            component={EditProfileView}
+          /> */}
+        </Tab.Navigator>
+      </>
+    );
+  };
 
 const RouteApp = () => {
     const theme = useContext(ThemeContext);
-    return ( <></> );
+    return (
+        <Stack.Navigator
+            initialRouteName={SceneName.Entertainment}
+            screenOptions={{
+                headerShown: false,
+                headerBackTitle: 'Volver',
+                headerTitleAlign: 'center',
+                headerStyle: {
+                    backgroundColor: theme.colors.headerBackground,
+                },
+                headerTitleStyle: {
+                    fontFamily: theme.typography.fontFamily.bold,
+                    fontSize: 20,
+                    color: theme.colors.text,
+                },
+                cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
+            }}
+        >
+            <Stack.Screen name={SceneName.Home} component={Home} />
+            {/* <Stack.Screen name={SceneName.Notifications} component={Notifications} />
+            <Stack.Screen name={SceneName.Profile} component={Profile} />
+            <Stack.Screen name={SceneName.Settings} component={Settings} /> */}
+        </Stack.Navigator>
+    );
 }
 
 export default RouteApp;
