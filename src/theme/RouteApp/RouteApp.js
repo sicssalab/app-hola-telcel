@@ -46,58 +46,9 @@ const Home = () => {
               tabBarIcon: ({ focused, color }) => focused 
                 ? <EntertainmentIconActive />
                 : <EntertainmentIcon fill={color} />
-                // focused ? (
-                //   <Text>icono</Text> //"<EntertainmentIconActive />"
-                // ) : (
-                //   <Text>iconon</Text> //<EntertainmentIcon fill={color} />
-                // )
             }}
             component={EntertainmentView}
           />
-          {/* <Tab.Screen
-            name={SceneName.Avenues}
-            options={{
-              tabBarIcon: ({ focused, color }) =>
-                focused ? <AvenuesIconActive /> : <AvenuesIcon fill={color} />,
-            }}
-            component={AvenuesView}
-          /> */}
-          {/* <Tab.Screen
-            name={SceneName.Experience}
-            options={{
-              tabBarIcon: ({ focused, color }) =>
-                focused ? (
-                  <ExperienceIconActive />
-                ) : (
-                  <ExperienceIcon fill={color} />
-                ),
-            }}
-            component={ExperienceView}
-          /> */}
-          {/* <Tab.Screen
-            name={SceneName.MagicTowns}
-            options={{
-              tabBarIcon: ({ focused, color }) =>
-                focused ? (
-                  <MagicTownsIconActive />
-                ) : (
-                  <MagicTownsIcon fill={color} />
-                ),
-            }}
-            component={MagicTownsView}
-          /> */}
-          {/* <Tab.Screen
-            name={SceneName.MenuProfile}
-            options={{
-              tabBarIcon: ({ focused, color }) =>
-                focused ? (
-                  <MenuProfileIconActive />
-                ) : (
-                  <MenuProfileIcon fill={color} />
-                ),
-            }}
-            component={EditProfileView}
-          /> */}
         </Tab.Navigator>
       </>
     );

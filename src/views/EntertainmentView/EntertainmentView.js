@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
+//import SceneName from '../../theme/constants/SceneName';
 
 const Container = styled.ScrollView`
   background-color: ${(props) => props.theme.colors.background};
@@ -10,9 +11,9 @@ const Container = styled.ScrollView`
 const EntertainmentView = () => {
     const navigation = useNavigation();
 
-    const onNavigateClick = (item) => {
-        navigation.navigate(SceneName.GroupProfile, { id: item.id }); // Asegúrate de que "Profile" sea el nombre correcto de la ruta de navegación
-    };
+    // const onNavigateClick = (item) => {
+    //     navigation.navigate(SceneName.GroupProfile, { id: item.id }); // Asegúrate de que "Profile" sea el nombre correcto de la ruta de navegación
+    // };
 
     return (
         <Container>
