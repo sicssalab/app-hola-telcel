@@ -1,12 +1,14 @@
 import { View, Text } from 'react-native';
 import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
+import SlideStories from './components/SlideStories/SlideStories';
 //import SceneName from '../../theme/constants/SceneName';
+import { Container } from './components/SlideStories/styles';
 
-const Container = styled.ScrollView`
-  background-color: ${(props) => props.theme.colors.background};
-  flex: 1;
-`;
+// const Container = styled.ScrollView`
+//   background-color: ${(props) => props.theme.colors.background};
+//   flex: 1;
+// `;
 
 const EntertainmentView = () => {
     const navigation = useNavigation();
@@ -17,10 +19,7 @@ const EntertainmentView = () => {
 
     return (
         <Container>
-            {/* <Header /> */}
-            <View>
-                <Text>va el header</Text>
-            </View>
+            <SlideStories />
             <View>
                 <Text>aqui va el listado de post</Text>
             </View>
