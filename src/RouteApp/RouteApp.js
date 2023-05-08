@@ -8,24 +8,24 @@ import {
 } from "@react-navigation/stack";
 import SceneName from "../constants/SceneName";
 import { Text } from "react-native";
-import EntertainmentView from "../../views/EntertainmentView";
+import EntertainmentView from "../views/EntertainmentView";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import NavbarTabHeader from "../../components/NavbarTabHeader/NavbarTabHeader";
+import NavbarTabHeader from "../components/NavbarTabHeader/NavbarTabHeader";
 
-import EntertainmentIconActive from "../../assets/icons/menu/home-active.svg";
-import EntertainmentIcon from "../../assets/icons/menu/home.svg";
+import EntertainmentIconActive from "../assets/icons/menu/home-active.svg";
+import EntertainmentIcon from "../assets/icons/menu/home.svg";
 
-import AvenuesIconActive from "../../assets/icons/menu/location-active.svg";
-import AvenuesIcon from "../../assets/icons/menu/location.svg";
+import AvenuesIconActive from "../assets/icons/menu/location-active.svg";
+import AvenuesIcon from "../assets/icons/menu/location.svg";
 
-import ExperienceIconActive from "../../assets/icons/menu/experience-active.svg";
-import ExperienceIcon from "../../assets/icons/menu/experience.svg";
+import ExperienceIconActive from "../assets/icons/menu/experience-active.svg";
+import ExperienceIcon from "../assets/icons/menu/experience.svg";
 
-import MagicTownsIconActive from "../../assets/icons/menu/magictowns-active.svg";
-import MagicTownsIcon from "../../assets/icons/menu/magictowns.svg";
+import MagicTownsIconActive from "../assets/icons/menu/magictowns-active.svg";
+import MagicTownsIcon from "../assets/icons/menu/magictowns.svg";
 
-import MenuProfileIconActive from "../../assets/icons/menu/menu-active.svg";
-import MenuProfileIcon from "../../assets/icons/menu/menu.svg";
+import MenuProfileIconActive from "../assets/icons/menu/menu-active.svg";
+import MenuProfileIcon from "../assets/icons/menu/menu.svg";
 
 // import {
 //     CardStyleInterpolators,

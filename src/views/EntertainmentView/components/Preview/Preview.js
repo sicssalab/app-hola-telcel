@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import SceneName from "../../../../theme/constants/SceneName";
+import SceneName from "../../../../constants/SceneName";
 import { Container, Picture, Content } from "./styles";
 import {TextDefault, Text} from "../../../../components";
 

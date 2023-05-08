@@ -6,7 +6,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider } from "styled-components/native";
 import { Font, DefaultTheme, DarkTheme } from "./src/theme";
 import { NavigationContainer } from "@react-navigation/native";
-import RouteApp from "./src/theme/RouteApp";
+import RouteApp from "./src/RouteApp";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 
@@ -50,12 +50,6 @@ export default function App() {
           <NavigationContainer theme={theme}>
             <RouteApp />
           </NavigationContainer>
-          <View style={styles.container}>
-            <Text style={{ color: "red" }}>
-              Open up App.js to start working on your app!
-            </Text>
-            <StatusBar style="auto" />
-          </View>
         </View>
       </ThemeProvider>
     </SafeAreaProvider>
