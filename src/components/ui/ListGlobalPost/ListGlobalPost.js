@@ -13,7 +13,6 @@ const ListGlobalPost = (props) => {
     <View style={styles.container}>
       {items &&
         items.map((item, index) => (
-            // <Text key={index}>{item.name}</Text>
           <GlobalPost
             key={item.id || index}
             item={item}

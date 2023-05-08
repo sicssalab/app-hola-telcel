@@ -21,6 +21,7 @@ const StarPost = (props) => {
 const styles = StyleSheet.create({
     container: {
       flexDirection: "row",
+      backgroundColor: "red",
       marginHorizontal:10,
       marginBottom: 10
     },

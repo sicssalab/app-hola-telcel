@@ -8,7 +8,7 @@ import StarPost from './StarPost';
 import DescriptionPost from './components/DescriptionPost';
 import FooterGlobalPost from './components/FooterGlobalPost';
 import HeaderPost from './components/HeaderPost';
-import ModalPost from '../../modals/ModalPost';
+//import ModalPost from '../../modals/ModalPost';
 
 const GlobalPost = (props) => {
   const { item, hasbuttonLink } = props;
@@ -24,6 +24,7 @@ const GlobalPost = (props) => {
     onNavigateClick && onNavigateClick();
   };
 
+  //TODO cambio abrir modal por link directo a grupo/perfil onShowModal to onNavigateClick
   return (
     <View style={styles.container}>
       <HeaderPost item={item} onNavigateClick={onNavigateClick} />
@@ -33,29 +34,29 @@ const GlobalPost = (props) => {
             post={{
               description: 'Dirección: ' + item.address,
             }}
-            onClick={onShowModal}
+            onClick={onNavigateClick}
           />
         )}
         {item.stars && <StarPost stars={item.stars} />}
         {item.description && (
-          <DescriptionPost post={item} isLineal onClick={onShowModal} />
+          <DescriptionPost post={item} isLineal onClick={onNavigateClick} />
         )}
         {item.videos && (
           <MediaGrid
             array={item.videos}
             itemView={item}
-            onMediaPress={onShowModal}
+            onMediaPress={onNavigateClick}
           />
         )}
       </View>
       <FooterGlobalPost item={item} />
-      <ModalPost
+      {/* <ModalPost
         onClose={onShowModal}
         modalVisible={showModal}
         post={item}
         hasbuttonLink={hasbuttonLink}
         onNavigateClick={onNavigateClick}
-      />
+      /> */}
     </View>
   );
 };

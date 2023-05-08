@@ -9,23 +9,23 @@ import {
 import SceneName from "../constants/SceneName";
 import { Text } from "react-native";
 import EntertainmentView from "../views/EntertainmentView";
+import AvenuesView from "../views/AvenuesView";
+import StoryView from "../views/StoryView/StoryView";
+import GroupUrbanView from "../views/GroupUrbanView";
+
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import NavbarTabHeader from "../components/NavbarTabHeader/NavbarTabHeader";
-
 import EntertainmentIconActive from "../assets/icons/menu/home-active.svg";
 import EntertainmentIcon from "../assets/icons/menu/home.svg";
-
 import AvenuesIconActive from "../assets/icons/menu/location-active.svg";
 import AvenuesIcon from "../assets/icons/menu/location.svg";
-
 import ExperienceIconActive from "../assets/icons/menu/experience-active.svg";
 import ExperienceIcon from "../assets/icons/menu/experience.svg";
-
 import MagicTownsIconActive from "../assets/icons/menu/magictowns-active.svg";
 import MagicTownsIcon from "../assets/icons/menu/magictowns.svg";
-
 import MenuProfileIconActive from "../assets/icons/menu/menu-active.svg";
 import MenuProfileIcon from "../assets/icons/menu/menu.svg";
+import TopHeader from "../components/TopHeader/TopHeader";
 
 // import {
 //     CardStyleInterpolators,
@@ -43,8 +43,7 @@ const Home = () => {
 
   return (
     <>
-      {/* <TopHeader /> */}
-      <Text>header con el radio</Text>
+      <TopHeader />
       <Tab.Navigator
         //tabBar={(props) => <Navbar {...props} />}
         tabBar={(props) => <NavbarTabHeader {...props} />}
@@ -72,8 +71,7 @@ const Home = () => {
             tabBarIcon: ({ focused, color }) =>
               focused ? <AvenuesIconActive /> : <AvenuesIcon fill={color} />,
           }}
-          //component={AvenuesView}
-          component={EntertainmentView}
+          component={AvenuesView}
         />
         <Tab.Screen
           name={SceneName.Experience}
@@ -143,6 +141,8 @@ const RouteApp = () => {
       {/* <Stack.Screen name={SceneName.Notifications} component={Notifications} />
             <Stack.Screen name={SceneName.Profile} component={Profile} />
             <Stack.Screen name={SceneName.Settings} component={Settings} /> */}
+      <Stack.Screen name={SceneName.Story} component={StoryView} />
+      <Stack.Screen name={SceneName.GroupProfile} component={GroupUrbanView} />
     </Stack.Navigator>
   );
 };
