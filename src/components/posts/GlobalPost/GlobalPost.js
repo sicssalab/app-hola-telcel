@@ -41,13 +41,13 @@ const GlobalPost = (props) => {
         {item.description && (
           <DescriptionPost post={item} isLineal onClick={onNavigateClick} />
         )}
-        {/* {item.videos && (
+        {item.videos && (
           <MediaGrid
             array={item.videos}
             itemView={item}
-            onMediaPress={onNavigateClick}
+            //onMediaPress={onNavigateClick}
           />
-        )} */}
+        )}
       </View>
       <FooterGlobalPost item={item} />
       {/* <ModalPost

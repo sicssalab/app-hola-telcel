@@ -60,7 +60,7 @@ function TopHeader() {
         }
       }
     } catch (error) {
-      console.log(error, 'func play audio');
+      console.error(error, 'func play audio');
     }
   };
   const PauseAudio = async () => {
@@ -81,7 +81,7 @@ function TopHeader() {
     const checkLoading = await sound.current.getStatusAsync();
     if (checkLoading.isLoaded === false) {
       try {
-        console.log('entrar a cargar el audio');
+        //console.log('entrar a cargar el audio');
         const result = await sound.current.loadAsync(
           require('../../assets/music/Here-it-Comes-TrackTribe2.mp3'),
           {},
@@ -90,21 +90,21 @@ function TopHeader() {
 
         if (result.isLoaded === false) {
           SetLoading(false);
-          console.log('Error in Loading Audio');
+          console.error('Error in Loading Audio');
         } else {
-          console.log(
-            'cargo el video quita el loagind y dice que Loaded cargado video es true',
-          );
+          // console.log(
+          //   'cargo el video quita el loagind y dice que Loaded cargado video es true',
+          // );
           SetLoading(false);
           SetLoaded(true);
         }
       } catch (error) {
-        console.log(error, ' func load audio');
+        console.error(error, ' func load audio');
         SetLoading(false);
       }
     } else {
-      console.log('tiene audio activo por lo que no cargara uno nuevo');
-      console.log('crear nuevo audio');
+      // console.log('tiene audio activo por lo que no cargara uno nuevo');
+      // console.log('crear nuevo audio');
       SetLoading(false);
     }
   };
