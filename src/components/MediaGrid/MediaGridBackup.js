@@ -7,14 +7,21 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
+
+import { MaterialIcons } from "@expo/vector-icons";
+import { Video, AVPlaybackStatus } from "expo-av";
+import * as VideoThumbnails from "expo-video-thumbnails";
 import VideoInMedia from "./VideoInMedia";
 
 //TODO array lista de links de videos
 const MediaGrid = ({ array, onMediaPress, itemView }) => {
   const [loading, setLoading] = useState(true);
   const [media, setMedia] = useState([]);
+  //const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [playingVideo, setPlayingVideo] = useState(null);
   const [resources, setResources] = useState([]);
+  //const resources = media.slice(0, 3);
+  //const videoRefs = useRef(media.map(() => React.createRef()));
 
   useEffect(() => {
     const result = thumbnailsResources(array);
@@ -23,17 +30,77 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
 
   const thumbnailsResources = (array) => {
     const resourceMedia = array.map((url) => {
+      const thumbnailUri = generateThumbnail(url);
 
       return {
         type: "video",
         uri: url,
+        thumbnailUri: thumbnailUri,
       };
     });
+    console.log("espero video", resourceMedia);
 
-    setMedia(resourceMedia);
+    //TODO remover videos que no tienen thumbnailUri
+    const nResult = resourceMedia.filter(item => item.thumbnailUri != null)
+    console.log(`videos: ${array.length}, filtrados ok: ${nResult.length}`);
+    setMedia(nResult);
     setLoading(false);
-    return resourceMedia;
+    return nResult;
   };
+
+  // async function thumbnailsResources(array) {
+  //   for (const url of array) {
+  //     const extension = url.split('.').pop();
+  //     let type = 'image';
+  //     let thumbnailUri = url;
+
+  //     if (extension === 'mp4') {
+  //       type = 'video';
+  //       thumbnailUri = await generateThumbnail(url);
+  //     }
+
+  //     const resource = {
+  //       type: type,
+  //       uri: url,
+  //       thumbnailUri: thumbnailUri,
+  //     };
+
+  //     setMedia((prevMedia) => [...prevMedia, resource]);
+  //   }
+
+  //   setLoading(false);
+  // }
+
+  const generateThumbnail = async (videoUri) => {
+    let urlUri = null;
+    try {
+      const { uri } = await VideoThumbnails.getThumbnailAsync(videoUri, {
+        time: 1000,
+      });
+      urlUri = uri;
+    } catch (e) {
+      urlUri = null;
+      
+      console.warn("error con url", videoUri, e);
+    }
+
+    return urlUri;
+  };
+
+  // async function generateThumbnail(videoUri) {
+  //   try {
+  //     const { uri } = await VideoThumbnails.getThumbnailAsync(videoUri, {
+  //       time: 1000,
+  //     });
+  //     return uri;
+  //   } catch (e) {
+  //     return null;
+  //   }
+  // }
+  // const handlePlaybackStatusUpdate = (index, status) => {
+  //   if (status.didJustFinish || !status.isPlaying) setPlayingVideo(null);
+  //   else setPlayingVideo(index);
+  // };
 
   const handlePlayIconPress = async (index) => {
     try {
@@ -83,6 +150,28 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
                     </View>
                   )}
                   <VideoInMedia videoData={resource} autoPlay={false} />
+                  {/* <Video
+                    ref={videoRefs.current[index]}
+                    source={{ uri: resource.uri }}
+                    style={{ flex: 1 }}
+                    resizeMode="cover"
+                    onPlaybackStatusUpdate={(status) =>
+                      handlePlaybackStatusUpdate(index, status)
+                    }
+                  /> */}
+                  {playingVideo !== index && (
+                    <View style={styles.playIconContainer}>
+                      <TouchableOpacity
+                        onPress={() => handlePlayIconPress(index)}
+                      >
+                        <MaterialIcons
+                          name="play-circle-outline"
+                          size={64}
+                          color="white"
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  )}
                 </View>
               </TouchableOpacity>;
             } else {
@@ -95,7 +184,13 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
                   ]}
                   onPress={() => handlePlayIconPress(index)}
                 >
-                  <VideoInMedia videoData={resource} autoPlay={false} />
+                  <Image
+                    style={[
+                      styles.smallResource,
+                      index === 1 ? { flex: 1 } : null,
+                    ]}
+                    source={{ uri: resource.thumbnailUri }}
+                  />
                   {resources.length === 3 && index === 2 && (
                     <View style={styles.overlay}>
                       <Text style={styles.overlayText}>
