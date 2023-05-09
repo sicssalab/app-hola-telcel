@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
-import Text from "~components/Text";
-import Disconnected from "~animations/disconnected.json";
-import Error from "~animations/error.json";
+import Text from "../Text";
+import Disconnected from "../../assets/animations/disconnected.json";
+import Error from "../../assets/animations/error.json";
 import LottieView from "lottie-react-native";
 
 export const Container = styled.ScrollView.attrs({
