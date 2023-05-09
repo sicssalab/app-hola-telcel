@@ -42,7 +42,7 @@ export const StoryFeed = (props) => {
     const response = mockRequest.data.findIndex((item,index) => item.id === itemPreview.id);
     setIndex(response ? response : 0)
   }
-  console.log(mockRequest.data[0])
+
   return (
     <View style={{ flex: 1 ,backgroundColor: 'black'}}>
       <StatusBar barStyle='light-content'></StatusBar>

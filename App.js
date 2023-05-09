@@ -46,7 +46,7 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <View style={{flex: 1}} onLayout={onLayoutRootView}>
-          <StatusBar style="dark" />
+          <StatusBar style="light" />
           <NavigationContainer theme={theme}>
             <RouteApp />
           </NavigationContainer>

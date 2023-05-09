@@ -20,7 +20,6 @@ const GroupUrbanView = (props) => {
   const { colors } = useContext(ThemeContext);
   const [itemView, setItemView] = useState([]);
 
-  console.log("ya lleguie a qui")
   useEffect(() => {
     setItemView(
         groupsUrbans.data.find(
@@ -36,7 +35,7 @@ const GroupUrbanView = (props) => {
     }
     navigation.navigate(SceneName.ProfileScreen, {profilePage});
   };
-  console.log(itemView)
+
   return (
     <View style={{flex: 1, backgroundColor: colors.secondaryBackground}}>
       <SafeAreaView style={{ flex: 1}}>

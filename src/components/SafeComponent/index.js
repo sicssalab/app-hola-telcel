@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-
-import Loading from '~components/Loading';
-import Button from '~components/Button';
-
-import NetInfo from '@react-native-community/netinfo';
-import ErrorBoundary from 'react-native-error-boundary';
-
+import React, { useState, useEffect } from "react";
+import NetInfo from "@react-native-community/netinfo";
+import ErrorBoundary from "react-native-error-boundary";
+import Loading from "../Loading";
+import Button from "../Button";
 import {
   Container,
   Content,
@@ -13,8 +10,10 @@ import {
   ContainedText,
   DisconnectedIllustration,
   ErrorIllustration,
-} from './styles';
-export const OfflineComponent = ({ refetch }: { refetch: () => void }) => {
+} from "./styles";
+
+//export const OfflineComponent = ({ refetch }: { refetch: () => void }) => {
+export const OfflineComponent = ({ refetch }) => {
   return (
     <Container>
       <Content>
@@ -30,7 +29,8 @@ export const OfflineComponent = ({ refetch }: { refetch: () => void }) => {
   );
 };
 
-export const RequestErrorComponent = ({ refetch }: { refetch: () => void }) => {
+//export const RequestErrorComponent = ({ refetch }: { refetch: () => void }) => {
+export const RequestErrorComponent = ({ refetch }) => {
   return (
     <Container>
       <Content>
@@ -75,17 +75,13 @@ export function useIsOffline() {
   return !netInfo.isInternetReachable;
 }
 
-interface SafeComponentProps {
-  request?: { data?: any; error?: any; loading?: boolean };
-  refetch?: () => void;
-  children: any;
-}
+// interface SafeComponentProps {
+//   request?: { data?: any, error?: any, loading?: boolean };
+//   refetch?: () => void;
+//   children: any;
+// }
 
-export default function SafeComponent({
-  request,
-  children,
-  refetch,
-}: SafeComponentProps) {
+export default function SafeComponent({ request, children, refetch }) {
   const offline = useIsOffline();
 
   const SafeChildren = (

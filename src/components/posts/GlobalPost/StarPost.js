@@ -4,7 +4,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import { ThemeContext } from 'styled-components/native';
-import StarIcon from '../../../assets/icons/general/star.svg';
+//import StarIcon from '../../../assets/icons/general/star.svg';
+import StarFillIcon from '../../../assets/icons/star_FILL.svg';
 
 const StarPost = (props) => {
   const themeContext = useContext(ThemeContext);
@@ -13,7 +14,8 @@ const StarPost = (props) => {
     <View style={styles.container}>
       {stars &&
         Array.from({ length: stars }, (v, i) => {
-          return <StarIcon key={i} width={20} height={20} fill={themeContext.colors.text} />;
+          //return <StarIcon key={i} width={20} height={20} />;
+          return <StarFillIcon key={i} width={20} height={20} fill={"gold"} />;
         })}
     </View>
   );
@@ -21,7 +23,6 @@ const StarPost = (props) => {
 const styles = StyleSheet.create({
     container: {
       flexDirection: "row",
-      backgroundColor: "red",
       marginHorizontal:10,
       marginBottom: 10
     },

@@ -1,29 +1,26 @@
-import React, { useContext, useState, useEffect } from 'react';
+
+import React, {  useState } from 'react';
 import {
   SectionList,
   View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { SafeComponent } from '../../components';
+import Divider from '../../components/Divider';
 import SceneName from '../../constants/SceneName';
 import GlobalPost from '../../components/posts/GlobalPost';
-import Divider from '../../components/Divider';
-import AvenueDropdown from './components/AvenueDropdown';
+import StateDropdown from '../AvenuesView/components/StateDropdown';
+import { Container, OptionsContainer } from '../AvenuesView/styles';
 import { Header } from './components/Header';
-import { Input } from './components/Input';
-import StateDropdown from './components/StateDropdown';
-//import { SafeComponent } from '~components';
-import { SafeComponent } from '../../components';
+import ServicesDropdown from "./components/ServicesDropdown";
+//import data from '~views/Avenues/data.json'; //TODO data son los estados nada mas
+import data from '../../mocks/mocks-estados.json'; //TODO data son los estados nada mas
 //import { mockRequest } from './__mocks__';
-
-import data from '../../mocks/mocks-estados.json';
-
-import { Container, OptionsContainer } from './styles';
+import mocksExperiencias from "../../mocks/experiencias/mocksExperiencias.json"
 
 function Component() {
   const navigation = useNavigation();
   const [selectedStateId, setSelectedStateId] = useState(null);
-  const [selectedAvenueId, setSelectedAvenueId] = useState(null);
-  const [keyword, setKeyword] = useState('');
   const [filteredAvenues, setFilteredAvenues] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
 
@@ -36,56 +33,31 @@ function Component() {
     setFilteredPosts([]);
     setSelectedStateId(stateId);
 
+    //TODO busca el estado seleccionado
     const selectedState = data.states.find((state) => state.id === stateId);
-    const filteredAvenues = selectedState ? selectedState.avenues : [];
+
+    //TODO selecciona la lista de servicios por el estado
+    const filteredAvenues = selectedState ? selectedState.services : [];
 
     setFilteredAvenues(filteredAvenues);
 
+    //TODO Muesta la lista de servicios por la avenida seleccionada
     if (avenueId) {
-      setSelectedAvenueId(avenueId)
-      const selectedAvenue = filteredAvenues.find(
-        (avenue) => avenue.id === avenueId,
-      );
-      const filteredPosts = selectedAvenue ? selectedAvenue.content : [];
-      setFilteredPosts(filteredPosts);
+      //TODO seleccionar todos los servicios de X estado
+      const services = mocksExperiencias.data.filter((servicio) => servicio.state_id === stateId && servicio.service_id === avenueId)
+      setFilteredPosts(services);
     } else {
       setFilteredPosts([]);
     }
   };
-
   const onNavigateClick = (item) => {
     const profilePage = {
       id: item.id,
-      type: "AVENUES_PROFILE"
+      type: "SERVICES_PROFILE"
       //type: "typeMockConstants.AVENUES_PROFILE"
     }
     navigation.navigate(SceneName.ProfileScreen, { profilePage });
   };
-  const removeAccents = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  } 
-  const onChangeInput = (e) => {
-    //TODO de la busqueda filtrar los que son con el nombre
-    setKeyword(e);
-    //TODO selec
-    if(selectedStateId > 0 && selectedAvenueId > 0) {
-      const selectedState = data.states.find((state) => state.id === selectedStateId);
-      const filteredAvenues = selectedState ? selectedState.avenues : [];
-      const selectedAvenue = filteredAvenues.find(
-        (avenue) => avenue.id === selectedAvenueId,
-      );
-  
-      if(e == "") setFilteredPosts(selectedAvenue.content)
-      else
-        setFilteredPosts(
-          selectedAvenue.content.filter((servicio) =>
-          removeAccents(servicio.name.toLowerCase()).indexOf(removeAccents(e.toLowerCase())) >= 0
-          )
-        )
-      
-    }
-  }
-
   const sections = [
     {
       title: 'Header',
@@ -107,24 +79,15 @@ function Component() {
         <OptionsContainer>
           <StateDropdown
             states={states}
-            //onUpdate={updateFilteredState}
             onUpdate={updateFilteredAvenuesAndPosts}
           />
           {selectedStateId && (
-            <AvenueDropdown
+            <ServicesDropdown
               stateId={selectedStateId}
               onUpdate={updateFilteredAvenuesAndPosts}
-              //onUpdate={updateFilteredAvenues}
               filteredAvenues={filteredAvenues}
             />
           )}
-          <Input
-            placeholder='¿Qué estás buscando?'
-            value={keyword}
-            //onChangeText={setKeyword}
-            onChangeText={onChangeInput}
-            maxLength={500}
-          />
         </OptionsContainer>
       ),
     },
