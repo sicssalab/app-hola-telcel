@@ -2,7 +2,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import GlobalPost from '../../posts/GlobalPost/GlobalPost';
 
 const ListGlobalPost = (props) => {
-  const { items, hasbuttonLink } = props;
+  const { items, hasbuttonLink, applyPremium } = props;
 
   const onNavigateClick = (item) => {
     const { onNavigateClick } = props;
@@ -18,6 +18,7 @@ const ListGlobalPost = (props) => {
             item={item}
             hasbuttonLink={hasbuttonLink}
             onNavigateClick={() => onNavigateClick(item)}
+            applyPremium={applyPremium}
           />
         ))}
     </View>

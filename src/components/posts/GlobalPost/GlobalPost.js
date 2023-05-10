@@ -11,11 +11,15 @@ import HeaderPost from './components/HeaderPost';
 //import ModalPost from '../../modals/ModalPost';
 
 const GlobalPost = (props) => {
-  const { item, hasbuttonLink } = props;
+  const { item, hasbuttonLink, applyPremium } = props;
   const [showModal, setShowModal] = useState(false);
+  const [showDescription, setShowDescription] = useState(true);
 
   const onShowModal = () => {
     setShowModal(!showModal);
+  };
+  const onShowDescription = () => {
+    setShowDescription(!showDescription);
   };
 
   const onNavigateClick = () => {
@@ -39,12 +43,13 @@ const GlobalPost = (props) => {
         )}
         {item.stars && <StarPost stars={item.stars} />}
         {item.description && (
-          <DescriptionPost post={item} isLineal onClick={onNavigateClick} />
+          <DescriptionPost post={item} isLineal={showDescription} onClick={onShowDescription} />
         )}
         {item.videos && (
           <MediaGrid
             array={item.videos}
             itemView={item}
+            applyPremium={applyPremium}
             //onMediaPress={onNavigateClick}
           />
         )}
@@ -79,4 +84,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
   },
 });
+GlobalPost.defaultProps = {
+  applyPremium: false
+}
 export default GlobalPost;

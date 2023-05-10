@@ -16,7 +16,7 @@ const EntertainmentView = () => {
     return (
         <Container>
             <SlideStories />
-            <ListGlobalPost items={mocksEntretenimiento.data} onNavigateClick={onNavigateClick} />
+            <ListGlobalPost items={mocksEntretenimiento.data} applyPremium={true} onNavigateClick={onNavigateClick} />
         </Container>
     );
 }

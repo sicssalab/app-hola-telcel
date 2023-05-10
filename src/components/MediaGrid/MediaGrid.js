@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
+  Alert,
   View,
   Text,
   Image,
@@ -8,6 +9,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import VideoInMedia from "./VideoInMedia";
+import ModalPaymentPremium from "../modals/ModalPaymentPremium";
 
 //TODO array lista de links de videos
 const MediaGrid = ({ array, onMediaPress, itemView }) => {
@@ -15,6 +17,9 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
   const [media, setMedia] = useState([]);
   const [playingVideo, setPlayingVideo] = useState(null);
   const [resources, setResources] = useState([]);
+  const [showModalPremium, setShowModalPremium] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
+
 
   useEffect(() => {
     const result = thumbnailsResources(array);
@@ -42,6 +47,16 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
       console.error("Error al manejar la reproducción del video:", error);
     }
   };
+
+  const onCloseModal = () => {
+    setShowModalPremium(!showModalPremium);
+  }
+  
+  const onClickAproved = () => {
+    Alert.alert('Tu suscripción ha sido aprovada');
+    onCloseModal();
+    setShowPreview(true);
+  }
 
   const RenderLoading = () => {
     return (
@@ -82,7 +97,7 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
                       />
                     </View>
                   )}
-                  <VideoInMedia videoData={resource} autoPlay={false} />
+                  <VideoInMedia videoData={resource} autoPlay={false} itemView={itemView} onPress={onCloseModal} showPreview={showPreview} />
                 </View>
               </TouchableOpacity>;
             } else {
@@ -95,7 +110,7 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
                   ]}
                   onPress={() => handlePlayIconPress(index)}
                 >
-                  <VideoInMedia videoData={resource} autoPlay={false} />
+                  <VideoInMedia videoData={resource} autoPlay={false} onPress={onCloseModal} showPreview={showPreview} />
                   {resources.length === 3 && index === 2 && (
                     <View style={styles.overlay}>
                       <Text style={styles.overlayText}>
@@ -109,6 +124,7 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
           })}
         </View>
       )}
+      <ModalPaymentPremium showModal={showModalPremium} onCloseModal={onCloseModal} onClickAproved={onClickAproved} />
     </View>
   );
 };
