@@ -49,7 +49,6 @@ const GlobalPost = (props) => {
           <MediaGrid
             array={item.videos}
             itemView={item}
-            applyPremium={applyPremium}
             //onMediaPress={onNavigateClick}
           />
         )}

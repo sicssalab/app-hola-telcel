@@ -10,14 +10,14 @@
         {
             "id": 2,
             "name": "Hardcore Gamer",
-            "picture": "https://social-network.sicssa-lab.com/assets/images/games/game4.jpg",
+            "picture": "https://social-network.sicssa-lab.com/assets/images/games/game1.jpg",
             "srcPreview": "https://social-network.sicssa-lab.com/assets/images/games/game2.jpg",
             "srcStory": "https://www.sicssalab.net/contenido/historias/GAMER.mp4"
         },
         {
             "id": 3,
             "name": "360mx",
-            "picture": "https://social-network.sicssa-lab.com/assets/images/games/game4.jpg",
+            "picture": "https://www.sicssalab.net/contenido/historias/360.png",
             "srcPreview": "https://www.sicssalab.net/contenido/historias/360.png",
             "hasPremium": true,
             "srcStory": "https://www.sicssalab.net/contenido/historias/360.mp4"
@@ -25,7 +25,7 @@
         {
             "id": 4,
             "name": "Retas legendarias",
-            "picture": "https://social-network.sicssa-lab.com/assets/images/games/game4.jpg",
+            "picture": "https://www.sicssalab.net/contenido/historias/retas-futboleras.png",
             "srcPreview": "https://www.sicssalab.net/contenido/historias/retas-futboleras.png",
             "srcStory": "https://www.sicssalab.net/contenido/historias/RETAS-FUTBOLERAS.mp4"
         },

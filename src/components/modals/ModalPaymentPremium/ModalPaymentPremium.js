@@ -1,21 +1,11 @@
 import { useEffect, useState } from 'react';
 import {
-  Alert,
   View,
   Text,
   StyleSheet,
-  Image,
-  StatusBar,
-  TouchableOpacity,
-  Dimensions,
-  ScrollView,
   Modal,
-  Linking,
-  Button,
   Pressable,
-  FlatList,
 } from 'react-native';
-
 import styled from 'styled-components/native';
 
 const ModalPaymentPremium = (props) => {

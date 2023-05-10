@@ -3,6 +3,7 @@ import NetInfo from "@react-native-community/netinfo";
 import ErrorBoundary from "react-native-error-boundary";
 import Loading from "../Loading";
 import Button from "../Button";
+import { View } from "react-native";
 import {
   Container,
   Content,
@@ -92,9 +93,9 @@ export default function SafeComponent({ request, children, refetch }) {
 
   if (request?.loading)
     return (
-      <Content>
+      <View style={{backgroundColor: "#f0f0f0", padding: 15}}>
         <Loading />
-      </Content>
+      </View>
     );
 
   if (request?.data) return SafeChildren;

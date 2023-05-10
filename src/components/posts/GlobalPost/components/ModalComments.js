@@ -9,6 +9,8 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import { Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -71,25 +73,27 @@ const ModalComments = (props) => {
           </ScrollView>
           <KeyboardAvoidingView
             //style={{flex: 1}}
-            behavior={Platform.OS === "ios" ? "padding" : null}
+            behavior={Platform.OS === "ios" ? "padding" : 'height'}
             //keyboardVerticalOffset={headerHeight}
             keyboardVerticalOffset={Constants.statusBarHeight + 10}
             //keyboardVerticalOffset={height + 47}
           >
-            <View style={styles.modal.inputContainer}>
-              <TextInput
-                style={styles.modal.input}
-                placeholder="Escribe un comentario..."
-                value={commentInput}
-                onChangeText={setCommentInput}
-              />
-              <TouchableOpacity
-                style={styles.modal.postButton}
-                onPress={handleCommentPost}
-              >
-                <Text style={styles.modal.postButtonText}>Comentar</Text>
-              </TouchableOpacity>
-            </View>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+              <View style={styles.modal.inputContainer}>
+                <TextInput
+                  style={styles.modal.input}
+                  placeholder="Escribe un comentario..."
+                  value={commentInput}
+                  onChangeText={setCommentInput}
+                />
+                <TouchableOpacity
+                  style={styles.modal.postButton}
+                  onPress={handleCommentPost}
+                >
+                  <Text style={styles.modal.postButtonText}>Comentar</Text>
+                </TouchableOpacity>
+              </View>
+            </TouchableWithoutFeedback>
           </KeyboardAvoidingView>
         </View>
       </View>

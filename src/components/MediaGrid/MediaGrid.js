@@ -10,16 +10,18 @@ import {
 } from "react-native";
 import VideoInMedia from "./VideoInMedia";
 import ModalPaymentPremium from "../modals/ModalPaymentPremium";
+import { useDispatch, useGlobalState } from "../../context/StoreProvider";
+import userAuthAction from "../../actions/userAuthAction";
 
 //TODO array lista de links de videos
 const MediaGrid = ({ array, onMediaPress, itemView }) => {
   const [loading, setLoading] = useState(true);
   const [media, setMedia] = useState([]);
-  const [playingVideo, setPlayingVideo] = useState(null);
   const [resources, setResources] = useState([]);
   const [showModalPremium, setShowModalPremium] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
-
+  const {userAuth} = useGlobalState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const result = thumbnailsResources(array);
@@ -51,9 +53,17 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
   const onCloseModal = () => {
     setShowModalPremium(!showModalPremium);
   }
+
+  useEffect(() => {
+    if(userAuth.isPremium) {
+      setShowPreview(true);
+    }
+  },[userAuth])
   
+  //TODO acepto el cargo premium
   const onClickAproved = () => {
     Alert.alert('Tu suscripción ha sido aprovada');
+    userAuthAction.premium(dispatch);
     onCloseModal();
     setShowPreview(true);
   }

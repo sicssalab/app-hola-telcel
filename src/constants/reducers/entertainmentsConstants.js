@@ -1,0 +1,7 @@
+const entertainmentsConstants = {
+    ENTERTAINMENTS: "ENTERTAINMENTS",
+    ENTERTAINMENTS_FETCHING: "ENTERTAINMENTS_FETCHING",
+    ENTERTAINMENTS_ERROR: "ENTERTAINMENTS_ERROR",
+}
+
+export default entertainmentsConstants;
