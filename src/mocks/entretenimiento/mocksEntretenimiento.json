@@ -359,6 +359,455 @@
                     "createDate": "1d"
                 }
             ]
+        },
+        {
+            "id": 6,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/6-frikis/avatar.png",
+            "createDate": "2d",
+            "name": "Frikis",
+            "description": "Cosplay, anime, comics y más..",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/6-frikis/friki-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "Me gusta ir a los eventos Comic!!",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "Me fascina disfrazarme, ver a todos en los eventos es cool",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Este año adquirí mi colección de comics",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "¡Tony Stark es mi personaje favorito!",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 7,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/7-pride/avatar.png",
+            "createDate": "2d",
+            "name": "Pride",
+            "description": "Música, viajes, moda, restaurantes, arte, todo el mundo LGBT, tendencias, sus pasiones, todo en la comunidad PRIDE",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/7-pride/pride-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "En esta comunidad me siento entendido y feliz",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "Encuentro contenido bastante interesante, conocer a más gente con mi forma de pensar es genial",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Gracias por tanto a todos los de esta comunidad, sin ustedes no seria genial",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "¡Me siento agusto con este contenido, GRACIAS!",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 8,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/8-vive-latino/avatar.png",
+            "createDate": "2d",
+            "name": "Vive Latino!",
+            "description": "Disfruta del mejor contenido que Telcel trae para tí",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/8-vive-latino/vive-latino-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "El mejor evento!",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "No me pierdo este evento tan esperado",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Gracias por todo sin duda me la pase genial",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "¡GRACIAS VIVE LATINO!",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 9,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/9-wrerstling/avatar.png",
+            "createDate": "2d",
+            "name": "Hardcore Wrestling",
+            "description": "Lo mejor de la lucha Libre... Dale con la sillaaaa!",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/9-wrerstling/wrerstling-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "El mejor evento, me diverti bastante!",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "Modo rudo.. Haha Me divertí como munca",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Esto para desestresarse XD",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "Lo mejor fue el salto Triple, lo vierón?",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 10,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/10-battle/avatar.png",
+            "createDate": "2d",
+            "name": "Battle",
+            "description": "Las mejores batallas, vive la emoción en primera fila!",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/10-battle/battle-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "Me diverti bastante!",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "a la jaula!",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Los rudos!",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "Que buen evento, me divertí como nunca XD",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 11,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/11-ni-una-mas/avatar.png",
+            "createDate": "2d",
+            "name": "Ni una más!",
+            "description": "Apoyo a nuestras mujeres mexicanas, ni una más!",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/11-ni-una-mas/niunamas-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "Las mujeres no nacierón para morir por serlo",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "el secuestro es una plaga que destruye todo",
+                    "createDate": "7min"
+                }
+              
+                
+            ]
+        },
+        {
+            "id": 12,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/12-360-residencial/avatar.png",
+            "createDate": "2d",
+            "name": "360 Residencial",
+            "description": "Da un vistazo de manera virtual con 360 residencial",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/12-360-residencial/360residencial-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "Gracias a estos tours virtuales pude encontrar y comprar mi casa",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "Esta técnología es fantastica",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "No hay necesidad de ir si no quieres, puedes ver todas las propiedades aquí",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "encontré mi hogar y todo comenzo de manera virtual",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 13,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/13-360-educativo/avatar.png",
+            "createDate": "2d",
+            "name": "360 Educativo",
+            "description": "Con 360 educativo aprende de una manera atractiva e interactiva",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/13-360-educativo/360educativo-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "Las clases se vuelven super interesantes",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "No conocia esta forma de aprender, es atractivo y fácil!",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Esto es algo novedoso en vdd",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "Me encanta que la tecnología ayude en áreas como lo es la educación",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 14,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/14-lit/avatar.png",
+            "createDate": "2d",
+            "name": "Lit",
+            "description": "El contenido que entiende a nuestra juventud,la forma de vestir, estilos, música, la forma de comunicarte, la moda, tu sentir.. Todo encuentralo en lit",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/9-wrerstling/wrerstling-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "Me gusta encontrar la musica que me gusta escuchar",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "Yo encontre clases de Patineta y aprendí muchos trucos",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Lit XD",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "Me gusta que me entienden, ya tengo muchos amigos en esta red",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 15,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/15-futbol-americano/avatar.png",
+            "createDate": "2d",
+            "name": "Futbol Americano",
+            "description": "Lo mejor del deporte",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/5-futbol-americano/americano-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "La jugada estrategica, si importa",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "El pase largo del número 2 será el mejor de la historia",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Que buen juego el de hoy XD",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "Vierón ese pase largo? fué increíble!",
+                    "createDate": "5hrs"
+                }
+                
+            ]
+        },
+        {
+            "id": 16,
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/16-retas-futboleras/avatar.png",
+            "createDate": "2d",
+            "name": "Retas Futboleras",
+            "description": "Lo mejor de las retas Futboleras",
+            "likes": 847,
+            "videos": [
+                "https://www.sicssalab.net/contenido/entretenimiento/16-retas-futboleras/retas-1.mp4"
+            ],
+            "comments": [
+                {
+                    "id": 1,
+                    "userName": "Leanne Graham",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556512.png",
+                    "comment": "El otro equipo estaba mejor organizado",
+                    "createDate": "3min"
+                },
+                {
+                    "id": 2,
+                    "userName": "Bret",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
+                    "comment": "El portero jugó como nunca en este partido",
+                    "createDate": "7min"
+                },
+                {
+                    "id": 3,
+                    "userName": "Ervin Howell",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/5556549.png",
+                    "comment": "Que buen portero!",
+                    "createDate": "18min"
+                },
+                {
+                    "id": 4,
+                    "userName": "Antonette",
+                    "picture": "https://social-network.sicssa-lab.com/assets/images/avatars/beautiful-woman-red-hair-in-frame-circular-avatar-character-free-vector.webp",
+                    "comment": "Ya públicrón los horarios de las nuevas retas?",
+                    "createDate": "5hrs"
+                }
+                
+            ]
         }
     ]
 }
