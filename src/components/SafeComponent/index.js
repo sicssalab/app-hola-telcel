@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import NetInfo from "@react-native-community/netinfo";
-import ErrorBoundary from "react-native-error-boundary";
 import Loading from "../Loading";
 import Button from "../Button";
 import { View } from "react-native";
@@ -85,11 +84,7 @@ export function useIsOffline() {
 export default function SafeComponent({ request, children, refetch }) {
   const offline = useIsOffline();
 
-  const SafeChildren = (
-    <ErrorBoundary FallbackComponent={UnknownErrorComponent}>
-      {children || null}
-    </ErrorBoundary>
-  );
+  const SafeChildren = (children || null);
 
   if (request?.loading)
     return (

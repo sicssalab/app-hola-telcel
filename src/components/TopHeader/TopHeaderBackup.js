@@ -4,9 +4,9 @@ import { Image } from 'react-native';
 import { Audio } from 'expo-av';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import SearchIcon from '../../assets/icons/general/search.svg';
-import RadioIcon from '../../assets/icons/stream/podcasts.svg';
 import ModalRadio from '../../components/modals/ModalRadio';
+import { SvgUri } from 'react-native-svg';
+import settings from '../../settings';
 
 import {
   Container,
@@ -130,10 +130,16 @@ function TopHeaderBackup() {
       </LeftSide>
       <RightSide>
         <SearchIconWrapper>
-          <SearchIcon fill={themeContext.colors.text} />
+          {/* <SearchIcon fill={themeContext.colors.text} /> */}
+          <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/general/search.${settings.typeImage}`}
+                />
         </SearchIconWrapper>
         <TouchableOpacity activeOpacity={1} onPress={onShowModal}>
-          <RadioIcon fill={themeContext.colors.text} />
+          {/* <RadioIcon fill={themeContext.colors.text} /> */}
+          <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/stream/podcasts.${settings.typeImage}`}
+                />
         </TouchableOpacity>
       </RightSide>
       <ModalRadio

@@ -9,8 +9,8 @@ import {
 import { Audio } from 'expo-av';
 import Constants from 'expo-constants';
 import { ThemeContext } from 'styled-components/native';
-import PauseIcon from '../../../../assets/icons/pause.svg';
-import PlayIcon from '../../../../assets/icons/play_arrow.svg';
+import { SvgUri } from 'react-native-svg';
+import settings from '../../../../settings';
 
 const RadioPlayComponent = (props) => {
   const { stacion, musicON, Loading, Loaded, playMusic } = props;
@@ -161,19 +161,25 @@ const RadioPlayComponent = (props) => {
                   <Button title='Pause Song' onPress={PauseAudio} /> */}
                   {playMusic && (
                     <TouchableOpacity onPress={PauseAudio}>
-                      <PauseIcon
+                      {/* <PauseIcon
                         width={60}
                         height={60}
                         fill={themeContext.colors.text}
+                      /> */}
+                      <SvgUri width={60} height={60}
+                        uri={`${settings.domainImage}icons/pause.${settings.typeImage}`}
                       />
                     </TouchableOpacity>
                   )}
                   {!playMusic && (
                     <TouchableOpacity onPress={PlayAudio}>
-                      <PlayIcon
+                      {/* <PlayIcon
                         width={60}
                         height={60}
                         fill={themeContext.colors.text}
+                      /> */}
+                      <SvgUri width={60} height={60}
+                        uri={`${settings.domainImage}icons/play_arrow.${settings.typeImage}`}
                       />
                     </TouchableOpacity>
                   )}

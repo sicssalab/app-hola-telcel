@@ -19,20 +19,13 @@ import EditProfileView from "../views/EditProfileView";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import NavbarTabHeader from "../components/NavbarTabHeader/NavbarTabHeader";
-import EntertainmentIconActive from "../assets/icons/menu/home-active.svg";
-import EntertainmentIcon from "../assets/icons/menu/home.svg";
-import AvenuesIconActive from "../assets/icons/menu/location-active.svg";
-import AvenuesIcon from "../assets/icons/menu/location.svg";
-import ExperienceIconActive from "../assets/icons/menu/experience-active.svg";
-import ExperienceIcon from "../assets/icons/menu/experience.svg";
-import MagicTownsIconActive from "../assets/icons/menu/magictowns-active.svg";
-import MagicTownsIcon from "../assets/icons/menu/magictowns.svg";
-import MenuProfileIconActive from "../assets/icons/menu/menu-active.svg";
-import MenuProfileIcon from "../assets/icons/menu/menu.svg";
 import TopHeader from "../components/TopHeader/TopHeader";
 import ProfileUrbanView from "../views/ProfileUrbanView/ProfileUrbanView";
 import useModalRadio from "../hooks/useModalRadio";
 import { Audio } from "expo-av";
+
+import { SvgUri } from 'react-native-svg';
+import settings from '../settings';
 // import {
 //     CardStyleInterpolators,
 //     createStackNavigator,
@@ -72,7 +65,16 @@ const Home = () => {
           options={{
             mostrarok: true,
             tabBarIcon: ({ focused, color }) =>
-              focused ? <EntertainmentIconActive /> :<EntertainmentIcon fill={color} />,
+              focused ? 
+              // <EntertainmentIconActive /> 
+              <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/home-active.${settings.typeImage}`}
+                />
+              :
+              // <EntertainmentIcon fill={color} />
+              <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/home.${settings.typeImage}`}
+                />
           }}
           //component={EntertainmentView}
           component={RenderEntertainment}
@@ -81,7 +83,16 @@ const Home = () => {
           name={SceneName.Avenues}
           options={{
             tabBarIcon: ({ focused, color }) =>
-              focused ? <AvenuesIconActive /> : <AvenuesIcon fill={color} />,
+              focused ? 
+              // <AvenuesIconActive /> 
+              <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/location-active.${settings.typeImage}`}
+                />
+              : 
+              // <AvenuesIcon fill={color} />
+              <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/location.${settings.typeImage}`}
+                />
           }}
           component={AvenuesView}
         />
@@ -89,7 +100,17 @@ const Home = () => {
           name={SceneName.Experience}
           options={{
             tabBarIcon: ({ focused, color }) =>
-              focused ? <ExperienceIconActive /> : <ExperienceIcon fill={color} />,
+              focused 
+              ? 
+                // <ExperienceIconActive /> 
+                <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/experience-active.${settings.typeImage}`}
+                />
+              : 
+                // <ExperienceIcon fill={color} />
+                <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/experience.${settings.typeImage}`}
+                />
           }}
           component={ExperienceView}
         />
@@ -98,9 +119,15 @@ const Home = () => {
           options={{
             tabBarIcon: ({ focused, color }) =>
               focused ? (
-                <MagicTownsIconActive />
+                // <MagicTownsIconActive />
+                <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/magictowns-active.${settings.typeImage}`}
+                />
               ) : (
-                <MagicTownsIcon fill={color} />
+                // <MagicTownsIcon fill={color} />
+                <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/magictowns.${settings.typeImage}`}
+                />
               ),
           }}
           //component={MagicTownsView}
@@ -112,9 +139,15 @@ const Home = () => {
           options={{
             tabBarIcon: ({ focused, color }) =>
               focused ? (
-                <MenuProfileIconActive />
+                // <MenuProfileIconActive />
+                <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/menu-active.${settings.typeImage}`}
+                />
               ) : (
-                <MenuProfileIcon fill={color} />
+                // <MenuProfileIcon fill={color} />
+                <SvgUri width={15} height={15}
+                  uri={`${settings.domainImage}icons/menu/menu.${settings.typeImage}`}
+                />
               ),
           }}
           component={EditProfileView}

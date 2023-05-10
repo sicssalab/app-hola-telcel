@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { ThemeContext } from 'styled-components/native';
-import NotificationIcon from '../../../../assets/icons/notifications_active.svg';
+import { SvgUri } from 'react-native-svg';
+import settings from '../../../../settings';
 
 const NotificationButton = () => {
   const [active, setActive] = useState(false);
@@ -19,11 +20,14 @@ const NotificationButton = () => {
     <TouchableOpacity
       style={styles.actionSection}
       onPress={onClick}>
-      <NotificationIcon
+      {/* <NotificationIcon
         width={20}
         height={20}
         fill={!active ? themeContext.colors.text :  "gold"}
-      />
+      /> */}
+      <SvgUri width={20} height={20}
+                  uri={`${settings.domainImage}icons/notifications_active.${settings.typeImage}`}
+                />
       <Text style={styles.reactionText}>
         {!active ? 'Activar notificaciones de esta publicación': 'Quitar de notificaciones de esta publicación'}
       </Text>

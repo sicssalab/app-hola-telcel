@@ -5,8 +5,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { ThemeContext } from 'styled-components/native';
-import StarIcon from '../../../../assets/icons/general/star.svg';
-import StarFillIcon from '../../../../assets/icons/star_FILL.svg';
+import { SvgUri } from 'react-native-svg';
+import settings from '../../../../settings';
 
 const FavoriteButton = () => {
   const themeContext = useContext(ThemeContext);
@@ -18,9 +18,15 @@ const FavoriteButton = () => {
 
   return (
     <TouchableOpacity style={styles.actionSection} onPress={onClick}>
-      {active && <StarIcon width={20} height={20} />}
+      {/* {active && <StarIcon width={20} height={20} />} */}
+      {active && <SvgUri width={20} height={20}
+                  uri={`${settings.domainImage}icons/general/star.${settings.typeImage}`}
+                />}
       {!active && (
-        <StarFillIcon width={20} height={20} fill={themeContext.colors.text} />
+        // <StarFillIcon width={20} height={20} fill={themeContext.colors.text} />
+        <SvgUri width={20} height={20}
+                  uri={`${settings.domainImage}icons/star_FILL.${settings.typeImage}`}
+                />
       )}
       <Text style={styles.reactionText}>
         {!active ? 'Agregar este contenido a favoritos' : 'Quitar este contenido a favoritos'}

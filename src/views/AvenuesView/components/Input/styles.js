@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import cancelIcon from '../../../../assets/images/Cancel.svg';
+import { SvgUri } from 'react-native-svg';
+import settings from '../../../../settings';
 
 export const Content = styled.View`
   flex-direction: row;
@@ -26,10 +27,13 @@ export const CancelTouchArea = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-export const CancelIcon = styled(cancelIcon).attrs((props) => ({
-  fill: props.theme.colors.black,
-}))`
-  opacity: 0.6;
-  width: 18px;
-  height: 18px;
-`;
+// export const CancelIcon = styled(cancelIcon).attrs((props) => ({
+//   fill: props.theme.colors.black,
+// }))`
+//   opacity: 0.6;
+//   width: 18px;
+//   height: 18px;
+// `;
+export const CancelIcon = <SvgUri width={18} height={18}
+uri={`${settings.domainImage}images/Cancel.${settings.typeImage}`}
+/>

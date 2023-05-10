@@ -7,11 +7,11 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ThemeContext } from 'styled-components/native';
-import BackArrow from '../../../assets/images/BackArrow.svg';
-import RadioIcon from '../../../assets/icons/stream/podcasts.svg';
 import ModalRadio from "../../../components/modals/ModalRadio";
 import { useDispatch, useGlobalState } from '../../../context/StoreProvider';
 import audioStreamingAction from '../../../actions/audioStreamingAction';
+import { SvgUri } from 'react-native-svg';
+import settings from '../../../settings';
 
 const HeaderGroupSectionScreen = (props) => {
   const { item } = props;
@@ -44,19 +44,29 @@ const HeaderGroupSectionScreen = (props) => {
       <View style={{width: "100%", alignItems: "center", flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10}}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <View style={styles.goBack}>
-            <BackArrow
+          <SvgUri
+            width={15}
+            height={15}
+            uri={`${settings.domainImage}images/BackArrow.${settings.typeImage}`}
+          />
+            {/* <BackArrow
               height={15}
               width={15}
               fill={colors.text}
               style={{ marginRight: 10 }}
-            />
-            <Text style={{ fontWeight: 'bold', color: 'white' }}>
+            /> */}
+            <Text style={{ marginLeft: 10, fontWeight: 'bold', color: 'white' }}>
               {item.name || 'Undefined'}
             </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={1} onPress={onShowModal}>
-          <RadioIcon fill={(audioStreaming.playMusic || audioStreaming.playMusicAux) ? "gold": themeContext.colors.text} />
+          {/* <RadioIcon fill={(audioStreaming.playMusic || audioStreaming.playMusicAux) ? "gold": themeContext.colors.text} /> */}
+          <SvgUri
+            width={15}
+            height={15}
+            uri={`${settings.domainImage}icons/stream/podcasts.${settings.typeImage}`}
+          />
         </TouchableOpacity>
       </View>
       <ModalRadio
