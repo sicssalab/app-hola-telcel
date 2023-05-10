@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   Text,
@@ -6,47 +6,79 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  FlatList,
   SafeAreaView,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { ThemeContext } from 'styled-components/native';
-import SceneName from '../../constants/SceneName';
-import ListGlobalPost from '../../components/ui/ListGlobalPost/ListGlobalPost';
-import HeaderGroupSectionScreen from './components/HeaderGroupSectionScreen';
+} from "react-native";
+import { ThemeContext } from "styled-components/native";
+import ListGlobalPost from "../../components/ui/ListGlobalPost/ListGlobalPost";
+import HeaderGroupSectionScreen from "./components/HeaderGroupSectionScreen";
+import {typeMockConstants} from "../../constants/typeMockConstants"
+
 import groupsUrbans from "../../mocks/groups-urban.json";
+import { mockAvenidasPerfiles } from "../../mocks/mockAvenidasPerfiles";
+import mocksExperienciasPerfiles from "../../mocks/experiencias/mocksExperienciasPerfiles.json";
+import mockPueblosMagicosPerfiles from "../../mocks/pueblos-magicos/mocksPueblosMagicosPerfiles.json"
 
 const GroupUrbanView = (props) => {
-  const navigation = useNavigation();
   const { colors } = useContext(ThemeContext);
   const [itemView, setItemView] = useState([]);
 
   useEffect(() => {
-    setItemView(
-        groupsUrbans.data.find(
-        (perfil) => perfil.id == props.route.params.id,
-      ),
-    );
+    //TODO antes se mandana el id ahora se manda profilePage
+    // setItemView(
+    //   groupsUrbans.data.find((perfil) => perfil.id == props.route.params.id)
+    // );
+    switch(props.route.params.profilePage.type) {
+      case typeMockConstants.GROUP_PROFILE:
+        //TODO mock de entrenetimiendo de grupo/perfil
+        setItemView(
+          groupsUrbans.data.find(
+            (perfil) => perfil.id == props.route.params.profilePage.id,
+          ),
+        );
+        break;
+      case typeMockConstants.AVENUES_PROFILE:
+        //TODO mock de avenidas de grupo/perfil
+        setItemView(
+          mockAvenidasPerfiles.data.find(
+            (perfil) => perfil.id == props.route.params.profilePage.id,
+          ),
+        );
+        break;
+      case typeMockConstants.SERVICES_PROFILE:
+        //TODO mock de experiencias de grupo/perfil
+        setItemView(
+          mocksExperienciasPerfiles.data.find(
+            (perfil) => perfil.id == props.route.params.profilePage.id,
+          ),
+        );
+        break;
+      case typeMockConstants.MAGIC_TOWNS_PROFILE:
+        //TODO mock de pueblos magicos de grupo/perfil
+        setItemView(
+          mockPueblosMagicosPerfiles.data.find(
+            (perfil) => perfil.id == props.route.params.profilePage.id,
+          ),
+        );
+        break;
+      default:
+    }
   }, [props.route.params.id]);
 
-  const onNavigateClick = (item) => {
-    // const profilePage = {
-    //   id: item.id,
-    //   type: "GROUP_PROFILE"
-    // }
-    // navigation.navigate(SceneName.ProfileScreen, {profilePage});
-  };
 
   return (
-    <View style={{flex: 1, backgroundColor: colors.secondaryBackground}}>
-      <SafeAreaView style={{ flex: 1}}>
-        <HeaderGroupSectionScreen item={
+    <View style={{ flex: 1, backgroundColor: colors.secondaryBackground }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <HeaderGroupSectionScreen
+          item={
             itemView
               ? itemView
               : {
-                  name: 'regresar',
+                  name: "regresar",
                 }
-          } />
-          {!itemView && (
+          }
+        />
+        {!itemView && (
           <View>
             <Text style={styles.userInfoSubTitle}>
               Ups! no se encontro el perfil seleccionado
@@ -57,16 +89,22 @@ const GroupUrbanView = (props) => {
           <ScrollView
             style={styles.container}
             contentContainerStyle={{
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: "center",
+              alignItems: "center",
               backgroundColor: colors.secondaryBackground,
             }}
-            showsVerticalScrollIndicator={false}>
-            <Image style={styles.profileCover} source={{ uri: itemView.profileCover }} />
+            showsVerticalScrollIndicator={false}
+            horizontal={false}
+          >
+            <Image
+              cove
+              style={styles.profileCover}
+              source={{ uri: itemView.profileCover }}
+            />
             <Text style={styles.userName}>{itemView.name}</Text>
             <Text style={styles.aboutUser}>
-              {itemView.hasPremium ? 'Privado' : 'Publico'}
-              {itemView.members ? ` - ${itemView.members} miembros` : ''}
+              {itemView.hasPremium ? "Privado" : "Publico"}
+              {itemView.members ? ` - ${itemView.members} miembros` : ""}
             </Text>
             {/* <Text style={styles.aboutUser}>{itemView?.description}</Text> */}
             <View style={styles.userBtnWrapper}>
@@ -79,7 +117,9 @@ const GroupUrbanView = (props) => {
             </View>
             <View style={styles.userInfoWrapper}>
               <View style={styles.userInfoItem}>
-                <Text style={styles.userInfoTitle}>{itemView.content?.length}</Text>
+                <Text style={styles.userInfoTitle}>
+                  {itemView.content?.length}
+                </Text>
                 <Text style={styles.userInfoSubTitle}>Publicaciones</Text>
               </View>
               <View style={styles.userInfoItem}>
@@ -87,7 +127,9 @@ const GroupUrbanView = (props) => {
                 <Text style={styles.userInfoSubTitle}>Seguidos</Text>
               </View>
             </View>
-            <ListGlobalPost items={itemView.content} onNavigateClick={onNavigateClick} />
+            <ListGlobalPost
+              items={itemView.content}
+            />
           </ScrollView>
         )}
       </SafeAreaView>
@@ -110,25 +152,26 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 0,
     paddingTop: 10,
+    resizeMode: "contain",
   },
   userName: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 25,
     marginBottom: 10,
-    color: 'white',
+    color: "white",
   },
   aboutUser: {
     fontSize: 12,
-    fontWeight: '600',
-    color: '#666',
-    textAlign: 'center',
+    fontWeight: "600",
+    color: "#666",
+    textAlign: "center",
     marginBottom: 10,
   },
   userBtnWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "100%",
     marginBottom: 10,
   },
   userBtn: {
@@ -137,32 +180,28 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   userBtnTxt: {
-    color: '#FFF',
+    color: "#FFF",
   },
   userInfoWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
     marginVertical: 0,
   },
   userInfoItem: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   userInfoTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 5,
-    textAlign: 'center',
-    color: '#666',
+    textAlign: "center",
+    color: "#666",
   },
   userInfoSubTitle: {
     fontSize: 12,
-    color: '#666',
-    textAlign: 'center',
+    color: "#666",
+    textAlign: "center",
   },
 });
 export default GroupUrbanView;
-
-
-
- 
