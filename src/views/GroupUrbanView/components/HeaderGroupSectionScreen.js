@@ -46,7 +46,7 @@ const HeaderGroupSectionScreen = (props) => {
           <View style={styles.goBack}>
           <SvgUri
             width={15}
-            height={15}
+            height={15} fill={colors.text}
             uri={`${settings.domainImage}images/BackArrow.${settings.typeImage}`}
           />
             {/* <BackArrow
@@ -63,8 +63,8 @@ const HeaderGroupSectionScreen = (props) => {
         <TouchableOpacity activeOpacity={1} onPress={onShowModal}>
           {/* <RadioIcon fill={(audioStreaming.playMusic || audioStreaming.playMusicAux) ? "gold": themeContext.colors.text} /> */}
           <SvgUri
-            width={15}
-            height={15}
+            width={30}
+            height={30} fill={(audioStreaming.playMusic || audioStreaming.playMusicAux) ? "gold": themeContext.colors.text}
             uri={`${settings.domainImage}icons/stream/podcasts.${settings.typeImage}`}
           />
         </TouchableOpacity>

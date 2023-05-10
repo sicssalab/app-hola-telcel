@@ -15,7 +15,7 @@ const StarPost = (props) => {
       {stars &&
         Array.from({ length: stars }, (v, i) => {
           //return <StarFillIcon key={i} width={20} height={20} fill={"gold"} />;
-          return <SvgUri width={20} height={20}
+          return <SvgUri key={i} width={25} height={25} fill={"gold"}
           uri={`${settings.domainImage}icons/star_FILL.${settings.typeImage}`}
         />;
         })}

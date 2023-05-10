@@ -73,13 +73,13 @@ function TopHeader() {
       <RightSide>
         <SearchIconWrapper>
           {/* <SearchIcon fill={themeContext.colors.text} /> */}
-          <SvgUri width={15} height={15}
+          <SvgUri width={30} height={30} fill={themeContext.colors.text}
                   uri={`${settings.domainImage}icons/general/search.${settings.typeImage}`}
                 />
         </SearchIconWrapper>
         <TouchableOpacity activeOpacity={1} onPress={onShowModal}>
           {/* <RadioIcon fill={(audioStreaming.playMusic || audioStreaming.playMusicAux) ? "gold": themeContext.colors.text} /> */}
-          <SvgUri width={15} height={15}
+          <SvgUri width={30} height={30} fill={(audioStreaming.playMusic || audioStreaming.playMusicAux) ? "gold": themeContext.colors.text}
                   uri={`${settings.domainImage}icons/stream/podcasts.${settings.typeImage}`}
                 />
         </TouchableOpacity>

@@ -19,12 +19,12 @@ const FavoriteButton = () => {
   return (
     <TouchableOpacity style={styles.actionSection} onPress={onClick}>
       {/* {active && <StarIcon width={20} height={20} />} */}
-      {active && <SvgUri width={20} height={20}
-                  uri={`${settings.domainImage}icons/general/star.${settings.typeImage}`}
+      {active && <SvgUri width={20} height={20} fill={"gold"}
+                  uri={`${settings.domainImage}icons/star_FILL.${settings.typeImage}`}
                 />}
       {!active && (
         // <StarFillIcon width={20} height={20} fill={themeContext.colors.text} />
-        <SvgUri width={20} height={20}
+        <SvgUri width={20} height={20} fill={themeContext.colors.text}
                   uri={`${settings.domainImage}icons/star_FILL.${settings.typeImage}`}
                 />
       )}

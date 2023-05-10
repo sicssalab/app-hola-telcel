@@ -166,7 +166,7 @@ const RadioPlayComponent = (props) => {
                         height={60}
                         fill={themeContext.colors.text}
                       /> */}
-                      <SvgUri width={60} height={60}
+                      <SvgUri width={60} height={60} fill={themeContext.colors.text}
                         uri={`${settings.domainImage}icons/pause.${settings.typeImage}`}
                       />
                     </TouchableOpacity>
@@ -178,7 +178,7 @@ const RadioPlayComponent = (props) => {
                         height={60}
                         fill={themeContext.colors.text}
                       /> */}
-                      <SvgUri width={60} height={60}
+                      <SvgUri width={60} height={60} fill={themeContext.colors.text}
                         uri={`${settings.domainImage}icons/play_arrow.${settings.typeImage}`}
                       />
                     </TouchableOpacity>

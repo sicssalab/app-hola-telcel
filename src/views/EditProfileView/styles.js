@@ -46,7 +46,7 @@ export const ContinueButton = styled(Button)`
   border-bottom-left-radius: 0px;
   border-width: 0px;
   border-top-width: 1px;
-  border-color: ${(props) => props.theme.colors.background};
+  border-color: ${(props) => props.theme.colors?.background};
 
   ${(props) =>
     props.disabled &&

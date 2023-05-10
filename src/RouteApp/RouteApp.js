@@ -67,13 +67,14 @@ const Home = () => {
             tabBarIcon: ({ focused, color }) =>
               focused ? 
               // <EntertainmentIconActive /> 
-              <SvgUri width={15} height={15}
+              <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/home-active.${settings.typeImage}`}
                 />
               :
               // <EntertainmentIcon fill={color} />
-              <SvgUri width={15} height={15}
+              <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/home.${settings.typeImage}`}
+                  fill={"white"}
                 />
           }}
           //component={EntertainmentView}
@@ -85,13 +86,14 @@ const Home = () => {
             tabBarIcon: ({ focused, color }) =>
               focused ? 
               // <AvenuesIconActive /> 
-              <SvgUri width={15} height={15}
+              <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/location-active.${settings.typeImage}`}
                 />
               : 
               // <AvenuesIcon fill={color} />
-              <SvgUri width={15} height={15}
+              <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/location.${settings.typeImage}`}
+                  fill={"white"}
                 />
           }}
           component={AvenuesView}
@@ -103,13 +105,14 @@ const Home = () => {
               focused 
               ? 
                 // <ExperienceIconActive /> 
-                <SvgUri width={15} height={15}
+                <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/experience-active.${settings.typeImage}`}
                 />
               : 
                 // <ExperienceIcon fill={color} />
-                <SvgUri width={15} height={15}
+                <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/experience.${settings.typeImage}`}
+                  fill={"white"}
                 />
           }}
           component={ExperienceView}
@@ -120,13 +123,14 @@ const Home = () => {
             tabBarIcon: ({ focused, color }) =>
               focused ? (
                 // <MagicTownsIconActive />
-                <SvgUri width={15} height={15}
+                <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/magictowns-active.${settings.typeImage}`}
                 />
               ) : (
                 // <MagicTownsIcon fill={color} />
-                <SvgUri width={15} height={15}
+                <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/magictowns.${settings.typeImage}`}
+                  fill={"white"}
                 />
               ),
           }}
@@ -140,13 +144,14 @@ const Home = () => {
             tabBarIcon: ({ focused, color }) =>
               focused ? (
                 // <MenuProfileIconActive />
-                <SvgUri width={15} height={15}
+                <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/menu-active.${settings.typeImage}`}
                 />
               ) : (
                 // <MenuProfileIcon fill={color} />
-                <SvgUri width={15} height={15}
+                <SvgUri width={35} height={35}
                   uri={`${settings.domainImage}icons/menu/menu.${settings.typeImage}`}
+                  fill={"white"}
                 />
               ),
           }}

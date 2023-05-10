@@ -16,7 +16,7 @@ export const Container = styled.View`
 
 export const RadioButtonContainer = styled.TouchableOpacity`
   padding: 10px 20px;
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.colors?.background};
   border: 3px solid ${(props) => props.theme.colors.primary};
   border-radius: 15px;
   flex: 1;

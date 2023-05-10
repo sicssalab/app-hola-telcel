@@ -25,7 +25,7 @@ const NotificationButton = () => {
         height={20}
         fill={!active ? themeContext.colors.text :  "gold"}
       /> */}
-      <SvgUri width={20} height={20}
+      <SvgUri width={20} height={20} fill={!active ? themeContext.colors.text :  "gold"}
                   uri={`${settings.domainImage}icons/notifications_active.${settings.typeImage}`}
                 />
       <Text style={styles.reactionText}>

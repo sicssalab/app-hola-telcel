@@ -11,7 +11,7 @@ export const Container = styled.ScrollView.attrs({
 export const Content = styled.View`
   justify-content: center;
   align-items: center;
-  /* background: ${(props) => props.theme.colors.background}; */
+  /* background: ${(props) => props.theme.colors?.background}; */
   padding: 20px;
   flex-grow: 1;
   flex-shrink: 0;

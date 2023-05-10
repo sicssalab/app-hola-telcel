@@ -9,8 +9,9 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
 } from 'react-native';
-import { CancelIcon, CancelTouchArea, Content, TextInput } from './styles';
-
+import { CancelTouchArea, Content, TextInput } from './styles';
+import { SvgUri } from 'react-native-svg';
+import settings from '../../../../settings';
 
 export const Input = ({ ...props }) => {
 
@@ -28,7 +29,9 @@ export const Input = ({ ...props }) => {
         {!!props.value && (
           <View style={styles.container}>
             <CancelTouchArea onPress={() => props.onChangeText('')}>
-              <CancelIcon />
+              <SvgUri width={18} height={18} fill={"black"}
+                uri={`${settings.domainImage}images/Cancel.${settings.typeImage}`}
+              />
             </CancelTouchArea>
             <TouchableOpacity onPress={onSubmit}>
               <Image source={require('../../../../assets/icons/send-64.png')} style={styles.send} />

@@ -36,7 +36,7 @@ const Select = ({ placeholder, options, onValueChange }) => {
         borderWidth: 1,
       }}
       dropdownContainerStyle={{
-        backgroundColor: themeContext.colors.background,
+        backgroundColor: themeContext.colors?.background,
         width: '100%',
         marginBottom: 5,
       }}
