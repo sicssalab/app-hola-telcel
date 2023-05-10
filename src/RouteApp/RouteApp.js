@@ -176,7 +176,7 @@ const RouteApp = () => {
         headerBackTitle: "Volver",
         headerTitleAlign: "center",
         headerStyle: {
-          backgroundColor: theme.colors.headerBackground,
+          backgroundColor: theme.colors?.headerBackground,
         },
         headerTitleStyle: {
           fontFamily: theme.typography.fontFamily.bold,

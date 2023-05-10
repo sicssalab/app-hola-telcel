@@ -1,8 +1,8 @@
 import { Animated } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  background-color: ${(props) => props.theme.colors.headerBackground};
+  background-color: ${(props) => props.theme.colors?.headerBackground};
 `;
 
 export const Tabs = styled.View`
