@@ -9,6 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import RouteApp from "./src/RouteApp";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import StoreProvider from "./src/context/StoreProvider";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,16 +44,18 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <ThemeProvider theme={theme}>
-        <View style={{flex: 1}} onLayout={onLayoutRootView}>
-          <StatusBar style="dark" />
-          <NavigationContainer theme={theme}>
-            <RouteApp />
-          </NavigationContainer>
-        </View>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <StoreProvider>
+      <SafeAreaProvider>
+        <ThemeProvider theme={theme}>
+          <View style={{flex: 1}} onLayout={onLayoutRootView}>
+            <StatusBar style="light" />
+            <NavigationContainer theme={theme}>
+              <RouteApp />
+            </NavigationContainer>
+          </View>
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </StoreProvider>
   );
 }
 

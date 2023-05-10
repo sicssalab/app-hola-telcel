@@ -5,7 +5,7 @@
             "state_id": 1,
             "service_id": 1,
             "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/mexico/lugares/1-teotihuacan/avatar.jpg",
-            "createDate": "3sem",
+            "createDate": "3 sem",
             "name": "Pirámides de Teotihuacán",
             "likes": 456,
             "address": "México",
@@ -184,7 +184,7 @@
             "id": 3,
             "state_id": 1,
             "service_id": 1,
-            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/mexico/lugares/3-acuario-inbursa/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/mexico/lugares/3-acuario-inbursa/avatar.jpg",
             "createDate": "3sem",
             "name": "Acuario Inbursa",
             "likes": 456,
@@ -686,7 +686,7 @@
             "id": 9,
             "state_id": 2,
             "service_id": 1,
-            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/lugares/xelha/Avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/lugares/xelha/Avatar.jpg",
             "createDate": "3sem",
             "name": "Xel-ha",
             "likes": 456,
@@ -1189,7 +1189,7 @@
             "id": 15,
             "state_id": 2,
             "service_id": 3,
-            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/avatar.png",
             "createDate": "1d",
             "name": "Nautico Yates",
             "likes": 367,
@@ -1198,9 +1198,9 @@
             "streaming": "",
             "hasActiveStreaming": false,
             "videos": [
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/1-yates/1.mp4",
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/2-snorquel/1.mp4",
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-pesca/1.mp4"
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/1-yates/1.mp4",
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/2-snorquel/1.mp4",
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/3-pesca/1.mp4"
             ],
             "description": "Vive unas vacaciones de otro mundo abordo de cualquiera de nuestras embarcaciones.",
             "comments": [
@@ -1245,7 +1245,7 @@
             "id": 16,
             "state_id": 2,
             "service_id": 3,
-            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/avatar.png",
             "createDate": "1d",
             "name": "Nautico Snorquel",
             "likes": 367,
@@ -1254,9 +1254,9 @@
             "streaming": "",
             "hasActiveStreaming": false,
             "videos": [
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/2-snorquel/1.mp4",
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/2-snorquel/2.mp4",
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/1-yates/1.mp4"
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/2-snorquel/1.mp4",
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/2-snorquel/2.mp4",
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/1-yates/1.mp4"
             ],
             "description": "¿Esnorkeleando? Descubre los lugares más emblemáticos de esta ciudad.",
             "comments": [
@@ -1301,7 +1301,7 @@
             "id": 17,
             "state_id": 2,
             "service_id": 3,
-            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/avatar.png",
             "createDate": "1d",
             "name": "Nautico Pesca",
             "likes": 367,
@@ -1310,9 +1310,9 @@
             "streaming": "",
             "hasActiveStreaming": false,
             "videos": [
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-pesca/1.mp4",
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/2-snorquel/1.mp4",
-                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/1-yates/1.mp4"
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/3-pesca/1.mp4",
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/2-snorquel/1.mp4",
+                "https://www.sicssalab.net/contenido/lugares-experiencia/quintana-roo/3-nauticos/3-nauticos/1-yates/1.mp4"
             ],
             "description": "¿Te gusta la Pesca? Descubre todo lo relcionado a ésta actividad y ven a divertirte",
             "comments": [

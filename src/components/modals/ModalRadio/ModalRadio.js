@@ -13,11 +13,14 @@ import ModalRadioTabs from './components/ModalRadioTabs';
 import RadioPlayComponent from './components/RadioPlayComponent';
 
 const ModalRadio = (props) => {
-  const { modalVisible, Loading, Loaded, playMusic } = props;
+  const { modalVisible,
+    Loading, Loaded, playMusic 
+  } = props;
 
   //TODO por default toma a radio como inicia
   const [streamPlayTab, setStreamPlayTab] = useState(null);
   const [musicON, setMusicOn] = useState(null);
+  
   const onClose = () => {
     const { onClose } = props;
     onClose && onClose();
@@ -44,8 +47,7 @@ const ModalRadio = (props) => {
         default:
     }    
   };
-
-  
+ 
   const PlayAudio = () => {
     const {onPlayAudio} = props;
     onPlayAudio && onPlayAudio();

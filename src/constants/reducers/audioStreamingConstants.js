@@ -1,0 +1,7 @@
+const audioStreamingConstants = {
+    AUDIOSTREAMING: "AUDIOSTREAMING",
+    AUDIOSTREAMING_FETCHING: "AUDIOSTREAMING_FETCHING",
+    AUDIOSTREAMING_ERROR: "AUDIOSTREAMING_ERROR",
+}
+
+export default audioStreamingConstants;

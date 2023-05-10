@@ -17,7 +17,7 @@ const RadioPlayComponent = (props) => {
   const themeContext = useContext(ThemeContext);
 //   const [Loaded, SetLoaded] = React.useState(false);
 //   const [Loading, SetLoading] = React.useState(false);
-  const sound = React.useRef(new Audio.Sound());
+  //const sound = React.useRef(new Audio.Sound());
 
 
 //   const PlayAudio = async () => {

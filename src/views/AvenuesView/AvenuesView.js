@@ -12,6 +12,7 @@ import { Header } from './components/Header';
 import { Input } from './components/Input';
 import StateDropdown from './components/StateDropdown';
 //import { SafeComponent } from '~components';
+import { SafeComponent } from '../../components';
 //import { mockRequest } from './__mocks__';
 
 import data from '../../mocks/mocks-estados.json';
@@ -135,8 +136,14 @@ function Component() {
     },
   ];
 
+  //TODO de mockRequest
+  const mockSageComponentFake = {
+    data: true,
+    loading: false,
+    error: false,
+  }
   return (
-    // <SafeComponent request={mockRequest}>
+    <SafeComponent request={mockSageComponentFake}>
       <Container>
         <SectionList
           sections={sections}
@@ -145,7 +152,7 @@ function Component() {
           renderSectionHeader={({ section: { title } }) => <View />}
         />
       </Container>
-    // </SafeComponent>
+    </SafeComponent>
   );
 }
 

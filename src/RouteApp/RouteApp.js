@@ -7,11 +7,15 @@ import {
   HeaderStyleInterpolators,
 } from "@react-navigation/stack";
 import SceneName from "../constants/SceneName";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import EntertainmentView from "../views/EntertainmentView";
 import AvenuesView from "../views/AvenuesView";
 import StoryView from "../views/StoryView/StoryView";
 import GroupUrbanView from "../views/GroupUrbanView";
+import ExperienceView from "../views/ExperienceView";
+import MagicTownsView from "../views/MagicTownsView";
+import EditProfileView from "../views/EditProfileView";
+
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import NavbarTabHeader from "../components/NavbarTabHeader/NavbarTabHeader";
@@ -26,7 +30,9 @@ import MagicTownsIcon from "../assets/icons/menu/magictowns.svg";
 import MenuProfileIconActive from "../assets/icons/menu/menu-active.svg";
 import MenuProfileIcon from "../assets/icons/menu/menu.svg";
 import TopHeader from "../components/TopHeader/TopHeader";
-
+import ProfileUrbanView from "../views/ProfileUrbanView/ProfileUrbanView";
+import useModalRadio from "../hooks/useModalRadio";
+import { Audio } from "expo-av";
 // import {
 //     CardStyleInterpolators,
 //     createStackNavigator,
@@ -40,30 +46,36 @@ const screenWidth = Dimensions.get("window").width;
 
 const Home = () => {
   const themeContext = useContext(ThemeContext);
+  //TODO render al abrir para que no carge los videos iniciando
+  const RenderMagicTowns = (props) => {
+    return props.navigation.isFocused() ? <MagicTownsView /> : <></>
+  }
+
+  const RenderEntertainment = (props) => {
+    return props.navigation.isFocused() ? <EntertainmentView /> : <></>
+  }
 
   return (
     <>
       <TopHeader />
       <Tab.Navigator
-        //tabBar={(props) => <Navbar {...props} />}
         tabBar={(props) => <NavbarTabHeader {...props} />}
         initialLayout={{ width: screenWidth }}
         screenOptions={{
           tabBarInactiveTintColor: themeContext.colors.text,
         }}
-        initialRouteName={SceneName.Authentication}
+        //initialRouteName={SceneName.Authentication}
+        initialRouteName={SceneName.Entertainment}
       >
         <Tab.Screen
           name={SceneName.Entertainment}
           options={{
+            mostrarok: true,
             tabBarIcon: ({ focused, color }) =>
-              focused ? (
-                <EntertainmentIconActive />
-              ) : (
-                <EntertainmentIcon fill={color} />
-              ),
+              focused ? <EntertainmentIconActive /> :<EntertainmentIcon fill={color} />,
           }}
-          component={EntertainmentView}
+          //component={EntertainmentView}
+          component={RenderEntertainment}
         />
         <Tab.Screen
           name={SceneName.Avenues}
@@ -77,14 +89,9 @@ const Home = () => {
           name={SceneName.Experience}
           options={{
             tabBarIcon: ({ focused, color }) =>
-              focused ? (
-                <ExperienceIconActive />
-              ) : (
-                <ExperienceIcon fill={color} />
-              ),
+              focused ? <ExperienceIconActive /> : <ExperienceIcon fill={color} />,
           }}
-          //component={ExperienceView}
-          component={EntertainmentView}
+          component={ExperienceView}
         />
         <Tab.Screen
           name={SceneName.MagicTowns}
@@ -97,7 +104,8 @@ const Home = () => {
               ),
           }}
           //component={MagicTownsView}
-          component={EntertainmentView}
+          //component={RenderTest}
+          component={RenderMagicTowns}
         />
         <Tab.Screen
           name={SceneName.MenuProfile}
@@ -109,8 +117,7 @@ const Home = () => {
                 <MenuProfileIcon fill={color} />
               ),
           }}
-          //component={EditProfileView}
-          component={EntertainmentView}
+          component={EditProfileView}
         />
       </Tab.Navigator>
     </>
@@ -119,9 +126,13 @@ const Home = () => {
 
 const RouteApp = () => {
   const theme = useContext(ThemeContext);
+  const sound = React.useRef(new Audio.Sound());
+  useModalRadio(sound);
+
   return (
     <Stack.Navigator
-      initialRouteName={SceneName.Entertainment}
+      //initialRouteName={SceneName.Entertainment}
+      initialRouteName={SceneName.Home}
       screenOptions={{
         headerShown: false,
         headerBackTitle: "Volver",
@@ -138,8 +149,8 @@ const RouteApp = () => {
       }}
     >
       <Stack.Screen name={SceneName.Home} component={Home} />
+      <Stack.Screen name={SceneName.ProfileScreen} component={ProfileUrbanView} />
       {/* <Stack.Screen name={SceneName.Notifications} component={Notifications} />
-            <Stack.Screen name={SceneName.Profile} component={Profile} />
             <Stack.Screen name={SceneName.Settings} component={Settings} /> */}
       <Stack.Screen name={SceneName.Story} component={StoryView} />
       <Stack.Screen name={SceneName.GroupProfile} component={GroupUrbanView} />

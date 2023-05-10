@@ -32,7 +32,6 @@ export const Input = ({ ...props }) => {
             </CancelTouchArea>
             <TouchableOpacity onPress={onSubmit}>
               <Image source={require('../../../../assets/icons/send-64.png')} style={styles.send} />
-              {/* <Text>{">"}</Text> */}
             </TouchableOpacity>
           </View>
         )}

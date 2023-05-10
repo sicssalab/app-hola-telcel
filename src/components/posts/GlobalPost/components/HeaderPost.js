@@ -29,6 +29,7 @@ const HeaderPost = (props) => {
           {item.hasPremium ? "Privado" : "Publico"}, {item.createDate}
         </Text>
       </View>
+      {item.hasPremium && <Image source={require('../../../../assets/images/logo_premium.png')} style={styles.logoPremium} />}
       {hasSandWith && (
         <TouchableOpacity style={styles.icon} onPress={onShowModal}>
           <Icon name="dots-vertical" size={20} color="#999" />
@@ -71,6 +72,10 @@ const styles = StyleSheet.create({
     //color: '#999',
     fontSize: 14,
     color: "#aaa",
+  },
+  logoPremium: {
+    width: 30,
+    height: 30,
   },
   icon: {
     marginLeft: 10,

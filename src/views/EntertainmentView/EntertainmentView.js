@@ -1,5 +1,4 @@
 import { View, Text } from 'react-native';
-import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
 import SlideStories from './components/SlideStories/SlideStories';
 import SceneName from '../../constants/SceneName';
@@ -17,7 +16,7 @@ const EntertainmentView = () => {
     return (
         <Container>
             <SlideStories />
-            <ListGlobalPost items={mocksEntretenimiento.data} onNavigateClick={onNavigateClick} />
+            <ListGlobalPost items={mocksEntretenimiento.data} applyPremium={true} onNavigateClick={onNavigateClick} />
         </Container>
     );
 }
