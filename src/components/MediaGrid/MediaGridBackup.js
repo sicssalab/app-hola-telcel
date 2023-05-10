@@ -38,11 +38,10 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
         thumbnailUri: thumbnailUri,
       };
     });
-    console.log("espero video", resourceMedia);
 
     //TODO remover videos que no tienen thumbnailUri
     const nResult = resourceMedia.filter(item => item.thumbnailUri != null)
-    console.log(`videos: ${array.length}, filtrados ok: ${nResult.length}`);
+
     setMedia(nResult);
     setLoading(false);
     return nResult;

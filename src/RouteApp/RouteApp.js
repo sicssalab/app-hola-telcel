@@ -31,7 +31,8 @@ import MenuProfileIconActive from "../assets/icons/menu/menu-active.svg";
 import MenuProfileIcon from "../assets/icons/menu/menu.svg";
 import TopHeader from "../components/TopHeader/TopHeader";
 import ProfileUrbanView from "../views/ProfileUrbanView/ProfileUrbanView";
-
+import useModalRadio from "../hooks/useModalRadio";
+import { Audio } from "expo-av";
 // import {
 //     CardStyleInterpolators,
 //     createStackNavigator,
@@ -45,7 +46,6 @@ const screenWidth = Dimensions.get("window").width;
 
 const Home = () => {
   const themeContext = useContext(ThemeContext);
-
   //TODO render al abrir para que no carge los videos iniciando
   const RenderMagicTowns = (props) => {
     return props.navigation.isFocused() ? <MagicTownsView /> : <></>
@@ -126,6 +126,9 @@ const Home = () => {
 
 const RouteApp = () => {
   const theme = useContext(ThemeContext);
+  const sound = React.useRef(new Audio.Sound());
+  useModalRadio(sound);
+
   return (
     <Stack.Navigator
       //initialRouteName={SceneName.Entertainment}

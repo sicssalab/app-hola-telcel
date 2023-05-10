@@ -29,11 +29,11 @@ const GroupUrbanView = (props) => {
   }, [props.route.params.id]);
 
   const onNavigateClick = (item) => {
-    const profilePage = {
-      id: item.id,
-      type: "GROUP_PROFILE"
-    }
-    navigation.navigate(SceneName.ProfileScreen, {profilePage});
+    // const profilePage = {
+    //   id: item.id,
+    //   type: "GROUP_PROFILE"
+    // }
+    // navigation.navigate(SceneName.ProfileScreen, {profilePage});
   };
 
   return (
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginVertical: 20,
+    marginVertical: 0,
   },
   userInfoItem: {
     justifyContent: 'center',
