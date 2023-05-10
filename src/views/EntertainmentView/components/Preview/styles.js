@@ -1,13 +1,13 @@
 import styled from 'styled-components/native';
 
 export const Content = styled.View`
-  width: 65px;
+  width: 100px;
   align-items: center;
   height: 30px;
 `;
 
 export const Picture = styled.Image`
-  width: 100px;
+  width: 120px;
   height: 180px;
   border-radius: 5px;
   margin-bottom: 5px;

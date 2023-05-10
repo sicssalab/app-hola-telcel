@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import SceneName from "../../../../constants/SceneName";
 import { Container, Picture, Content } from "./styles";
+import { useDispatch, useGlobalState } from "../../../../context/StoreProvider";
 import {Text} from "../../../../components";
 import ModalPaymentPremium from "../../../../components/modals/ModalPaymentPremium/ModalPaymentPremium";
 import {
   Alert, View, Image, StyleSheet
 } from 'react-native';
+import userAuthAction from "../../../../actions/userAuthAction";
 
 const Preview = ({ item , index }) => {
   const navigation = useNavigation();
   const [showModalPremium, setShowModalPremium] = useState(false);
   const [userPremium, setUserPremium] = useState(false);
+  const {userAuth} = useGlobalState();
+  const dispatch = useDispatch();
 
   const showPreview = (hasUserPremium) => {
     if(!hasUserPremium)
@@ -35,9 +39,16 @@ const Preview = ({ item , index }) => {
     setShowModalPremium(!showModalPremium);
   }
   
+  useEffect(() => {
+    if(userAuth.isPremium) {
+      setUserPremium(true);
+    }
+  },[userAuth])
+  
   const onClickAproved = () => {
     Alert.alert('Tu suscripción ha sido aprovada');
     onCloseModal();
+    userAuthAction.premium(dispatch);
     setUserPremium(true);
     showPreview(true);
   }
@@ -51,7 +62,7 @@ const Preview = ({ item , index }) => {
       <Text>{item.hasPremium? 'Premium': 'Publico'}</Text>
       <Content>
         <Text fontSize='small' fontWeight='semiBold' numberOfLines={1}>
-          {item.name} {index}
+          {item.name}
         </Text>
       </Content>
       <ModalPaymentPremium showModal={showModalPremium} onCloseModal={onCloseModal} onClickAproved={onClickAproved} />

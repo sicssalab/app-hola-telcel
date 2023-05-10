@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   View,
+  Text,
   StyleSheet,
 } from 'react-native';
 import MediaGrid from '../../MediaGrid';
@@ -49,7 +50,6 @@ const GlobalPost = (props) => {
           <MediaGrid
             array={item.videos}
             itemView={item}
-            applyPremium={applyPremium}
             //onMediaPress={onNavigateClick}
           />
         )}
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    flex: 1,
   },
   body: {
     paddingVertical: 0,

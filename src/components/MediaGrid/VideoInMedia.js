@@ -4,6 +4,7 @@ import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import audioStreamingAction from "../../actions/audioStreamingAction";
 
 const VideoInMedia = (props) => {
+  //TODO showPreview identifica si es premium
   const { videoData: video, autoPlay, itemView, showPreview } = props;
   const [status, setStatus] = useState({}); //TODO status del video
   const videoRef = useRef(null);
@@ -22,28 +23,26 @@ const VideoInMedia = (props) => {
     if (status?.isPlaying) {
       let audioStop = true;
       if (itemView && itemView.hasPremium) {
-        const {onPress} = props;
+        const { onPress } = props;
         //TODO detiene el video por ser premium
-        if(!showPreview)
-          {
-            videoRef.current.pauseAsync()
-            onPress && onPress();
-            audioStop = false;
-          }
+        if (!showPreview) {
+          videoRef.current.pauseAsync();
+          onPress && onPress();
+          audioStop = false;
+        }
       }
 
       //TODO parar el audio si esta repoduciendo
-      if(audioStop && audioStreaming.playMusic) {
-        const inAudioStreaming = {...audioStreaming};
+      if (audioStop && audioStreaming.playMusic) {
+        const inAudioStreaming = { ...audioStreaming };
         inAudioStreaming.playMusicAux = true; //TODO guardo el play
         inAudioStreaming.pauseAudio = true; //TODO detengo el play
         audioStreamingAction.update(inAudioStreaming, dispatch);
       }
-    }
-    else {
+    } else {
       //TODO detuvo el video pero revisa si el audio estaba corriengo
-      if(audioStreaming.playMusicAux) {
-        const inAudioStreaming = {...audioStreaming};
+      if (audioStreaming.playMusicAux) {
+        const inAudioStreaming = { ...audioStreaming };
         inAudioStreaming.playMusicAux = false; //TODO guardo el play
         inAudioStreaming.pauseAudio = false; //TODO detengo el play
         inAudioStreaming.playAudio = true; //TODO detengo el play
@@ -52,18 +51,14 @@ const VideoInMedia = (props) => {
     }
   }, [status?.isPlaying]);
 
-  useEffect(() => {
-    if(showPreview) {
-      videoRef.current.playAsync();
-    }
-  }, [showPreview])
+  // useEffect(() => {
+  //   if (showPreview) {
+  //     videoRef.current.playAsync();
+  //   }
+  // }, [showPreview]);
 
   return (
     <Video
-      //   source={{ uri: resource.uri }}
-      //   onPlaybackStatusUpdate={(status) =>
-      //     handlePlaybackStatusUpdate(index, status)
-      //   }
       source={{ uri: video.uri ? video.uri : video }}
       ref={videoRef}
       useNativeControls={true}
@@ -75,10 +70,6 @@ const VideoInMedia = (props) => {
       onError={onError}
       shouldPlay={autoPlay}
       style={{ flex: 1 }}
-      //   style={{
-      //     height: video.height ? video.height : 350,
-      //     width: video.width ? video.width : "100%",
-      //   }}
     />
   );
 };

@@ -85,7 +85,7 @@
         },
         {
             "id": 2,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/2-medical-network/avatar.jpg",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/2-medical-network/avatar.png",
             "createDate": "2d",
             "name": "Medical Network",
             "description": "Doctores, consultas, diagnosticos, farmacia, laboratorios, tips y consejos para la salud y belleza, Todo encuentralo aquí en Medical Network",
@@ -154,7 +154,7 @@
         },
         {
             "id": 3,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/3-noticalles/avatar.jpg",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/3-noticalles/avatar.png",
             "createDate": "4sem",
             "name": "Noti Calles",
             "description": "Ponte al día con las noticias!",
@@ -488,13 +488,13 @@
         },
         {
             "id": 9,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/9-wrerstling/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/9-wrersling/avatar.png",
             "createDate": "2d",
             "name": "Hardcore Wrestling",
             "description": "Lo mejor de la lucha Libre... Dale con la sillaaaa!",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/9-wrerstling/wrerstling-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/9-wrersling/wrerstling-1.mp4"
             ],
             "comments": [
                 {
@@ -691,7 +691,7 @@
             "description": "El contenido que entiende a nuestra juventud,la forma de vestir, estilos, música, la forma de comunicarte, la moda, tu sentir.. Todo encuentralo en lit",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/9-wrerstling/wrerstling-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/14-lit/lit1.mp4"
             ],
             "comments": [
                 {
@@ -733,7 +733,7 @@
             "description": "Lo mejor del deporte",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/5-futbol-americano/americano-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/15-futbol-americano/americano-1.mp4"
             ],
             "comments": [
                 {
