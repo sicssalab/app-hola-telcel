@@ -11,13 +11,12 @@ import AvenueDropdown from './components/AvenueDropdown';
 import { Header } from './components/Header';
 import { Input } from './components/Input';
 import StateDropdown from './components/StateDropdown';
-//import { SafeComponent } from '~components';
 import { SafeComponent } from '../../components';
-//import { mockRequest } from './__mocks__';
-
-import data from '../../mocks/mocks-estados.json';
+//import statesList from '../../mocks/mocks-estados.json';
 
 import { Container, OptionsContainer } from './styles';
+import { useDispatch, useGlobalState } from '../../context/StoreProvider';
+import statesListAction from '../../actions/statesListAction';
 
 function Component() {
   const navigation = useNavigation();
@@ -26,17 +25,28 @@ function Component() {
   const [keyword, setKeyword] = useState('');
   const [filteredAvenues, setFilteredAvenues] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const { statesList } = useGlobalState();
+  const dispatch = useDispatch();
+  const [states, setStates] = useState([]);
 
-  const states = data.states.map((state) => ({
-    code: state.id,
-    name: state.name,
-  }));
+  useEffect(() => {
+    statesListAction.get({}, dispatch);
+  },[]);
+
+  useEffect(() => {
+    if(statesList.complete) {
+      setStates(statesList.states.map((state) => ({
+        code: state.id,
+        name: state.name,
+      })))
+    }
+  },[statesList]);
 
   const updateFilteredAvenuesAndPosts = (stateId, avenueId) => {
     setFilteredPosts([]);
     setSelectedStateId(stateId);
 
-    const selectedState = data.states.find((state) => state.id === stateId);
+    const selectedState = statesList.states.find((state) => state.id === stateId);
     const filteredAvenues = selectedState ? selectedState.avenues : [];
 
     setFilteredAvenues(filteredAvenues);
@@ -69,7 +79,7 @@ function Component() {
     setKeyword(e);
     //TODO selec
     if(selectedStateId > 0 && selectedAvenueId > 0) {
-      const selectedState = data.states.find((state) => state.id === selectedStateId);
+      const selectedState = statesList.states.find((state) => state.id === selectedStateId);
       const filteredAvenues = selectedState ? selectedState.avenues : [];
       const selectedAvenue = filteredAvenues.find(
         (avenue) => avenue.id === selectedAvenueId,
@@ -136,14 +146,8 @@ function Component() {
     },
   ];
 
-  //TODO de mockRequest
-  const mockSageComponentFake = {
-    data: true,
-    loading: false,
-    error: false,
-  }
   return (
-    <SafeComponent request={mockSageComponentFake}>
+    <SafeComponent request={statesList}>
       <Container>
         <SectionList
           sections={sections}

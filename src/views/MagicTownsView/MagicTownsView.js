@@ -11,16 +11,25 @@ import GlobalPost from '../../components/posts/GlobalPost';
 import { Container, OptionsContainer } from '../AvenuesView/styles';
 import { Input } from '../AvenuesView/components/Input';
 import { Header } from './components/Header';
-import mockPueblosMagicos from "../../mocks/pueblos-magicos/mocksPueblosMagicos.json";
+//import mockPueblosMagicos from "../../mocks/pueblos-magicos/mocksPueblosMagicos.json";
+import { useDispatch, useGlobalState } from '../../context/StoreProvider';
+import magicTownsAction from '../../actions/magicTownsAction';
 
 const MagicTownsView = () => {
   const navigation = useNavigation();
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [valueSearch, setValueSearch] = useState('');
+  const { magicTowns } = useGlobalState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setFilteredPosts(mockPueblosMagicos.data.content)
-  }, []);
+    magicTownsAction.get({}, dispatch);
+  },[]);
+
+  useEffect(() => {
+    if(magicTowns.complete)
+      setFilteredPosts(magicTowns.data.content)
+  }, [magicTowns]);
 
   const onNavigateClick = (item) => {
     const profilePage = {
@@ -35,10 +44,10 @@ const MagicTownsView = () => {
   const onChangeInput = (e) => {
     //TODO de la busqueda filtrar los que son con el nombre
     setValueSearch(e);
-    if(e == "") setFilteredPosts(mockPueblosMagicos.data.content)
+    if(e == "") setFilteredPosts(magicTowns.data.content)
     else
       setFilteredPosts(
-        mockPueblosMagicos.data.content.filter((servicio) => 
+        magicTowns.data.content.filter((servicio) => 
         //removeAccents(servicio.name.toUpperCase()) >= removeAccents(e.toUpperCase())
         removeAccents(servicio.name.toLowerCase()).indexOf(removeAccents(e.toLowerCase())) >= 0
         )
@@ -81,15 +90,8 @@ const MagicTownsView = () => {
     },
   ];
 
-  //TODO de mockRequest
-  const mockSageComponentFake = {
-    data: true,
-    loading: false,
-    error: false,
-  }
-
   return (
-    <SafeComponent request={mockSageComponentFake}>
+    <SafeComponent request={magicTowns}>
       <Container>
         <SectionList
           sections={sections}

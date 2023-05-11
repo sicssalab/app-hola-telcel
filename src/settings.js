@@ -1,7 +1,15 @@
 const settings = {
-    domain: "https://social-network.sicssa-lab.com",
+    domain: "https://www.sicssalab.net/contenido/json/",
     api: {
-        stories: "assets/json-collection/home-entretenimiento.json"
+        stories: "entretenimiento/mocksStory.json",
+        entertainments: "entretenimiento/mocksEntretenimiento.json",
+        statesList: "mocks-estados.json",
+        experiences: "experiencias/mocksExperiencias.json",
+        magicTowns: "pueblos-magicos/mocksPueblosMagicos.json",
+        entertainmentProfileList: "groups-urban.json",
+        avenueProfileList: "mockAvenidasPerfiles.json",
+        experienceProfileList: "experiencias/mocksExperienciasPerfiles.json",
+        magicTownProfileList: "pueblos-magicos/mocksPueblosMagicosPerfiles.json",
     }
 }
 

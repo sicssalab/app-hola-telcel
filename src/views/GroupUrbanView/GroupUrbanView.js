@@ -13,15 +13,23 @@ import { ThemeContext } from "styled-components/native";
 import ListGlobalPost from "../../components/ui/ListGlobalPost/ListGlobalPost";
 import HeaderGroupSectionScreen from "./components/HeaderGroupSectionScreen";
 import {typeMockConstants} from "../../constants/typeMockConstants"
-
-import groupsUrbans from "../../mocks/groups-urban.json";
-import { mockAvenidasPerfiles } from "../../mocks/mockAvenidasPerfiles";
-import mocksExperienciasPerfiles from "../../mocks/experiencias/mocksExperienciasPerfiles.json";
-import mockPueblosMagicosPerfiles from "../../mocks/pueblos-magicos/mocksPueblosMagicosPerfiles.json"
+// import groupsUrbans from "../../mocks/groups-urban.json";
+// import { mockAvenidasPerfiles } from "../../mocks/mockAvenidasPerfiles";
+// import mocksExperienciasPerfiles from "../../mocks/experiencias/mocksExperienciasPerfiles.json";
+// import mockPueblosMagicosPerfiles from "../../mocks/pueblos-magicos/mocksPueblosMagicosPerfiles.json"
+import { useDispatch, useGlobalState } from "../../context/StoreProvider";
+import entertainmentProfileListAction from "../../actions/entertainmentProfileListAction";
+import { SafeComponent } from "../../components";
 
 const GroupUrbanView = (props) => {
   const { colors } = useContext(ThemeContext);
   const [itemView, setItemView] = useState([]);
+  const { entertainmentProfileList } = useGlobalState();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    entertainmentProfileListAction.get({}, dispatch);
+  },[]);
 
   useEffect(() => {
     //TODO antes se mandana el id ahora se manda profilePage
@@ -32,39 +40,38 @@ const GroupUrbanView = (props) => {
       case typeMockConstants.GROUP_PROFILE:
         //TODO mock de entrenetimiendo de grupo/perfil
         setItemView(
-          groupsUrbans.data.find(
+          entertainmentProfileList.data.find(
             (perfil) => perfil.id == props.route.params.profilePage.id,
           ),
         );
         break;
-      case typeMockConstants.AVENUES_PROFILE:
-        //TODO mock de avenidas de grupo/perfil
-        setItemView(
-          mockAvenidasPerfiles.data.find(
-            (perfil) => perfil.id == props.route.params.profilePage.id,
-          ),
-        );
-        break;
-      case typeMockConstants.SERVICES_PROFILE:
-        //TODO mock de experiencias de grupo/perfil
-        setItemView(
-          mocksExperienciasPerfiles.data.find(
-            (perfil) => perfil.id == props.route.params.profilePage.id,
-          ),
-        );
-        break;
-      case typeMockConstants.MAGIC_TOWNS_PROFILE:
-        //TODO mock de pueblos magicos de grupo/perfil
-        setItemView(
-          mockPueblosMagicosPerfiles.data.find(
-            (perfil) => perfil.id == props.route.params.profilePage.id,
-          ),
-        );
-        break;
+      // case typeMockConstants.AVENUES_PROFILE:
+      //   //TODO mock de avenidas de grupo/perfil
+      //   setItemView(
+      //     mockAvenidasPerfiles.data.find(
+      //       (perfil) => perfil.id == props.route.params.profilePage.id,
+      //     ),
+      //   );
+      //   break;
+      // case typeMockConstants.SERVICES_PROFILE:
+      //   //TODO mock de experiencias de grupo/perfil
+      //   setItemView(
+      //     mocksExperienciasPerfiles.data.find(
+      //       (perfil) => perfil.id == props.route.params.profilePage.id,
+      //     ),
+      //   );
+      //   break;
+      // case typeMockConstants.MAGIC_TOWNS_PROFILE:
+      //   //TODO mock de pueblos magicos de grupo/perfil
+      //   setItemView(
+      //     mockPueblosMagicosPerfiles.data.find(
+      //       (perfil) => perfil.id == props.route.params.profilePage.id,
+      //     ),
+      //   );
+      //   break;
       default:
     }
   }, [props.route.params.id]);
-
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.secondaryBackground }}>
@@ -85,6 +92,7 @@ const GroupUrbanView = (props) => {
             </Text>
           </View>
         )}
+        <SafeComponent request={entertainmentProfileList}>
         {itemView && (
           <ScrollView
             style={styles.container}
@@ -132,6 +140,8 @@ const GroupUrbanView = (props) => {
             />
           </ScrollView>
         )}
+
+        </SafeComponent>
       </SafeAreaView>
     </View>
   );

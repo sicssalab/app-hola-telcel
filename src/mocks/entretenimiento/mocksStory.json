@@ -15,11 +15,19 @@
             "srcStory": "https://www.sicssalab.net/contenido/historias/GAMER.mp4"
         },
         {
+            "id": 7,
+            "name": "Corona Capinal",
+            "picture": "https://www.sicssalab.net/contenido/historias/360.png",
+            "srcPreview": "https://i0.wp.com/mninoticias.com/wp-content/uploads/2022/05/1633110610048.jpg?w=360&ssl=1",
+            "hasPremium": true,
+            "srcStory": "https://www.sicssalab.net/contenido/historias/corona-capital.mp4"
+        },
+        {
             "id": 3,
             "name": "360mx",
             "picture": "https://www.sicssalab.net/contenido/historias/360.png",
             "srcPreview": "https://www.sicssalab.net/contenido/historias/360.png",
-            "hasPremium": true,
+            "hasPremium": false,
             "srcStory": "https://www.sicssalab.net/contenido/historias/360.mp4"
         },
         {

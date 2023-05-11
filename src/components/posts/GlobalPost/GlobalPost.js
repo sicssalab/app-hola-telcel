@@ -44,7 +44,7 @@ const GlobalPost = (props) => {
         )}
         {item.stars && <StarPost stars={item.stars} />}
         {item.description && (
-          <DescriptionPost post={item} isLineal={showDescription} onClick={onShowDescription} />
+          <DescriptionPost post={item} isLineal={item.videos.length <= 0 ? false : showDescription} onClick={onShowDescription} />
         )}
         {item.videos && (
           <MediaGrid

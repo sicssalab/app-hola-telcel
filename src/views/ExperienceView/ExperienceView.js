@@ -1,5 +1,5 @@
 
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import {
   SectionList,
   View,
@@ -13,28 +13,51 @@ import StateDropdown from '../AvenuesView/components/StateDropdown';
 import { Container, OptionsContainer } from '../AvenuesView/styles';
 import { Header } from './components/Header';
 import ServicesDropdown from "./components/ServicesDropdown";
-//import data from '~views/Avenues/data.json'; //TODO data son los estados nada mas
-import data from '../../mocks/mocks-estados.json'; //TODO data son los estados nada mas
-//import { mockRequest } from './__mocks__';
-import mocksExperiencias from "../../mocks/experiencias/mocksExperiencias.json"
+//import data from '../../mocks/mocks-estados.json'; //TODO data son los estados nada mas
+//import mocksExperiencias from "../../mocks/experiencias/mocksExperiencias.json"
+import { useDispatch, useGlobalState } from '../../context/StoreProvider';
+import statesListAction from '../../actions/statesListAction';
+import experiencesAction from '../../actions/experiencesAction';
 
 function Component() {
   const navigation = useNavigation();
   const [selectedStateId, setSelectedStateId] = useState(null);
   const [filteredAvenues, setFilteredAvenues] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const { statesList, experiences } = useGlobalState();
+  const dispatch = useDispatch();
+  const [states, setStates] = useState([]);
+  // const states = data.states.map((state) => ({
+  //   code: state.id,
+  //   name: state.name,
+  // }));
+  // useEffect(() => {
+  //   statesListAction.get({}, dispatch);
+  // },[]);
+  
+  useEffect(() => {
+    experiencesAction.get({}, dispatch);
+  },[]);
 
-  const states = data.states.map((state) => ({
-    code: state.id,
-    name: state.name,
-  }));
+  useEffect(() => {
+    if(!statesList.complete && !statesList.error && !statesList.loading) {
+      statesListAction.get({}, dispatch);
+    }
+
+    if(statesList.complete) {
+      setStates(statesList.states.map((state) => ({
+        code: state.id,
+        name: state.name,
+      })))
+    }
+  },[statesList]);
 
   const updateFilteredAvenuesAndPosts = (stateId, avenueId) => {
     setFilteredPosts([]);
     setSelectedStateId(stateId);
 
     //TODO busca el estado seleccionado
-    const selectedState = data.states.find((state) => state.id === stateId);
+    const selectedState = statesList.states.find((state) => state.id === stateId);
 
     //TODO selecciona la lista de servicios por el estado
     const filteredAvenues = selectedState ? selectedState.services : [];
@@ -44,7 +67,7 @@ function Component() {
     //TODO Muesta la lista de servicios por la avenida seleccionada
     if (avenueId) {
       //TODO seleccionar todos los servicios de X estado
-      const services = mocksExperiencias.data.filter((servicio) => servicio.state_id === stateId && servicio.service_id === avenueId)
+      const services = experiences.data.filter((servicio) => servicio.state_id === stateId && servicio.service_id === avenueId)
       setFilteredPosts(services);
     } else {
       setFilteredPosts([]);
@@ -99,14 +122,8 @@ function Component() {
     },
   ];
 
-  //TODO de mockRequest
-  const mockSageComponentFake = {
-    data: true,
-    loading: false,
-    error: false,
-  }
   return (
-    <SafeComponent request={mockSageComponentFake}>
+    <SafeComponent request={statesList}>
       <Container>
         <SectionList
           sections={sections}
