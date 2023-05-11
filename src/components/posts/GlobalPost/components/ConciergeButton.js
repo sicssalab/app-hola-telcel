@@ -12,7 +12,7 @@ import {
       <TouchableOpacity
         style={styles.actionSection}
         onPress={async () => {
-          Linking.openURL('tel:+529982423611');
+          Linking.openURL('tel:5560821558');
         }}>
         <Image
           source={ImgPathImage.icCall}

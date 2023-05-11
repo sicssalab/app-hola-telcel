@@ -26,5 +26,47 @@ export default {
         loading: false, //fetching
         complete: false,
         error: false
+    },
+    entertainmentProfileList: {
+        data: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
+    avenueProfileList: {
+        data: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
+    experiences: {
+        data: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
+    experienceProfileList: {
+        data: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
+    magicTowns: {
+        data: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
+    magicTownProfileList: {
+        data: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
+    statesList: {
+        states: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
     }
 }

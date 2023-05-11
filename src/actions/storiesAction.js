@@ -23,14 +23,9 @@ const error = () => {
 const get = async (request, dispatch) => {
   dispatch(loading());
   try {
-    await fetch(`${settings.domain}/${settings.api.stories}`)
+    await fetch(`${settings.domain}${settings.api.stories}`)
       .then((res) => res.json())
-      .then((data) => {
-        const response = {
-            data: data.stories
-        }
-        // console.log("dividor")
-        // console.log(response)
+      .then((response) => {
         dispatch(getDispatch(response));
     });
   } catch (e) {

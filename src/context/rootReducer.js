@@ -3,13 +3,26 @@ import audioStreaming from "./audioStreamingReducer";
 import stories from "./storiesReducer";
 import entertainments from "./entertainmentsReducer";
 import userAuth from "./userAuthReducer";
-//import {combineReducers} from "react-redux";
+import statesList from "./statesListReducer";
+import experiences from "./experiencesReducer";
+import magicTowns from "./magicTownsReducer";
+import entertainmentProfileList from "./entertainmentProfileListReducer";
+import avenueProfileList from "./avenueProfileListReducer";
+import experienceProfileList from "./experienceProfileListReducer";
+import magicTownProfileList from "./magicTownProfileListReducer";
 
 const rootReducer = combineReducers({
     userAuth,
     audioStreaming,
     stories,
     entertainments,
+    experiences,
+    statesList,
+    magicTowns,
+    avenueProfileList,
+    entertainmentProfileList,
+    experienceProfileList,
+    magicTownProfileList,
 })
 
 export default rootReducer;

@@ -85,7 +85,7 @@
         },
         {
             "id": 2,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/2-medical-network/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/2-medical-network/avatar.jpeg",
             "createDate": "2d",
             "name": "Medical Network",
             "description": "Doctores, consultas, diagnosticos, farmacia, laboratorios, tips y consejos para la salud y belleza, Todo encuentralo aquí en Medical Network",
@@ -154,10 +154,10 @@
         },
         {
             "id": 3,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/3-noticalles/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/3-noticalles/avatar.jpeg",
             "createDate": "4sem",
             "name": "Noti Calles",
-            "description": "Ponte al día con las noticias!",
+            "description": "Ponte al día con las noticias y ve con nosotros Noti Calles!",
             "likes": 183,
             "videos": [
                 "https://www.sicssalab.net/contenido/entretenimiento/3-noticalles/1.mp4"
@@ -293,7 +293,7 @@
         },
         {
             "id": 5,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/5-animal-cool/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/5-animal-cool/avatar.jpeg",
             "createDate": "1d",
             "name": "Animal Cool",
             "description": "Especies extintas, flora, fauna. Aprende de todo en Animal Cool!",
@@ -362,13 +362,13 @@
         },
         {
             "id": 6,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/6-frikis/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/6-frikis/avatar.jpeg",
             "createDate": "2d",
-            "name": "Frikis",
-            "description": "Cosplay, anime, comics y más..",
+            "name": "Frikis Social Network",
+            "description": "Cosplay, anime, comics y más, tenemos todo el contenido friki",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/6-frikis/friki-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/6-frikis/1.mp4"
             ],
             "comments": [
                 {
@@ -404,13 +404,13 @@
         },
         {
             "id": 7,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/7-pride/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/7-pride/avatar.jpeg",
             "createDate": "2d",
             "name": "Pride",
             "description": "Música, viajes, moda, restaurantes, arte, todo el mundo LGBT, tendencias, sus pasiones, todo en la comunidad PRIDE",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/7-pride/pride-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/7-pride/1.mp4"
             ],
             "comments": [
                 {
@@ -446,13 +446,13 @@
         },
         {
             "id": 8,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/8-vive-latino/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/8-vive-latino/avatar.jpeg",
             "createDate": "2d",
             "name": "Vive Latino!",
             "description": "Disfruta del mejor contenido que Telcel trae para tí",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/8-vive-latino/vive-latino-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/8-vive-latino/1.mp4"
             ],
             "comments": [
                 {
@@ -488,13 +488,13 @@
         },
         {
             "id": 9,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/9-wrersling/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/9-wrersling/avatar.jpeg",
             "createDate": "2d",
-            "name": "Hardcore Wrestling",
+            "name": "Club Hardcore Wrestling",
             "description": "Lo mejor de la lucha Libre... Dale con la sillaaaa!",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/9-wrersling/wrerstling-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/9-wrersling/1.mp4"
             ],
             "comments": [
                 {
@@ -530,13 +530,13 @@
         },
         {
             "id": 10,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/10-battle/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/10-battle/avatar.jpeg",
             "createDate": "2d",
-            "name": "Battle",
+            "name": "Club Harcore Battle",
             "description": "Las mejores batallas, vive la emoción en primera fila!",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/10-battle/battle-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/10-battle/1.mp4"
             ],
             "comments": [
                 {
@@ -572,13 +572,13 @@
         },
         {
             "id": 11,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/11-ni-una-mas/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/11-ni-una-mas/avatar.jpeg",
             "createDate": "2d",
-            "name": "Ni una más!",
+            "name": "Ni una más",
             "description": "Apoyo a nuestras mujeres mexicanas, ni una más!",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/11-ni-una-mas/niunamas-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/11-ni-una-mas/1.mp4"
             ],
             "comments": [
                 {
@@ -601,13 +601,13 @@
         },
         {
             "id": 12,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/12-360-residencial/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/12-360-residencial/avatar.jpeg",
             "createDate": "2d",
             "name": "360 Residencial",
             "description": "Da un vistazo de manera virtual con 360 residencial",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/12-360-residencial/360residencial-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/12-360-residencial/1.mp4"
             ],
             "comments": [
                 {
@@ -643,13 +643,13 @@
         },
         {
             "id": 13,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/13-360-educativo/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/13-360-educativo/avatar.jpeg",
             "createDate": "2d",
             "name": "360 Educativo",
             "description": "Con 360 educativo aprende de una manera atractiva e interactiva",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/13-360-educativo/360educativo-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/13-360-educativo/1.mp4"
             ],
             "comments": [
                 {
@@ -685,13 +685,13 @@
         },
         {
             "id": 14,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/14-lit/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/14-lit/avatar.jpeg",
             "createDate": "2d",
             "name": "Lit",
             "description": "El contenido que entiende a nuestra juventud,la forma de vestir, estilos, música, la forma de comunicarte, la moda, tu sentir.. Todo encuentralo en lit",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/14-lit/lit1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/14-lit/1.mp4"
             ],
             "comments": [
                 {
@@ -727,13 +727,13 @@
         },
         {
             "id": 15,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/15-futbol-americano/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/15-futbol-americano/avatar.jpeg",
             "createDate": "2d",
             "name": "Futbol Americano",
-            "description": "Lo mejor del deporte",
+            "description": "Lo mejor del futbol americano sólo aquí en telcel",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/15-futbol-americano/americano-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/15-futbol-americano/1.mp4"
             ],
             "comments": [
                 {
@@ -769,13 +769,13 @@
         },
         {
             "id": 16,
-            "picture": "https://www.sicssalab.net/contenido/entretenimiento/16-retas-futboleras/avatar.png",
+            "picture": "https://www.sicssalab.net/contenido/entretenimiento/16-retas-futboleras/avatar.jpeg",
             "createDate": "2d",
             "name": "Retas Futboleras",
-            "description": "Lo mejor de las retas Futboleras",
+            "description": "Disfruta de las mejores retas futboleras y los partidos clásicos",
             "likes": 847,
             "videos": [
-                "https://www.sicssalab.net/contenido/entretenimiento/16-retas-futboleras/retas-1.mp4"
+                "https://www.sicssalab.net/contenido/entretenimiento/16-retas-futboleras/1.mp4"
             ],
             "comments": [
                 {

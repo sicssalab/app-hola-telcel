@@ -30,7 +30,6 @@ const mockEstaciones = {
           "img": "",
           "name": "Losing My Mind - NEFFEX",
           "audio": require("../assets/music/Losing-My-Mind-NEFFEX2.mp3"),
-          //"audio": "assets/mp3/Losing-My-Mind-NEFFEX2.mp3"
       }
     },
     podcast: {
@@ -52,7 +51,6 @@ const mockEstaciones = {
           "img": "",
           "name": "Mulholland - King Canyon",
           "audio": require("../assets/music/Here-it-Comes-TrackTribe2.mp3")
-          //"audio": "assets/mp3/Mulholland-King-Canyon2.mp3"
       }, 
     },
     music: {
@@ -94,7 +92,6 @@ const mockEstaciones = {
           "img": "",
           "name": "Here it Comes - TrackTribe",
           "audio": require("../assets/music/Losing-My-Mind-NEFFEX2.mp3")
-          //"audio": "assets/mp3/Here-it-Comes-TrackTribe2.mp3"
       }
     },
   };
