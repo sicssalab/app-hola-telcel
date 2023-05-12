@@ -16,48 +16,41 @@ import ServicesDropdown from "./components/ServicesDropdown";
 //import data from '../../mocks/mocks-estados.json'; //TODO data son los estados nada mas
 //import mocksExperiencias from "../../mocks/experiencias/mocksExperiencias.json"
 import { useDispatch, useGlobalState } from '../../context/StoreProvider';
-import statesListAction from '../../actions/statesListAction';
 import experiencesAction from '../../actions/experiencesAction';
+import experiencesStatesAction from '../../actions/experiencesStatesAction';
 
 function Component() {
   const navigation = useNavigation();
   const [selectedStateId, setSelectedStateId] = useState(null);
   const [filteredAvenues, setFilteredAvenues] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const { statesList, experiences } = useGlobalState();
+  const { experiencesStates, experiences } = useGlobalState();
   const dispatch = useDispatch();
   const [states, setStates] = useState([]);
-  // const states = data.states.map((state) => ({
-  //   code: state.id,
-  //   name: state.name,
-  // }));
-  // useEffect(() => {
-  //   statesListAction.get({}, dispatch);
-  // },[]);
   
   useEffect(() => {
     experiencesAction.get({}, dispatch);
   },[]);
 
   useEffect(() => {
-    if(!statesList.complete && !statesList.error && !statesList.loading) {
-      statesListAction.get({}, dispatch);
+    if(!experiencesStates.complete && !experiencesStates.error && !experiencesStates.loading) {
+      experiencesStatesAction.get({}, dispatch);
     }
 
-    if(statesList.complete) {
-      setStates(statesList.states.map((state) => ({
+    if(experiencesStates.complete) {
+      setStates(experiencesStates.states.map((state) => ({
         code: state.id,
         name: state.name,
       })))
     }
-  },[statesList]);
+  },[experiencesStates]);
 
   const updateFilteredAvenuesAndPosts = (stateId, avenueId) => {
     setFilteredPosts([]);
     setSelectedStateId(stateId);
 
     //TODO busca el estado seleccionado
-    const selectedState = statesList.states.find((state) => state.id === stateId);
+    const selectedState = experiencesStates.states.find((state) => state.id === stateId);
 
     //TODO selecciona la lista de servicios por el estado
     const filteredAvenues = selectedState ? selectedState.services : [];
@@ -123,7 +116,7 @@ function Component() {
   ];
 
   return (
-    <SafeComponent request={statesList}>
+    <SafeComponent request={experiencesStates}>
       <Container>
         <SectionList
           sections={sections}

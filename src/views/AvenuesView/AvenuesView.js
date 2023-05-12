@@ -70,6 +70,7 @@ function Component() {
       type: "AVENUES_PROFILE"
       //type: "typeMockConstants.AVENUES_PROFILE"
     }
+
     navigation.navigate(SceneName.ProfileScreen, { profilePage });
   };
   const removeAccents = (str) => {
