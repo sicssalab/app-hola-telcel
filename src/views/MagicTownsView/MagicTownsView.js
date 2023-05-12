@@ -1,80 +1,80 @@
-import React, {  useEffect, useState } from 'react';
-import {
-  SectionList,
-  View,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { SafeComponent } from '../../components';
-import Divider from '../../components/Divider';
-import SceneName from '../../constants/SceneName';
-import GlobalPost from '../../components/posts/GlobalPost';
-import { Container, OptionsContainer } from '../AvenuesView/styles';
-import { Input } from '../AvenuesView/components/Input';
-import { Header } from './components/Header';
+import React, { useEffect, useState } from "react";
+import { SectionList, View, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { SafeComponent } from "../../components";
+import Divider from "../../components/Divider";
+import SceneName from "../../constants/SceneName";
+import GlobalPost from "../../components/posts/GlobalPost";
+import { Container, OptionsContainer } from "../AvenuesView/styles";
+import { Input } from "../AvenuesView/components/Input";
+import { Header } from "./components/Header";
 //import mockPueblosMagicos from "../../mocks/pueblos-magicos/mocksPueblosMagicos.json";
-import { useDispatch, useGlobalState } from '../../context/StoreProvider';
-import magicTownsAction from '../../actions/magicTownsAction';
+import { useDispatch, useGlobalState } from "../../context/StoreProvider";
+import magicTownsAction from "../../actions/magicTownsAction";
+import NoFoundResult from "../../components/ui/NoFoundResult/NoFoundResult";
 
 const MagicTownsView = () => {
   const navigation = useNavigation();
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const [valueSearch, setValueSearch] = useState('');
+  const [valueSearch, setValueSearch] = useState("");
   const { magicTowns } = useGlobalState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     magicTownsAction.get({}, dispatch);
-  },[]);
+  }, []);
 
   useEffect(() => {
-    if(magicTowns.complete)
-      setFilteredPosts(magicTowns.data.content)
+    if (magicTowns.complete) setFilteredPosts(magicTowns.data.content);
   }, [magicTowns]);
 
   const onNavigateClick = (item) => {
     const profilePage = {
       id: item.id,
-      type: "MAGIC_TOWNS_PROFILE"
-    }
+      type: "MAGIC_TOWNS_PROFILE",
+    };
     navigation.navigate(SceneName.ProfileScreen, { profilePage });
   };
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  } 
+  };
   const onChangeInput = (e) => {
     //TODO de la busqueda filtrar los que son con el nombre
     setValueSearch(e);
-    if(e == "") setFilteredPosts(magicTowns.data.content)
+    if (e == "") setFilteredPosts(magicTowns.data.content);
     else
       setFilteredPosts(
-        magicTowns.data.content.filter((servicio) => 
-        //removeAccents(servicio.name.toUpperCase()) >= removeAccents(e.toUpperCase())
-        removeAccents(servicio.name.toLowerCase()).indexOf(removeAccents(e.toLowerCase())) >= 0
+        magicTowns.data.content.filter(
+          (servicio) =>
+            //removeAccents(servicio.name.toUpperCase()) >= removeAccents(e.toUpperCase())
+            removeAccents(servicio.name.toLowerCase()).indexOf(
+              removeAccents(e.toLowerCase())
+            ) >= 0
         )
-      )
-  }
+      );
+  };
 
   const sections = [
     {
-      title: 'Header',
-      data: ['header'],
-      key: 'header',
+      title: "Header",
+      data: ["header"],
+      key: "header",
       renderItem: () => <Header />,
     },
     {
-      title: 'Divider',
-      data: ['divider'],
-      key: 'divider',
+      title: "Divider",
+      data: ["divider"],
+      key: "divider",
       renderItem: () => <Divider />,
     },
     {
-      title: 'OptionsContainer',
-      data: ['optionsContainer'],
-      key: 'optionsContainer',
+      title: "OptionsContainer",
+      data: ["optionsContainer"],
+      key: "optionsContainer",
       renderItem: () => (
         <OptionsContainer>
           <Input
-            placeholder='Buscar'
+            placeholder="Buscar"
             value={valueSearch}
             onChangeText={onChangeInput}
             maxLength={500}
@@ -83,12 +83,27 @@ const MagicTownsView = () => {
       ),
     },
     {
-      title: 'Posts',
+      title: "Posts",
       data: filteredPosts,
-      key: 'posts',
-      renderItem: ({ item }) => <GlobalPost item={item} onNavigateClick={() => onNavigateClick(item)} />,
+      key: "posts",
+      renderItem: ({ item }) => (
+        <GlobalPost item={item} onNavigateClick={() => onNavigateClick(item)} />
+      ),
     },
   ];
+
+  const renderNoContent = ({ section }) => {
+    if (section.data.length == 0) {
+      return <View style={{flex: 1, paddingHorizontal: 15, paddingVertical: 20, backgroundColor: '#1e1e1e', flexDirection: "row", flexWrap: "nowrap"}}>
+        <Text style={{color: "white"}}>
+          <Text>La búsqueda de</Text>
+          <Text style={{color: "white", fontWeight: "bold"}}>{` ${valueSearch} `}</Text>
+          <Text style={{color: "white"}}>no obtuvo ningún resultado.</Text>
+        </Text>
+      </View>;
+    }
+    return null;
+  };
 
   return (
     <SafeComponent request={magicTowns}>
@@ -98,10 +113,11 @@ const MagicTownsView = () => {
           keyExtractor={(item, index) => item + index}
           renderItem={({ item }) => <View>{item}</View>}
           renderSectionHeader={({ section: { title } }) => <View />}
+          renderSectionFooter={({ section }) => <NoFoundResult section={section} valueSearch={valueSearch} />}
         />
       </Container>
     </SafeComponent>
   );
-}
+};
 
 export default MagicTownsView;

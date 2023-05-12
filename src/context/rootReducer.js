@@ -4,6 +4,7 @@ import stories from "./storiesReducer";
 import entertainments from "./entertainmentsReducer";
 import userAuth from "./userAuthReducer";
 import statesList from "./statesListReducer";
+import experiencesStates from "./experiencesStatesReducer";
 import experiences from "./experiencesReducer";
 import magicTowns from "./magicTownsReducer";
 import entertainmentProfileList from "./entertainmentProfileListReducer";
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     stories,
     entertainments,
     experiences,
+    experiencesStates,
     statesList,
     magicTowns,
     avenueProfileList,

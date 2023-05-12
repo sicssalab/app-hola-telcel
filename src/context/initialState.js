@@ -39,6 +39,12 @@ export default {
         complete: false,
         error: false
     },
+    experiencesStates: {
+        states: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
     experiences: {
         data: [],
         loading: false, //fetching

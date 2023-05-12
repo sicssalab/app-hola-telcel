@@ -17,6 +17,7 @@ import { SafeComponent } from '../../components';
 import { Container, OptionsContainer } from './styles';
 import { useDispatch, useGlobalState } from '../../context/StoreProvider';
 import statesListAction from '../../actions/statesListAction';
+import NoFoundResult from '../../components/ui/NoFoundResult/NoFoundResult';
 
 function Component() {
   const navigation = useNavigation();
@@ -69,6 +70,7 @@ function Component() {
       type: "AVENUES_PROFILE"
       //type: "typeMockConstants.AVENUES_PROFILE"
     }
+
     navigation.navigate(SceneName.ProfileScreen, { profilePage });
   };
   const removeAccents = (str) => {
@@ -154,6 +156,7 @@ function Component() {
           keyExtractor={(item, index) => item + index}
           renderItem={({ item }) => <View>{item}</View>}
           renderSectionHeader={({ section: { title } }) => <View />}
+          renderSectionFooter={({ section }) => <NoFoundResult section={section} valueSearch={keyword} />}
         />
       </Container>
     </SafeComponent>
