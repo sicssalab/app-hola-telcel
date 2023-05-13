@@ -18,6 +18,7 @@ import ServicesDropdown from "./components/ServicesDropdown";
 import { useDispatch, useGlobalState } from '../../context/StoreProvider';
 import experiencesAction from '../../actions/experiencesAction';
 import experiencesStatesAction from '../../actions/experiencesStatesAction';
+import { typeMockConstants } from '../../constants/typeMockConstants';
 
 function Component() {
   const navigation = useNavigation();
@@ -66,13 +67,14 @@ function Component() {
       setFilteredPosts([]);
     }
   };
+  
   const onNavigateClick = (item) => {
     const profilePage = {
       id: item.id,
-      type: "SERVICES_PROFILE"
-      //type: "typeMockConstants.AVENUES_PROFILE"
+      type: typeMockConstants.SERVICES_PROFILE,
     }
-    navigation.navigate(SceneName.ProfileScreen, { profilePage });
+  
+    navigation.navigate(SceneName.GroupProfile, { profilePage });
   };
   const sections = [
     {

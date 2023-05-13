@@ -17,6 +17,10 @@
       "xhdpi": "./src/assets/images/splash@2x.png",
       "xxhdpi": "./src/assets/images/splash@3x.png"
     },
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -34,6 +38,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      "expo-av"
+    ],
     "extra": {
       "eas": {
         "projectId": "5c51cbd2-559b-4ca4-a6b3-3d6f83dca777"

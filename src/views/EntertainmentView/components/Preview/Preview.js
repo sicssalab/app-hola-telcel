@@ -9,10 +9,12 @@ import {
   Alert, View, Image, StyleSheet
 } from 'react-native';
 import userAuthAction from "../../../../actions/userAuthAction";
+import ModalFeedStory from "../../../../components/modals/ModalFeedStory";
 
 const Preview = ({ item , index }) => {
   const navigation = useNavigation();
   const [showModalPremium, setShowModalPremium] = useState(false);
+  const [showModalFeed, setShowModalFeed] = useState(false);
   const [userPremium, setUserPremium] = useState(false);
   const {userAuth} = useGlobalState();
   const dispatch = useDispatch();
@@ -25,11 +27,15 @@ const Preview = ({ item , index }) => {
           setShowModalPremium(true);
           break;
         default:
-          navigation.navigate(SceneName.Story, { user: item })
+          //navigation.navigate(SceneName.Story, { user: item })
+          setShowModalFeed(true);
+        }
       }
-    }
-    else
-      navigation.navigate(SceneName.Story, { user: item })
+      else
+      {
+        //navigation.navigate(SceneName.Story, { user: item })
+        setShowModalFeed(true);
+      }
   }
   const actionPreview = () => {
     showPreview(userPremium)
@@ -37,6 +43,9 @@ const Preview = ({ item , index }) => {
 
   const onCloseModal = () => {
     setShowModalPremium(!showModalPremium);
+  }
+  const onCloseModalFeed = () => {
+    setShowModalFeed(!showModalFeed);
   }
   
   useEffect(() => {
@@ -66,6 +75,7 @@ const Preview = ({ item , index }) => {
         </Text>
       </Content>
       <ModalPaymentPremium showModal={showModalPremium} onCloseModal={onCloseModal} onClickAproved={onClickAproved} />
+      <ModalFeedStory showModal={showModalFeed} onCloseModal={onCloseModalFeed} item={item}/>
     </Container>
   );
 };

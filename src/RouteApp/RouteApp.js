@@ -33,6 +33,8 @@ import TopHeader from "../components/TopHeader/TopHeader";
 import ProfileUrbanView from "../views/ProfileUrbanView/ProfileUrbanView";
 import useModalRadio from "../hooks/useModalRadio";
 import { Audio } from "expo-av";
+import LoginView from "../views/LoginView/LoginView";
+import RegistrationView from "../views/RegistrationView";
 // import {
 //     CardStyleInterpolators,
 //     createStackNavigator,
@@ -131,8 +133,8 @@ const RouteApp = () => {
 
   return (
     <Stack.Navigator
-      //initialRouteName={SceneName.Entertainment}
       initialRouteName={SceneName.Home}
+      //initialRouteName={SceneName.Authentication}
       screenOptions={{
         headerShown: false,
         headerBackTitle: "Volver",
@@ -148,6 +150,9 @@ const RouteApp = () => {
         cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
       }}
     >
+
+      <Stack.Screen name={SceneName.Authentication} component={LoginView} />
+      <Stack.Screen name={SceneName.Registration} component={RegistrationView} />
       <Stack.Screen name={SceneName.Home} component={Home} />
       <Stack.Screen name={SceneName.ProfileScreen} component={ProfileUrbanView} />
       {/* <Stack.Screen name={SceneName.Notifications} component={Notifications} />

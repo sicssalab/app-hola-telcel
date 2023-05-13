@@ -12,6 +12,7 @@ import { Header } from "./components/Header";
 import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import magicTownsAction from "../../actions/magicTownsAction";
 import NoFoundResult from "../../components/ui/NoFoundResult/NoFoundResult";
+import { typeMockConstants } from "../../constants/typeMockConstants";
 
 const MagicTownsView = () => {
   const navigation = useNavigation();
@@ -31,9 +32,9 @@ const MagicTownsView = () => {
   const onNavigateClick = (item) => {
     const profilePage = {
       id: item.id,
-      type: "MAGIC_TOWNS_PROFILE",
+      type: typeMockConstants.MAGIC_TOWNS_PROFILE,
     };
-    navigation.navigate(SceneName.ProfileScreen, { profilePage });
+    navigation.navigate(SceneName.GroupProfile, { profilePage });
   };
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -91,19 +92,6 @@ const MagicTownsView = () => {
       ),
     },
   ];
-
-  const renderNoContent = ({ section }) => {
-    if (section.data.length == 0) {
-      return <View style={{flex: 1, paddingHorizontal: 15, paddingVertical: 20, backgroundColor: '#1e1e1e', flexDirection: "row", flexWrap: "nowrap"}}>
-        <Text style={{color: "white"}}>
-          <Text>La búsqueda de</Text>
-          <Text style={{color: "white", fontWeight: "bold"}}>{` ${valueSearch} `}</Text>
-          <Text style={{color: "white"}}>no obtuvo ningún resultado.</Text>
-        </Text>
-      </View>;
-    }
-    return null;
-  };
 
   return (
     <SafeComponent request={magicTowns}>

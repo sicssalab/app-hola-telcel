@@ -18,6 +18,7 @@ import { Container, OptionsContainer } from './styles';
 import { useDispatch, useGlobalState } from '../../context/StoreProvider';
 import statesListAction from '../../actions/statesListAction';
 import NoFoundResult from '../../components/ui/NoFoundResult/NoFoundResult';
+import { typeMockConstants } from '../../constants/typeMockConstants';
 
 function Component() {
   const navigation = useNavigation();
@@ -67,11 +68,10 @@ function Component() {
   const onNavigateClick = (item) => {
     const profilePage = {
       id: item.id,
-      type: "AVENUES_PROFILE"
-      //type: "typeMockConstants.AVENUES_PROFILE"
+      type: typeMockConstants.AVENUES_PROFILE,
     }
 
-    navigation.navigate(SceneName.ProfileScreen, { profilePage });
+    navigation.navigate(SceneName.GroupProfile, { profilePage });
   };
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");

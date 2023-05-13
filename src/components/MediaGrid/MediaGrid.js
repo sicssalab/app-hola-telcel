@@ -92,9 +92,10 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
                   {itemView && itemView.hasActiveStreaming && (
                     <View
                       style={{
-                        top: 45,
+                        top: 15,
                         left: 15,
                         zIndex: 1,
+                        position: "absolute"
                       }}
                     >
                       <Image
