@@ -11,7 +11,7 @@ import {
 import userAuthAction from "../../../../actions/userAuthAction";
 import ModalFeedStory from "../../../../components/modals/ModalFeedStory";
 
-const Preview = ({ item , index }) => {
+const Preview = ({ item , index, onPressPreview }) => {
   const navigation = useNavigation();
   const [showModalPremium, setShowModalPremium] = useState(false);
   const [showModalFeed, setShowModalFeed] = useState(false);
@@ -29,12 +29,14 @@ const Preview = ({ item , index }) => {
         default:
           //navigation.navigate(SceneName.Story, { user: item })
           setShowModalFeed(true);
+          onPressPreview && onPressPreview(item);
         }
       }
       else
       {
         //navigation.navigate(SceneName.Story, { user: item })
         setShowModalFeed(true);
+        onPressPreview && onPressPreview(item);
       }
   }
   const actionPreview = () => {
@@ -75,7 +77,7 @@ const Preview = ({ item , index }) => {
         </Text>
       </Content>
       <ModalPaymentPremium showModal={showModalPremium} onCloseModal={onCloseModal} onClickAproved={onClickAproved} />
-      <ModalFeedStory showModal={showModalFeed} onCloseModal={onCloseModalFeed} item={item}/>
+      {/* <ModalFeedStory showModal={showModalFeed} onCloseModal={onCloseModalFeed} item={item}/> */}
     </Container>
   );
 };

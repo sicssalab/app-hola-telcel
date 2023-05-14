@@ -55,30 +55,31 @@ const PlayerFeed = ({ videoParams }) => {
           isMuted={false}
           volume={1}
           isBuffering={true}
-          onLoad={() => {
-            if (videoParams.isPlay) {
-              console.log(
-                "cargo el video",
-                videoParams.name,
-                videoParams.index,
-                isStarted
-              );
-              console.log(videoStatus);
-              if (!videoStatus.isLoaded) {
-                //TODO, reproducir
-                console.log("reproducir");
-                videoRef.current.playAsync();
-              }
-            }
-          }}
+          // onLoad={() => {
+          //   if (videoParams.isPlay) {
+          //     console.log(
+          //       "cargo el video",
+          //       videoParams.name,
+          //       videoParams.index,
+          //       isStarted
+          //     );
+          //     console.log(videoStatus);
+          //     if (!videoStatus.isLoaded) {
+          //       //TODO, reproducir
+          //       console.log("reproducir");
+          //       videoRef.current.playAsync();
+          //     }
+          //   }
+          // }}
           onLoadStart={() => {
-            if (!videoParams.isPlay) {
-              if (videoStatus == null || videoStatus.isLoaded) {
-                //TODO, reproducir
-                console.log("detener ",videoParams.name);
-                videoRef.current.pauseAsync();
-              }
-            }
+            //console.log("inicio descarga", videoParams.name)
+            // if (!videoParams.isPlay) {
+            //   if (videoStatus == null || videoStatus.isLoaded) {
+            //     //TODO, reproducir
+            //     console.log("detener ",videoParams.name);
+            //     videoRef.current.pauseAsync();
+            //   }
+            // }
           }}
           style={styles.backgroundVideo}
           onPlaybackStatusUpdate={(status) => setVideoStatus(status)}

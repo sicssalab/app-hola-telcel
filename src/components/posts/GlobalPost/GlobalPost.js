@@ -12,20 +12,15 @@ import HeaderPost from './components/HeaderPost';
 //import ModalPost from '../../modals/ModalPost';
 
 const GlobalPost = (props) => {
-  const { item, hasbuttonLink, applyPremium } = props;
-  const [showModal, setShowModal] = useState(false);
+  const { item, isVisible } = props;
   const [showDescription, setShowDescription] = useState(true);
 
-  const onShowModal = () => {
-    setShowModal(!showModal);
-  };
   const onShowDescription = () => {
     setShowDescription(!showDescription);
   };
 
   const onNavigateClick = () => {
     const { onNavigateClick } = props;
-    onShowModal();
     onNavigateClick && onNavigateClick();
   };
 
@@ -48,6 +43,7 @@ const GlobalPost = (props) => {
         )}
         {item.videos && (
           <MediaGrid
+            isVisible={isVisible}
             array={item.videos}
             itemView={item}
             //onMediaPress={onNavigateClick}
@@ -55,13 +51,6 @@ const GlobalPost = (props) => {
         )}
       </View>
       <FooterGlobalPost item={item} />
-      {/* <ModalPost
-        onClose={onShowModal}
-        modalVisible={showModal}
-        post={item}
-        hasbuttonLink={hasbuttonLink}
-        onNavigateClick={onNavigateClick}
-      /> */}
     </View>
   );
 };

@@ -155,6 +155,13 @@ const GroupUrbanView = (props) => {
                   <Text style={styles.userInfoSubTitle}>Seguidos</Text>
                 </View>
               </View>
+              {itemView.banner && (
+                <Image
+                  cove
+                  style={styles.banner}
+                  source={{ uri: itemView.banner }}
+                />
+              )}
               <ListGlobalPost items={itemView.content} />
             </ScrollView>
           )}
@@ -179,6 +186,14 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 0,
     paddingTop: 10,
+    resizeMode: "contain",
+  },
+  banner: {
+    height: 80,
+    width: "100%",
+    marginTop: 15,
+    marginBottom: 0,
+    borderRadius: 0,
     resizeMode: "contain",
   },
   userName: {

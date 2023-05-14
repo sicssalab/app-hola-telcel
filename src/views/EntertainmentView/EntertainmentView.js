@@ -1,28 +1,37 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SlideStories from "./components/SlideStories/SlideStories";
 import SceneName from "../../constants/SceneName";
-import { Container } from "./components/SlideStories/styles";
-import ListGlobalPost from "../../components/ui/ListGlobalPost/ListGlobalPost";
-//import mocksEntretenimiento from "../../mocks/entretenimiento/mocksEntretenimiento.json";
 import { useDispatch, useGlobalState } from "../../context/StoreProvider";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import storiesAction from "../../actions/storiesAction";
 import { SafeComponent } from "../../components";
 import { typeMockConstants } from "../../constants/typeMockConstants";
 import entertainmentsAction from "../../actions/entertainmentsAction";
+import GlobalPost from "../../components/posts/GlobalPost/GlobalPost";
 
 const EntertainmentView = () => {
   const navigation = useNavigation();
   const { stories, entertainments } = useGlobalState();
+  const [visibles, setvisible] = useState([]);
   const dispatch = useDispatch();
   const onNavigateClick = (item) => {
     const profilePage = {
       id: item.id,
       type: typeMockConstants.GROUP_PROFILE,
     };
-    navigation.navigate(SceneName.GroupProfile, {profilePage}); // Asegúrate de que "Profile" sea el nombre correcto de la ruta de navegación
+    navigation.navigate(SceneName.GroupProfile, { profilePage }); // Asegúrate de que "Profile" sea el nombre correcto de la ruta de navegación
   };
+
+  const onViewableItemsChanged = useRef(({ viewableItems, changed }) => {
+    setvisible(
+      viewableItems.map((item) => {
+        return {
+          index: item.index,
+        };
+      })
+    );
+  });
 
   useEffect(() => {
     storiesAction.get({}, dispatch);
@@ -30,18 +39,31 @@ const EntertainmentView = () => {
   }, []);
 
   return (
-    <Container>
-      <SafeComponent request={stories}>
-        <SlideStories />
-      </SafeComponent>
-      <SafeComponent request={entertainments}>
-        <ListGlobalPost
-          items={entertainments.data}
-          applyPremium={true}
-          onNavigateClick={onNavigateClick}
-        />
-      </SafeComponent>
-    </Container>
+    <FlatList
+      keyExtractor={(item) => item.id}
+      ListHeaderComponent={
+        <SafeComponent request={stories}>
+          <SlideStories />
+        </SafeComponent>
+      }
+      data={entertainments.complete ? entertainments.data : [] }
+      renderItem={({ item, index }) => {
+        const isVisible = visibles.findIndex((i) => i.index == index);
+        //isVisible >= 0 && console.log(isVisible, item.name)
+
+        return (
+          <GlobalPost
+            isVisible={isVisible >= 0 ? true: false}
+            item={item}
+            onNavigateClick={() => onNavigateClick(item)}
+          />
+        );
+      }}
+      onViewableItemsChanged={onViewableItemsChanged.current}
+      ListFooterComponent={
+        entertainments.loading ? <View><Text style={{color: "white"}}>loading...</Text></View> : <></>
+      }
+    />
   );
 };
 
