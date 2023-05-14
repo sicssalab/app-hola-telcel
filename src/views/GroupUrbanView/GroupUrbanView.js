@@ -13,21 +13,18 @@ import { ThemeContext } from "styled-components/native";
 import ListGlobalPost from "../../components/ui/ListGlobalPost/ListGlobalPost";
 import HeaderGroupSectionScreen from "./components/HeaderGroupSectionScreen";
 import { typeMockConstants } from "../../constants/typeMockConstants";
-// import groupsUrbans from "../../mocks/groups-urban.json";
-// import { mockAvenidasPerfiles } from "../../mocks/mockAvenidasPerfiles";
-// import mocksExperienciasPerfiles from "../../mocks/experiencias/mocksExperienciasPerfiles.json";
-// import mockPueblosMagicosPerfiles from "../../mocks/pueblos-magicos/mocksPueblosMagicosPerfiles.json"
 import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import entertainmentProfileListAction from "../../actions/entertainmentProfileListAction";
 import { SafeComponent } from "../../components";
 import avenueProfileListAction from "../../actions/avenueProfileListAction";
 import experienceProfileListAction from "../../actions/experienceProfileListAction";
 import magicTownProfileListAction from "../../actions/magicTownProfileListAction";
+import mallProfileListAction from "../../actions/mallProfileListAction";
 
 const GroupUrbanView = (props) => {
   const { colors } = useContext(ThemeContext);
   const [itemView, setItemView] = useState([]);
-  const { entertainmentProfileList, avenueProfileList, experienceProfileList, magicTownProfileList } = useGlobalState();
+  const { entertainmentProfileList, avenueProfileList, experienceProfileList, magicTownProfileList, mallProfileList } = useGlobalState();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,6 +32,7 @@ const GroupUrbanView = (props) => {
     (!avenueProfileList.complete && avenueProfileList.data?.length <= 0) && avenueProfileListAction.get({}, dispatch);
     (!experienceProfileList.complete && experienceProfileList.data?.length <= 0) && experienceProfileListAction.get({}, dispatch);
     (!magicTownProfileList.complete && magicTownProfileList.data?.length <= 0) && magicTownProfileListAction.get({}, dispatch);
+    (!mallProfileList.complete && mallProfileList.data?.length <= 0) && mallProfileListAction.get({}, dispatch);
   }, []);
 
   useEffect(() => {
@@ -68,9 +66,16 @@ const GroupUrbanView = (props) => {
           )
         );
         break;
+      case typeMockConstants.MALL_PROFILE:
+        setItemView(
+          mallProfileList.data.find(
+            (perfil) => perfil.id == props.route.params.profilePage.id
+          )
+        );
+        break;
       default:
     }
-  }, [props.route.params.id, entertainmentProfileList, avenueProfileList, experienceProfileList, magicTownProfileList]);
+  }, [props.route.params.id, entertainmentProfileList, avenueProfileList, experienceProfileList, magicTownProfileList, mallProfileList]);
 
   const returnDataSafe = () => {
     switch(props.route.params.profilePage.type) {
@@ -82,6 +87,8 @@ const GroupUrbanView = (props) => {
           return experienceProfileList;
       case typeMockConstants.MAGIC_TOWNS_PROFILE:
         return magicTownProfileList;
+      case typeMockConstants.MALL_PROFILE:
+        return mallProfileList;
       default:
     }
   }

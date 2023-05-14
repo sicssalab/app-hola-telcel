@@ -45,6 +45,18 @@ export default {
         complete: false,
         error: false
     },
+    mallsStates: {
+        states: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
+    mallProfileList: {
+        data: [],
+        loading: false, //fetching
+        complete: false,
+        error: false
+    },
     experiences: {
         data: [],
         loading: false, //fetching

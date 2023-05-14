@@ -4,6 +4,7 @@ const SceneName = {
     OneTimeCode: "OneTimeCode",
     UserProfile: "UserProfile",
     EditProfile: "EditProfile",
+    Malls: "Malls",
     Chat: "Chat",
     Swipe: "Swipe",
     Story: "Story",
@@ -18,6 +19,7 @@ const SceneName = {
     Profile: "Profile",
     ModalView: "ModalView",
     GroupProfile: "GroupProfile",
+    Setting: "Setting"
 }
 
 export default SceneName;

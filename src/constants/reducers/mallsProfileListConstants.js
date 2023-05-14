@@ -1,0 +1,7 @@
+const mallsProfileListConstants = {
+    MALL_PROFILELIST: "MALL_PROFILELIST",
+    MALL_PROFILELIST_FETCHING: "MALL_PROFILELIST_FETCHING",
+    MALL_PROFILELIST_ERROR: "MALL_PROFILELIST_ERROR",
+}
+
+export default mallsProfileListConstants;
