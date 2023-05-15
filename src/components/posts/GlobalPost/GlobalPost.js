@@ -23,7 +23,6 @@ const GlobalPost = (props) => {
     const { onNavigateClick } = props;
     onNavigateClick && onNavigateClick();
   };
-
   //TODO cambio abrir modal por link directo a grupo/perfil onShowModal to onNavigateClick
   return (
     <View style={styles.container}>
@@ -41,7 +40,7 @@ const GlobalPost = (props) => {
         {item.description && (
           <DescriptionPost post={item} isLineal={item.videos?.length <= 0 ? false : showDescription} onClick={onShowDescription} />
         )}
-        {item.videos && (
+        {(item.videos && item.videos.length > 0) && (
           <MediaGrid
             isVisible={isVisible}
             array={item.videos}

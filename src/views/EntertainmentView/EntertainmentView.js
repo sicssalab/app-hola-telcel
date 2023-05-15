@@ -5,7 +5,6 @@ import SceneName from "../../constants/SceneName";
 import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import { useEffect, useRef, useState } from "react";
 import storiesAction from "../../actions/storiesAction";
-import { SafeComponent } from "../../components";
 import { typeMockConstants } from "../../constants/typeMockConstants";
 import entertainmentsAction from "../../actions/entertainmentsAction";
 import GlobalPost from "../../components/posts/GlobalPost/GlobalPost";
@@ -41,11 +40,13 @@ const EntertainmentView = () => {
   return (
     <FlatList
       keyExtractor={(item) => item.id}
+      ListHeaderComponentStyle={{flex:1}}
       ListHeaderComponent={
-        <SafeComponent request={stories}>
-          <SlideStories />
-        </SafeComponent>
+        <>
+          {stories.complete && <SlideStories />}
+        </>
       }
+      //stickyHeaderIndices={[0,1,2]} //TODO grega como sticky el header y los indices de componentes que sigan
       data={entertainments.complete ? entertainments.data : [] }
       renderItem={({ item, index }) => {
         const isVisible = visibles.findIndex((i) => i.index == index);

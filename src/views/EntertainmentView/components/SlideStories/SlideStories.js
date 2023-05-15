@@ -1,6 +1,4 @@
-import { Container } from "./styles";
-import { FlatList } from "react-native";
-//import mocksStory from "../../../../mocks/entretenimiento/mocksStory.json";
+import { FlatList, View, Text } from "react-native";
 import Preview from "../Preview";
 import { useGlobalState } from "../../../../context/StoreProvider";
 import ModalFeedStory from "../../../../components/modals/ModalFeedStory/ModalFeedStory";
@@ -21,7 +19,7 @@ const SlideStories = () => {
   }
 
   return (
-    <Container>
+    <>
       <FlatList
         nestedScrollEnabled
         data={stories.data}
@@ -30,7 +28,7 @@ const SlideStories = () => {
         contentContainerStyle={{ paddingHorizontal: 7, paddingTop: 7 }}
       />
       <ModalFeedStory showModal={showModalFeed} onCloseModal={onCloseModalFeed} item={itemView}/>
-    </Container>
+    </>
   );
 };
 

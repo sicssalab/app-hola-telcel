@@ -1,12 +1,9 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import {
   View,
-  Text,
-  Image,
   StyleSheet,
   TouchableOpacity,
   Modal,
-  ScrollView,
 } from "react-native";
 import Constants from "expo-constants";
 import {StoryFeed} from "../../../views/StoryView/components/StoryFeed";

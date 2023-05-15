@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import {
   View,
   Text,
@@ -20,19 +20,39 @@ import avenueProfileListAction from "../../actions/avenueProfileListAction";
 import experienceProfileListAction from "../../actions/experienceProfileListAction";
 import magicTownProfileListAction from "../../actions/magicTownProfileListAction";
 import mallProfileListAction from "../../actions/mallProfileListAction";
+import GlobalPost from "../../components/posts/GlobalPost/GlobalPost";
 
 const GroupUrbanView = (props) => {
   const { colors } = useContext(ThemeContext);
   const [itemView, setItemView] = useState([]);
-  const { entertainmentProfileList, avenueProfileList, experienceProfileList, magicTownProfileList, mallProfileList } = useGlobalState();
+  const [visibles, setvisible] = useState([]);
+  const [cacheViewItemList, setCacheViewItemList] = useState(0);
+
+  const {
+    entertainmentProfileList,
+    avenueProfileList,
+    experienceProfileList,
+    magicTownProfileList,
+    mallProfileList,
+  } = useGlobalState();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (!entertainmentProfileList.complete && entertainmentProfileList.data?.length <= 0) && entertainmentProfileListAction.get({}, dispatch);
-    (!avenueProfileList.complete && avenueProfileList.data?.length <= 0) && avenueProfileListAction.get({}, dispatch);
-    (!experienceProfileList.complete && experienceProfileList.data?.length <= 0) && experienceProfileListAction.get({}, dispatch);
-    (!magicTownProfileList.complete && magicTownProfileList.data?.length <= 0) && magicTownProfileListAction.get({}, dispatch);
-    (!mallProfileList.complete && mallProfileList.data?.length <= 0) && mallProfileListAction.get({}, dispatch);
+    !entertainmentProfileList.complete &&
+      entertainmentProfileList.data?.length <= 0 &&
+      entertainmentProfileListAction.get({}, dispatch);
+    !avenueProfileList.complete &&
+      avenueProfileList.data?.length <= 0 &&
+      avenueProfileListAction.get({}, dispatch);
+    !experienceProfileList.complete &&
+      experienceProfileList.data?.length <= 0 &&
+      experienceProfileListAction.get({}, dispatch);
+    !magicTownProfileList.complete &&
+      magicTownProfileList.data?.length <= 0 &&
+      magicTownProfileListAction.get({}, dispatch);
+    !mallProfileList.complete &&
+      mallProfileList.data?.length <= 0 &&
+      mallProfileListAction.get({}, dispatch);
   }, []);
 
   useEffect(() => {
@@ -75,23 +95,56 @@ const GroupUrbanView = (props) => {
         break;
       default:
     }
-  }, [props.route.params.id, entertainmentProfileList, avenueProfileList, experienceProfileList, magicTownProfileList, mallProfileList]);
+  }, [
+    props.route.params.id,
+    entertainmentProfileList,
+    avenueProfileList,
+    experienceProfileList,
+    magicTownProfileList,
+    mallProfileList,
+  ]);
 
   const returnDataSafe = () => {
-    switch(props.route.params.profilePage.type) {
+    switch (props.route.params.profilePage.type) {
       case typeMockConstants.GROUP_PROFILE:
         return entertainmentProfileList;
       case typeMockConstants.AVENUES_PROFILE:
         return avenueProfileList;
       case typeMockConstants.SERVICES_PROFILE:
-          return experienceProfileList;
+        return experienceProfileList;
       case typeMockConstants.MAGIC_TOWNS_PROFILE:
         return magicTownProfileList;
       case typeMockConstants.MALL_PROFILE:
         return mallProfileList;
       default:
     }
-  }
+  };
+
+  const onViewableItemsChanged = useRef(({ viewableItems, changed }) => {
+    setvisible(
+      viewableItems.map((item) => {
+        return {
+          index: item.index,
+        };
+      })
+    );
+    // const newItemsView = viewableItems.map((item) => {
+    //   return {
+    //     index: item.index,
+    //   };
+    // });
+    // //setCacheViewItemList(cacheViewItemList + 1)
+
+    // const auxVisibles = visibles.slice();
+    // console.log("items visibles");
+    // console.log(auxVisibles);
+    // console.log("items nuevos visibles");
+    // console.log(newItemsView);
+    // const arrays = auxVisibles.concat(newItemsView);
+    // console.log("Nueva lista");
+    // console.log(arrays);
+    // setvisible(arrays);
+  });
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.secondaryBackground }}>
@@ -114,56 +167,66 @@ const GroupUrbanView = (props) => {
             </View>
           )}
           {itemView && (
-            <ScrollView
+            <FlatList
               style={styles.container}
-              contentContainerStyle={{
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: colors.secondaryBackground,
-              }}
-              showsVerticalScrollIndicator={false}
-              horizontal={false}
-            >
-              <Image
-                cove
-                style={styles.profileCover}
-                source={{ uri: itemView.profileCover }}
-              />
-              <Text style={styles.userName}>{itemView.name}</Text>
-              <Text style={styles.aboutUser}>
-                {itemView.hasPremium ? "Privado" : "Publico"}
-                {itemView.members ? ` - ${itemView.members} miembros` : ""}
-              </Text>
-              {/* <Text style={styles.aboutUser}>{itemView?.description}</Text> */}
-              <View style={styles.userBtnWrapper}>
-                <TouchableOpacity style={styles.userBtn} onPress={() => {}}>
-                  <Text style={styles.userBtnTxt}>Message</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.userBtn} onPress={() => {}}>
-                  <Text style={styles.userBtnTxt}>Follow</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.userInfoWrapper}>
-                <View style={styles.userInfoItem}>
-                  <Text style={styles.userInfoTitle}>
-                    {itemView.content?.length}
+              keyExtractor={(item) => item.id}
+              ListHeaderComponent={
+                <>
+                  <Image
+                    cove
+                    style={styles.profileCover}
+                    source={{ uri: itemView.profileCover }}
+                  />
+                  <Text style={styles.userName}>{itemView.name}</Text>
+                  <Text style={styles.aboutUser}>
+                    {itemView.hasPremium ? "Privado" : "Publico"}
+                    {itemView.members ? ` - ${itemView.members} miembros` : ""}
                   </Text>
-                  <Text style={styles.userInfoSubTitle}>Publicaciones</Text>
-                </View>
-                <View style={styles.userInfoItem}>
-                  <Text style={styles.userInfoTitle}>{itemView.members}</Text>
-                  <Text style={styles.userInfoSubTitle}>Seguidos</Text>
-                </View>
-              </View>
-              {itemView.banner && (
-                <Image
-                  cove
-                  style={styles.banner}
-                  source={{ uri: itemView.banner }}
-                />
-              )}
-              <ListGlobalPost items={itemView.content} />
-            </ScrollView>
+                  <View style={styles.userBtnWrapper}>
+                    <TouchableOpacity style={styles.userBtn} onPress={() => {}}>
+                      <Text style={styles.userBtnTxt}>Message</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.userBtn} onPress={() => {}}>
+                      <Text style={styles.userBtnTxt}>Follow</Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.userInfoWrapper}>
+                    <View style={styles.userInfoItem}>
+                      <Text style={styles.userInfoTitle}>
+                        {itemView.content?.length}
+                      </Text>
+                      <Text style={styles.userInfoSubTitle}>Publicaciones</Text>
+                    </View>
+                    <View style={styles.userInfoItem}>
+                      <Text style={styles.userInfoTitle}>
+                        {itemView.members}
+                      </Text>
+                      <Text style={styles.userInfoSubTitle}>Seguidos</Text>
+                    </View>
+                  </View>
+                  {itemView.banner && (
+                    <Image
+                      cove
+                      style={styles.banner}
+                      source={{ uri: itemView.banner }}
+                    />
+                  )}
+                </>
+              }
+              data={itemView.content}
+              renderItem={({ item, index }) => {
+                const isVisible = visibles.findIndex((i) => i.index == index);
+                //isVisible >= 0 && console.log(isVisible, item.name)
+                //console.log(item);
+                return (
+                  <GlobalPost
+                    isVisible={isVisible >= 0 ? true : false}
+                    item={item}
+                  />
+                );
+              }}
+              onViewableItemsChanged={onViewableItemsChanged.current}
+            />
           )}
         </SafeComponent>
       </SafeAreaView>
@@ -199,9 +262,10 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 24,
     fontWeight: "bold",
-    marginTop: 25,
+    marginTop: 0,
     marginBottom: 10,
     color: "white",
+    textAlign: "center",
   },
   aboutUser: {
     fontSize: 12,

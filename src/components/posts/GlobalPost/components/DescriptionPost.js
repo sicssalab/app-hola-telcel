@@ -49,10 +49,10 @@ import {
       flexDirection: 'row',
       width: '100%',
       'padding-top': 5,
-      'padding-bottom': 10,
       'justify-content': 'space-around',
       'align-items': 'center',
       'flex-wrap': 'nowrap',
+      paddingBottom: 10
     },
     texts: {
       fontSize: 16,

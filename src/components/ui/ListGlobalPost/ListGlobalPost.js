@@ -36,7 +36,7 @@ const ListGlobalPost = (props) => {
         })} */}
         
       <FlatList
-        style={{ flex: 1, backgroundColor: "red" }}
+        style={{ flex: 1 }}
         data={items}
         //nestedScrollEnabled={true}
         renderItem={({ item, index }) => {
@@ -45,13 +45,13 @@ const ListGlobalPost = (props) => {
           isVisible >= 0 && console.log(isVisible, item.name)
 
           return (
-            // <GlobalPost
-            //   isVisible={isVisible >= 0 ? true: false}
-            //   //key={`${item.id}${index}`}
-            //   item={item}
-            //   onNavigateClick={() => onNavigateClick(item)}
-            // />
-            <View style={{height: 400}}><Text>{item.name}</Text></View>
+            <GlobalPost
+              isVisible={isVisible >= 0 ? true: false}
+              //key={`${item.id}${index}`}
+              item={item}
+              onNavigateClick={() => onNavigateClick(item)}
+            />
+            // <View style={{height: 400}}><Text>{item.name}</Text></View>
           );
         }}
         keyExtractor={(item) => item.id}

@@ -14,12 +14,12 @@ import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import userAuthAction from "../../actions/userAuthAction";
 
 //TODO array lista de links de videos
-const MediaGrid = ({ array, onMediaPress, itemView, isVisible }) => {
+const MediaGrid = ({ array, itemView, isVisible }) => {
   const [loading, setLoading] = useState(true);
-  const [media, setMedia] = useState([]);
   const [resources, setResources] = useState([]);
   const [showModalPremium, setShowModalPremium] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [holdVideo, setHoldVideo] = useState(isVisible);
   const { userAuth } = useGlobalState();
   const dispatch = useDispatch();
 
@@ -27,6 +27,11 @@ const MediaGrid = ({ array, onMediaPress, itemView, isVisible }) => {
     const result = thumbnailsResources(array);
     setResources(result.slice(0, 3));
   }, [array]);
+
+  useEffect(() => {
+    if(isVisible)
+      setHoldVideo(true);
+  },[isVisible])
 
   const thumbnailsResources = (array) => {
     const resourceMedia = array.map((url) => {
@@ -36,7 +41,6 @@ const MediaGrid = ({ array, onMediaPress, itemView, isVisible }) => {
       };
     });
 
-    setMedia(resourceMedia);
     setLoading(false);
     return resourceMedia;
   };
@@ -92,7 +96,7 @@ const MediaGrid = ({ array, onMediaPress, itemView, isVisible }) => {
                   />
                 </View>
               )}
-              {isVisible && (
+              {holdVideo && (
                 <VideoInMedia
                   videoData={resources[0]}
                   autoPlay={false}
