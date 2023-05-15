@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import SceneName from "../../../../constants/SceneName";
 import { Container, Picture, Content } from "./styles";
 import { useDispatch, useGlobalState } from "../../../../context/StoreProvider";
 import {Text} from "../../../../components";
@@ -10,8 +9,7 @@ import {
 } from 'react-native';
 import userAuthAction from "../../../../actions/userAuthAction";
 
-const Preview = ({ item , index }) => {
-  const navigation = useNavigation();
+const Preview = ({ item , index, onPressPreview }) => {
   const [showModalPremium, setShowModalPremium] = useState(false);
   const [userPremium, setUserPremium] = useState(false);
   const {userAuth} = useGlobalState();
@@ -25,11 +23,13 @@ const Preview = ({ item , index }) => {
           setShowModalPremium(true);
           break;
         default:
-          navigation.navigate(SceneName.Story, { user: item })
+          onPressPreview && onPressPreview(item);
+        }
       }
-    }
-    else
-      navigation.navigate(SceneName.Story, { user: item })
+      else
+      {
+        onPressPreview && onPressPreview(item);
+      }
   }
   const actionPreview = () => {
     showPreview(userPremium)

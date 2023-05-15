@@ -101,11 +101,6 @@ export const ReactionsBar = ({item}) => {
 }
 
 const styles = StyleSheet.create({
-    backgroundVideo:{
-      position: 'absolute',
-      height: height,
-      width:width
-    },
     flexHorizontal: {
       flexDirection: 'row',
       alignItems: 'center',

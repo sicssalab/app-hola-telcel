@@ -11,6 +11,8 @@ import entertainmentProfileList from "./entertainmentProfileListReducer";
 import avenueProfileList from "./avenueProfileListReducer";
 import experienceProfileList from "./experienceProfileListReducer";
 import magicTownProfileList from "./magicTownProfileListReducer";
+import mallsStates from "./mallsStatesReducer";
+import mallProfileList from "./mallProfileListReducer";
 
 const rootReducer = combineReducers({
     userAuth,
@@ -21,6 +23,8 @@ const rootReducer = combineReducers({
     experiencesStates,
     statesList,
     magicTowns,
+    mallsStates,
+    mallProfileList,
     avenueProfileList,
     entertainmentProfileList,
     experienceProfileList,

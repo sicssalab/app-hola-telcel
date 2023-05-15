@@ -15,38 +15,6 @@ import PlayIcon from '../../../../assets/icons/play_arrow.svg';
 const RadioPlayComponent = (props) => {
   const { stacion, musicON, Loading, Loaded, playMusic } = props;
   const themeContext = useContext(ThemeContext);
-//   const [Loaded, SetLoaded] = React.useState(false);
-//   const [Loading, SetLoading] = React.useState(false);
-  //const sound = React.useRef(new Audio.Sound());
-
-
-//   const PlayAudio = async () => {
-//     //await sound.playAsync();
-//     try {
-//       const result = await sound.current.getStatusAsync();
-//       console.log(result);
-//       if (result.isLoaded) {
-//         if (result.isPlaying === false) {
-//           sound.current.playAsync();
-//         }
-//       }
-//     } catch (error) {
-//       console.log(error, 'func play audio');
-//     }
-//   };
-
-//   const PauseAudio = async () => {
-//     try {
-//       const result = await sound.current.getStatusAsync();
-//       if (result.isLoaded) {
-//         if (result.isPlaying === true) {
-//           sound.current.pauseAsync();
-//         }
-//       }
-//     } catch (error) {
-//       console.error(error, 'func pasuse audio');
-//     }
-//   };
 
   const PlayAudio = () => {
     const {onPlayAudio} = props;
@@ -56,89 +24,6 @@ const RadioPlayComponent = (props) => {
     const {onPauseAudio} = props;
     onPauseAudio && onPauseAudio();
   }
-
-//   const LoadAudio = async () => {
-//     SetLoading(true);
-//     const checkLoading = await sound.current.getStatusAsync();
-//     if (checkLoading.isLoaded === false) {
-//       try {
-//         console.log('entrar a cargar el audio');
-//         const result = await sound.current.loadAsync(require("~assets/music/Here-it-Comes-TrackTribe2.mp3"), {}, true);
-
-//         if (result.isLoaded === false) {
-//           SetLoading(false);
-//           console.log('Error in Loading Audio');
-//         } else {
-//           console.log(
-//             'cargo el video quita el loagind y dice que Loaded cargado video es true',
-//           );
-//           SetLoading(false);
-//           SetLoaded(true);
-//         }
-//       } catch (error) {
-//         console.log(error, ' func load audio');
-//         SetLoading(false);
-//       }
-//     } else {
-//       console.log('tiene audio activo por lo que no cargara uno nuevo');
-//       console.log('crear nuevo audio');
-//       SetLoading(false);
-//     }
-//     // else {
-//     //     //SetLoading(false);
-//     //     try {
-
-//     //         //TODO recarga audio
-//     //         //const { sound } = await Audio.Sound.createAsync(musicON.audio);
-//     //         sound = await Audio.Sound.createAsync(musicON.audio)
-//     //         //await sound.playAsync();
-//     //     }
-//     //     catch(error) {
-//     //         console.log(error, ' func load new audio');
-//     //     SetLoading(false);
-//     //     }
-//     // }
-//   };
-
-  
-//   React.useEffect(() => {
-//     console.log(musicON, 'carga la info del audio');
-//     LoadAudio();
-//   }, []);
-
-  //   const [sound, setSound] = React.useState();
-  //   const [play, setPlay] = useState(false);
-
-  //   async function playSound() {
-  //     if (musicON) {
-  //       console.log('Loading Sound');
-  //       const { sound } = await Audio.Sound.createAsync(
-  //         //require('./assets/Hello.mp3'),
-  //         musicON.audio,
-  //       );
-  //       setSound(sound);
-  //       setPlay(true);
-  //       console.log('Playing Sound');
-  //       await sound.playAsync();
-  //     }
-  //   }
-
-  //   async function playPause() {
-  //       setPlay(false);
-
-  //       await sound.pauseAsync();
-  //       setSound();
-  //   }
-
-  //   React.useEffect(() => {
-  //     playSound();
-  //     return sound
-  //       ? () => {
-  //           console.log('Unloading Sound');
-  //           sound.unloadAsync();
-  //         }
-  //       : undefined;
-  //   }, [musicON, sound]);
 
   return (
     <View style={styles.contaner}>
@@ -182,10 +67,6 @@ const RadioPlayComponent = (props) => {
             </>
           )}
         </View>
-        {/* <View>
-          <Text>scooolbar</Text>
-          <Text>indicador de tiempos</Text>
-        </View> */}
       </View>
     </View>
   );

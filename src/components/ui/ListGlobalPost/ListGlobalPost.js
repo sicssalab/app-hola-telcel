@@ -1,8 +1,19 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, FlatList } from "react-native";
 import GlobalPost from "../../posts/GlobalPost/GlobalPost";
+import { useRef, useState } from "react";
 
 const ListGlobalPost = (props) => {
-  const { items, hasbuttonLink, applyPremium } = props;
+  const { items } = props;
+  const [visibles, setvisible] = useState([]);
+  const onViewableItemsChanged = useRef(({ viewableItems, changed }) => {
+    setvisible(
+      viewableItems.map((item) => {
+        return {
+          index: item.index,
+        };
+      })
+    );
+  });
 
   const onNavigateClick = (item) => {
     const { onNavigateClick } = props;
@@ -10,7 +21,7 @@ const ListGlobalPost = (props) => {
   };
   return (
     <View style={styles.container}>
-      {items &&
+      {/* {items &&
         items.map((item, index) => {
           return (
             // <View key={index}><Text>{item.name}</Text></View>
@@ -22,7 +33,30 @@ const ListGlobalPost = (props) => {
               applyPremium={applyPremium}
             />
           );
-        })}
+        })} */}
+        
+      <FlatList
+        style={{ flex: 1 }}
+        data={items}
+        //nestedScrollEnabled={true}
+        renderItem={({ item, index }) => {
+          const isVisible = visibles.findIndex((i) => i.index == index);
+          //return <Contenido item={item} isVisible={isVisible >= 0 ? true: false} />
+          isVisible >= 0 && console.log(isVisible, item.name)
+
+          return (
+            <GlobalPost
+              isVisible={isVisible >= 0 ? true: false}
+              //key={`${item.id}${index}`}
+              item={item}
+              onNavigateClick={() => onNavigateClick(item)}
+            />
+            // <View style={{height: 400}}><Text>{item.name}</Text></View>
+          );
+        }}
+        keyExtractor={(item) => item.id}
+        onViewableItemsChanged={onViewableItemsChanged.current}
+      />
     </View>
   );
 };
@@ -31,7 +65,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 7,
-    flexDirection:"column"
+    flexDirection: "column",
   },
 });
 export default ListGlobalPost;

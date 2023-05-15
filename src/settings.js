@@ -11,6 +11,8 @@ const settings = {
         avenueProfileList: "mockAvenidasPerfiles.json",
         experienceProfileList: "experiencias/mocksExperienciasPerfiles.json",
         magicTownProfileList: "pueblos-magicos/mocksPueblosMagicosPerfiles.json",
+        mallsStates: "malls/mocks-estados.json",
+        mallProfileList: "malls/mocks-perfiles.json",
     }
 }
 

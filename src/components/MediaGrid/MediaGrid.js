@@ -14,59 +14,53 @@ import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import userAuthAction from "../../actions/userAuthAction";
 
 //TODO array lista de links de videos
-const MediaGrid = ({ array, onMediaPress, itemView }) => {
+const MediaGrid = ({ array, itemView, isVisible }) => {
   const [loading, setLoading] = useState(true);
-  const [media, setMedia] = useState([]);
   const [resources, setResources] = useState([]);
   const [showModalPremium, setShowModalPremium] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
-  const {userAuth} = useGlobalState();
+  const [holdVideo, setHoldVideo] = useState(isVisible);
+  const { userAuth } = useGlobalState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const result = thumbnailsResources(array);
-    setResources(result.slice(0, 3))
+    setResources(result.slice(0, 3));
   }, [array]);
+
+  useEffect(() => {
+    if(isVisible)
+      setHoldVideo(true);
+  },[isVisible])
 
   const thumbnailsResources = (array) => {
     const resourceMedia = array.map((url) => {
-
       return {
         type: "video",
         uri: url,
       };
     });
 
-    setMedia(resourceMedia);
     setLoading(false);
     return resourceMedia;
   };
-
-  const handlePlayIconPress = async (index) => {
-    try {
-      onMediaPress && onMediaPress();
-    } catch (error) {
-      console.error("Error al manejar la reproducción del video:", error);
-    }
-  };
-
   const onCloseModal = () => {
     setShowModalPremium(!showModalPremium);
-  }
+  };
 
   useEffect(() => {
-    if(userAuth.isPremium) {
+    if (userAuth.isPremium) {
       setShowPreview(true);
     }
-  },[userAuth])
-  
+  }, [userAuth]);
+
   //TODO acepto el cargo premium
   const onClickAproved = () => {
-    Alert.alert('Tu suscripción ha sido aprovada');
+    Alert.alert("Tu suscripción ha sido aprovada");
     userAuthAction.premium(dispatch);
     onCloseModal();
     setShowPreview(true);
-  }
+  };
 
   const RenderLoading = () => {
     return (
@@ -81,60 +75,45 @@ const MediaGrid = ({ array, onMediaPress, itemView }) => {
       {loading && <RenderLoading />}
       {!loading && (
         <View style={styles.mediaContainer}>
-          {resources.map((resource, index) => {
-            //TODO el index no tenia return
-            if (index === 0) {
-            return <TouchableOpacity
-                key={index}
-                style={styles.bigResourceContainer}
-                onPress={() => handlePlayIconPress(index)}>
-                <View style={styles.bigResource}>
-                  {itemView && itemView.hasActiveStreaming && (
-                    <View
-                      style={{
-                        top: 45,
-                        left: 15,
-                        zIndex: 1,
-                      }}
-                    >
-                      <Image
-                        source={require("../../assets/images/envivo.gif")}
-                        style={{
-                          width: 75,
-                          height: 40,
-                          resizeMode: "contain",
-                        }}
-                      />
-                    </View>
-                  )}
-                  <VideoInMedia videoData={resource} autoPlay={false} itemView={itemView} onPress={onCloseModal} showPreview={showPreview} />
-                </View>
-              </TouchableOpacity>;
-            } else {
-              return (
-                <TouchableOpacity
-                  key={index}
-                  style={[
-                    styles.smallResourceContainer,
-                    index === 1 && styles.marginRight,
-                  ]}
-                  onPress={() => handlePlayIconPress(index)}
+          {resources.length > 0 && (
+            <View style={[styles.bigResource, styles.bigResourceContainer]}>
+              {itemView && itemView.hasActiveStreaming && (
+                <View
+                  style={{
+                    top: 15,
+                    left: 15,
+                    zIndex: 1,
+                    position: "absolute",
+                  }}
                 >
-                  <VideoInMedia videoData={resource} autoPlay={false} onPress={onCloseModal} showPreview={showPreview} />
-                  {resources.length === 3 && index === 2 && (
-                    <View style={styles.overlay}>
-                      <Text style={styles.overlayText}>
-                        +{media.length - 3}
-                      </Text>
-                    </View>
-                  )}
-                </TouchableOpacity>
-              );
-            }
-          })}
+                  <Image
+                    source={require("../../assets/images/envivo.gif")}
+                    style={{
+                      width: 75,
+                      height: 40,
+                      resizeMode: "contain",
+                    }}
+                  />
+                </View>
+              )}
+              {holdVideo && (
+                <VideoInMedia
+                  videoData={resources[0]}
+                  autoPlay={false}
+                  itemView={itemView}
+                  onPress={onCloseModal}
+                  showPreview={showPreview}
+                />
+              )}
+            </View>
+          )}
         </View>
       )}
-      <ModalPaymentPremium showModal={showModalPremium} onCloseModal={onCloseModal} onClickAproved={onClickAproved} />
+      <ModalPaymentPremium
+        showModal={showModalPremium}
+        onCloseModal={onCloseModal}
+        onClickAproved={onClickAproved}
+      />
     </View>
   );
 };
@@ -145,6 +124,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexWrap: "wrap",
     marginTop: 10,
+    minHeight: 250
   },
   bigResourceContainer: {
     width: "100%",

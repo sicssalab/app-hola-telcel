@@ -16,7 +16,7 @@ const VideoInMedia = (props) => {
   };
 
   const onError = (e) => {
-    console.log("error rised", e);
+    console.error("error cargar el video", e, itemView.name, itemView.videos);
   };
 
   useEffect(() => {
@@ -65,9 +65,12 @@ const VideoInMedia = (props) => {
       onPlaybackStatusUpdate={(status) => {
         setStatus(() => status);
       }}
+      isMuted={false}
       resizeMode={ResizeMode.COVER}
       onBuffer={onBuffer}
       onError={onError}
+      //onLoadStart={() => console.log(`inicia la carga del video ${itemView.name} y su play es: ${autoPlay}`)}
+      onLoad={() => console.log(`descargo el video ${itemView.name}`)}
       shouldPlay={autoPlay}
       style={{ flex: 1 }}
     />

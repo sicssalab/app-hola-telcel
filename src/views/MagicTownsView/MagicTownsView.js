@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { SectionList, View, Text } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { SectionList, View, Text, FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeComponent } from "../../components";
 import Divider from "../../components/Divider";
@@ -12,6 +12,7 @@ import { Header } from "./components/Header";
 import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import magicTownsAction from "../../actions/magicTownsAction";
 import NoFoundResult from "../../components/ui/NoFoundResult/NoFoundResult";
+import { typeMockConstants } from "../../constants/typeMockConstants";
 
 const MagicTownsView = () => {
   const navigation = useNavigation();
@@ -19,6 +20,7 @@ const MagicTownsView = () => {
   const [valueSearch, setValueSearch] = useState("");
   const { magicTowns } = useGlobalState();
   const dispatch = useDispatch();
+  const [visibles, setvisible] = useState([]);
 
   useEffect(() => {
     magicTownsAction.get({}, dispatch);
@@ -31,9 +33,9 @@ const MagicTownsView = () => {
   const onNavigateClick = (item) => {
     const profilePage = {
       id: item.id,
-      type: "MAGIC_TOWNS_PROFILE",
+      type: typeMockConstants.MAGIC_TOWNS_PROFILE,
     };
-    navigation.navigate(SceneName.ProfileScreen, { profilePage });
+    navigation.navigate(SceneName.GroupProfile, { profilePage });
   };
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -92,28 +94,56 @@ const MagicTownsView = () => {
     },
   ];
 
-  const renderNoContent = ({ section }) => {
-    if (section.data.length == 0) {
-      return <View style={{flex: 1, paddingHorizontal: 15, paddingVertical: 20, backgroundColor: '#1e1e1e', flexDirection: "row", flexWrap: "nowrap"}}>
-        <Text style={{color: "white"}}>
-          <Text>La búsqueda de</Text>
-          <Text style={{color: "white", fontWeight: "bold"}}>{` ${valueSearch} `}</Text>
-          <Text style={{color: "white"}}>no obtuvo ningún resultado.</Text>
-        </Text>
-      </View>;
-    }
-    return null;
-  };
+  const onViewableItemsChanged = useRef(({ viewableItems, changed }) => {
+    setvisible(
+      viewableItems.map((item) => {
+        return {
+          index: item.index,
+        };
+      })
+    );
+  });
 
   return (
     <SafeComponent request={magicTowns}>
       <Container>
-        <SectionList
-          sections={sections}
-          keyExtractor={(item, index) => item + index}
-          renderItem={({ item }) => <View>{item}</View>}
-          renderSectionHeader={({ section: { title } }) => <View />}
-          renderSectionFooter={({ section }) => <NoFoundResult section={section} valueSearch={valueSearch} />}
+        <FlatList
+          keyExtractor={(item) => item.id}
+          ListHeaderComponent={
+            <>
+              <Header />
+              <OptionsContainer>
+                <Input
+                  placeholder="Buscar"
+                  value={valueSearch}
+                  onChangeText={onChangeInput}
+                  maxLength={500}
+                />
+              </OptionsContainer>
+            </>
+          }
+          data={filteredPosts}
+          renderItem={({ item, index }) => {
+            const isVisible = visibles.findIndex((i) => i.index == index);
+            //isVisible >= 0 && console.log(isVisible, item.name);
+
+            return (
+              <GlobalPost
+                isVisible={isVisible >= 0 ? true : false}
+                item={item}
+                onNavigateClick={() => onNavigateClick(item)}
+              />
+            );
+          }}
+          onViewableItemsChanged={onViewableItemsChanged.current}
+          ListFooterComponent={
+            <NoFoundResult
+              section={{
+                data: filteredPosts,
+              }}
+              valueSearch={valueSearch}
+            />
+          }
         />
       </Container>
     </SafeComponent>

@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, StatusBar, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 import { LinearGradient } from 'expo-linear-gradient';
-//import { mockRequest } from '~views/Entertainment/__mocks__';
-import mockRequest from "../../../../mocks/entretenimiento/mocksStory.json";
-import ImgPathImage from '../../../../components/ImagePath';
-//import ImgPathImage from '~components/ImagePath/ImgPathImage';
-import { useNavigation } from '@react-navigation/native';
 import { ReactionsBar } from './component/ReactionsBar';
 import PlayerFeed from './component/PlayerFeed';
+import { useGlobalState } from '../../../../context/StoreProvider';
 
 const{ height, width } = Dimensions.get('window');
 
 export const StoryFeed = (props) => {
   const {item: itemPreview} = props;
-  const navigation = useNavigation();
-  const [currIndex, setIndex] = useState(0);
+  const { stories } = useGlobalState();
+  const [currIndex, setIndex] = useState(stories.data.findIndex((item) => item.id === itemPreview.id));
+  const [indexSlider, setIndexSlider] = useState(stories.data.findIndex((item) => item.id === itemPreview.id));
 
   const renderItem = ({item, index }) => {
+    //console.log("render cada que cambie la info", index, currIndex, "play", currIndex === index)
     return(
-      <View style={{ flex: 1, width: width }}>
-        <PlayerFeed videoParams={ { url : item.srcStory, isPlay : currIndex === index } } />
+      <View style={{ flex: 1, width: width }} key={index}>
+        <PlayerFeed
+          key={index} 
+          videoParams={ { url : item.srcStory, name: item.name, isPlay : currIndex === index, index } }
+        />
         <LinearGradient 
           colors={['rgba(0,0,0,0.1)',' rgba(0,0,0,0.6)']}
           style={ styles.bottomView }>
@@ -34,61 +35,34 @@ export const StoryFeed = (props) => {
     setIndex(index)
   }
 
-  useEffect(() => {
-    returnIndex();
-  }, [itemPreview])
-
-  const returnIndex = () => {
-    const response = mockRequest.data.findIndex((item,index) => item.id === itemPreview.id);
-    setIndex(response ? response : 0)
-  }
-
   return (
     <View style={{ flex: 1 ,backgroundColor: 'black'}}>
       <StatusBar barStyle='light-content'></StatusBar>
       <SwiperFlatList 
-        data={mockRequest.data}
+        data={stories.data}
         renderItem={renderItem}
-        index={currIndex}
+        //index={currIndex}
+        index={indexSlider}
         keyExtractor={(item, index) => index.toString()}
         onChangeIndex={ onChangeIndex }
       />
-
-      <View style={{ position: 'absolute' , top: 18, left: 16 }}>
+      <View style={{ position: 'absolute' , top: 25, left: 16 }}>
         <Text style={styles.textStyle}>{`Reels`}</Text>
       </View>
-
-      <TouchableOpacity style={{ position: 'absolute' , top: 18, right: 16 }} onPress={() => navigation.goBack()}>
-        <Image
-          style={{ tintColor: 'white', width: 30, height:30 }}
-          source={ ImgPathImage.icClose }
-        />
-      </TouchableOpacity>
-
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  flexHorizontal: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
   textStyle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white'
   },
   bottomView: {
-    flex: 1,
+    flex: 0,
     justifyContent: 'flex-end',
     paddingVertical: 20,
     paddingHorizontal: 16
   },
-  profileImgStyle: {
-    height: 30,
-    width: 30,
-    borderRadius: 30/2
-  }
 })

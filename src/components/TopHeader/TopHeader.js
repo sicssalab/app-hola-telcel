@@ -1,11 +1,11 @@
 import React, { useCallback, useContext, useState } from "react";
 import { ThemeContext } from "styled-components/native";
 import { Image } from "react-native";
-import { Audio } from "expo-av";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import SearchIcon from "../../assets/icons/general/search.svg";
 import RadioIcon from "../../assets/icons/stream/podcasts.svg";
+import SettingIcon from "../../assets/icons/menu/settings.svg";
 import ModalRadio from "../../components/modals/ModalRadio";
 
 import {
@@ -17,6 +17,8 @@ import {
 } from "./styles";
 import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import audioStreamingAction from "../../actions/audioStreamingAction";
+import { useNavigation } from "@react-navigation/native";
+import SceneName from "../../constants/SceneName";
 
 const TOP_HEIGHT = 60;
 
@@ -35,7 +37,7 @@ function TopHeader() {
   const { audioStreaming } = useGlobalState();
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
-
+  const navigation = useNavigation();
   const onShowModal = () => {
     setShowModal(!showModal);
   };
@@ -53,6 +55,10 @@ function TopHeader() {
     inAudioStreaming.pauseAudio = true;
 
     audioStreamingAction.update(inAudioStreaming, dispatch);
+  };
+
+  const onNavigateClick = () => {
+    navigation.navigate(SceneName.Setting);
   };
 
   return (
@@ -74,6 +80,9 @@ function TopHeader() {
         <SearchIconWrapper>
           <SearchIcon fill={themeContext.colors.text} />
         </SearchIconWrapper>
+        <TouchableOpacity activeOpacity={1} onPress={onNavigateClick} style={{marginRight: 5}}>
+          <SettingIcon fill={"white"} width="30" height="30" />
+        </TouchableOpacity>
         <TouchableOpacity activeOpacity={1} onPress={onShowModal}>
           <RadioIcon fill={(audioStreaming.playMusic || audioStreaming.playMusicAux) ? "gold": themeContext.colors.text} />
         </TouchableOpacity>
