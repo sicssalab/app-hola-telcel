@@ -16,7 +16,7 @@ const VideoInMedia = (props) => {
   };
 
   const onError = (e) => {
-    console.error("error cargar el video", e, itemView.name);
+    console.error("error cargar el video", e, itemView.name, itemView.videos);
   };
 
   useEffect(() => {

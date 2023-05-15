@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { SectionList, View, Text } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { SectionList, View, Text, FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeComponent } from "../../components";
 import Divider from "../../components/Divider";
@@ -20,6 +20,7 @@ const MagicTownsView = () => {
   const [valueSearch, setValueSearch] = useState("");
   const { magicTowns } = useGlobalState();
   const dispatch = useDispatch();
+  const [visibles, setvisible] = useState([]);
 
   useEffect(() => {
     magicTownsAction.get({}, dispatch);
@@ -93,15 +94,56 @@ const MagicTownsView = () => {
     },
   ];
 
+  const onViewableItemsChanged = useRef(({ viewableItems, changed }) => {
+    setvisible(
+      viewableItems.map((item) => {
+        return {
+          index: item.index,
+        };
+      })
+    );
+  });
+
   return (
     <SafeComponent request={magicTowns}>
       <Container>
-        <SectionList
-          sections={sections}
-          keyExtractor={(item, index) => item + index}
-          renderItem={({ item }) => <View>{item}</View>}
-          renderSectionHeader={({ section: { title } }) => <View />}
-          renderSectionFooter={({ section }) => <NoFoundResult section={section} valueSearch={valueSearch} />}
+        <FlatList
+          keyExtractor={(item) => item.id}
+          ListHeaderComponent={
+            <>
+              <Header />
+              <OptionsContainer>
+                <Input
+                  placeholder="Buscar"
+                  value={valueSearch}
+                  onChangeText={onChangeInput}
+                  maxLength={500}
+                />
+              </OptionsContainer>
+            </>
+          }
+          data={filteredPosts}
+          renderItem={({ item, index }) => {
+            const isVisible = visibles.findIndex((i) => i.index == index);
+            //isVisible >= 0 && console.log(isVisible, item.name);
+
+            return (
+              <GlobalPost
+                isVisible={isVisible >= 0 ? true : false}
+                item={item}
+                onNavigateClick={() => onNavigateClick(item)}
+              />
+            );
+          }}
+          onViewableItemsChanged={onViewableItemsChanged.current}
+          ListFooterComponent={
+            <NoFoundResult
+              section={{
+                data: filteredPosts,
+              }}
+              valueSearch={valueSearch}
+            />
+          }
         />
       </Container>
     </SafeComponent>
