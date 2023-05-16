@@ -1,8 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, Dimensions, View, Text, Pressable } from "react-native";
-import { Video, ResizeMode } from "expo-av";
+import { Audio, Video, ResizeMode } from "expo-av";
 import VideoTimeLine from "./VideoTimeLine";
 const { height, width } = Dimensions.get("window");
+
+const triggerAudio = async (videoRef) => {
+  console.log("activo audio")
+  await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+  videoRef.current.playAsync();
+};
 
 const PlayerFeed = ({ videoParams }) => {
   const videoRef = useRef(null);
@@ -17,17 +23,25 @@ const PlayerFeed = ({ videoParams }) => {
     console.log("error rised", e);
   };
 
+  const play = () => videoRef.current && videoRef.current.playAsync()
+  const pause = () => videoRef.current && videoRef.current.pauseAsync()
+
   useEffect(() => {
     setIsstarted(videoParams.isPlay);
     setVideoStatus(null);
     if(videoParams.isPlay)
-      setHoldVideo(true);
-    // return () => {
-    //   console.log("salir de la vista de", videoParams.index);
-    //   setIsstarted(false);
-    // };
-    //console.log(`${videoParams.name} play: ${videoParams.isPlay}`);
-  }, [videoParams.isPlay]);
+      {
+        setHoldVideo(true);
+        triggerAudio(videoRef);
+      }
+      else pause();
+
+    return () => {
+      //console.log("salir de la vista de", videoParams.index);
+      pause();
+      setIsstarted(false);
+    };
+  }, [videoRef,videoParams.isPlay]);
 
   const pressVideo = () => {
     setIsstarted(!isStarted);
@@ -45,7 +59,7 @@ const PlayerFeed = ({ videoParams }) => {
             progressUpdateIntervalMillis={10}
             onBuffer={onBuffer}
             onError={onError}
-            shouldPlay={isStarted}
+            //shouldPlay={isStarted}
             isMuted={false}
             volume={1}
             isBuffering={true}

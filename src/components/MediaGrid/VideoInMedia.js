@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { Video, ResizeMode } from "expo-av";
+import { Audio, Video, ResizeMode } from "expo-av";
 import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import audioStreamingAction from "../../actions/audioStreamingAction";
+
+const triggerAudio = async (videoRef) => {
+  await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+  videoRef.current.playAsync();
+};
 
 const VideoInMedia = (props) => {
   //TODO showPreview identifica si es premium
@@ -10,10 +15,6 @@ const VideoInMedia = (props) => {
   const videoRef = useRef(null);
   const { audioStreaming } = useGlobalState();
   const dispatch = useDispatch();
-
-  const onBuffer = (e) => {
-    console.log("bufering..", e);
-  };
 
   const onError = (e) => {
     console.error("error cargar el video", e, itemView.name, itemView.videos);
@@ -30,7 +31,9 @@ const VideoInMedia = (props) => {
           onPress && onPress();
           audioStop = false;
         }
+        else triggerAudio(videoRef);
       }
+      else triggerAudio(videoRef);
 
       //TODO parar el audio si esta repoduciendo
       if (audioStop && audioStreaming.playMusic) {
@@ -49,7 +52,7 @@ const VideoInMedia = (props) => {
         audioStreamingAction.update(inAudioStreaming, dispatch);
       }
     }
-  }, [status?.isPlaying]);
+  }, [status?.isPlaying, videoRef]);
 
   // useEffect(() => {
   //   if (showPreview) {
@@ -65,13 +68,12 @@ const VideoInMedia = (props) => {
       onPlaybackStatusUpdate={(status) => {
         setStatus(() => status);
       }}
-      isMuted={false}
+      //isMuted={false}
       resizeMode={ResizeMode.COVER}
-      onBuffer={onBuffer}
       onError={onError}
       //onLoadStart={() => console.log(`inicia la carga del video ${itemView.name} y su play es: ${autoPlay}`)}
       onLoad={() => console.log(`descargo el video ${itemView.name}`)}
-      shouldPlay={autoPlay}
+      //shouldPlay={autoPlay}
       style={{ flex: 1 }}
     />
   );

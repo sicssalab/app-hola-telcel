@@ -3,7 +3,7 @@
     "name": "app-expo-hola-telcel",
     "slug": "app-expo-hola-telcel",
     "privacy":"public",
-    "owner": "wen3",
+    "owner": "sicssa-lab",
     "description": "app-demo-hola-telcel",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -26,7 +26,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.wen3.appexpoholatelcel"
+      "bundleIdentifier": "com.wen3.appexpoholatelcel",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -46,6 +51,5 @@
         "projectId": "5c51cbd2-559b-4ca4-a6b3-3d6f83dca777"
       }
     }
-    
   }
 }
