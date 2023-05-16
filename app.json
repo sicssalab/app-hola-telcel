@@ -1,6 +1,7 @@
 {
+  "displayName": "Hola Telcel",
   "expo": {
-    "name": "app-expo-hola-telcel",
+    "name": "Hola telcel",
     "slug": "app-expo-hola-telcel",
     "privacy":"public",
     "owner": "sicssa-lab",
