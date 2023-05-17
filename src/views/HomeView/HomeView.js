@@ -8,7 +8,6 @@ import EntertainmentView from "../../views/EntertainmentView";
 import AvenuesView from "../../views/AvenuesView";
 import ExperienceView from "../../views/ExperienceView";
 import MagicTownsView from "../../views/MagicTownsView";
-import EditProfileView from "../../views/EditProfileView";
 import MallView from "../MallView";
 import NavbarTabHeader from "../../components/NavbarTabHeader/NavbarTabHeader";
 import TopHeader from "../../components/TopHeader/TopHeader";

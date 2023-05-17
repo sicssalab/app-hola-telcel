@@ -15,7 +15,6 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [theme, setTheme] = useState(DarkTheme);
-  const colorScheme = useColorScheme();
 
   const [fontsLoaded] = useFonts({
     [Font.GilroyBold]: require("./src/assets/fonts/Gilroy-Bold.ttf"),
@@ -25,13 +24,6 @@ export default function App() {
     [Font.GilroyRegular]: require("./src/assets/fonts/Gilroy-Regular.ttf"),
     [Font.GilroySemiBold]: require("./src/assets/fonts/Gilroy-SemiBold.ttf"),
   });
-  // const theme = useMemo(() => {
-  //   if (!colorScheme) return DefaultTheme;
-  //   return colorScheme === 'dark' ? DarkTheme : DarkTheme;
-  // }, [colorScheme]);
-  // useEffect(() => {
-  //   setTheme(DarkTheme);
-  // }, [colorScheme]);
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -58,11 +50,3 @@ export default function App() {
     </StoreProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
