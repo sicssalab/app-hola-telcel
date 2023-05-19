@@ -8,6 +8,7 @@ import storiesAction from "../../actions/storiesAction";
 import { typeMockConstants } from "../../constants/typeMockConstants";
 import entertainmentsAction from "../../actions/entertainmentsAction";
 import GlobalPost from "../../components/posts/GlobalPost/GlobalPost";
+import videoRailViewPlayAction from "../../actions/videoRailViewPlayAction";
 
 const EntertainmentView = () => {
   const navigation = useNavigation();
@@ -37,6 +38,15 @@ const EntertainmentView = () => {
     entertainmentsAction.get({}, dispatch);
   }, []);
 
+  const onClickVideoActive = (item) => {
+    const auxVideoRailViewPlay = {
+      index: item.id,
+      name: item.name
+    };
+
+    videoRailViewPlayAction.update(auxVideoRailViewPlay, dispatch);
+  }
+
   return (
     <FlatList
       keyExtractor={(item) => item.id}
@@ -57,6 +67,8 @@ const EntertainmentView = () => {
             isVisible={isVisible >= 0 ? true: false}
             item={item}
             onNavigateClick={() => onNavigateClick(item)}
+            indexVideo
+            onClickVideoActive={() => onClickVideoActive(item, index)}
           />
         );
       }}

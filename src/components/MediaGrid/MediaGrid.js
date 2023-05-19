@@ -99,7 +99,7 @@ const MediaGrid = ({ array, itemView, isVisible }) => {
               {holdVideo && (
                 <VideoInMedia
                   videoData={resources[0]}
-                  autoPlay={false}
+                  autoPlay={isVisible}
                   itemView={itemView}
                   onPress={onCloseModal}
                   showPreview={showPreview}

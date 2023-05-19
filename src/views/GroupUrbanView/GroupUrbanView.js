@@ -9,6 +9,7 @@ import {
   FlatList,
   SafeAreaView,
 } from "react-native";
+import Constants from "expo-constants";
 import { ThemeContext } from "styled-components/native";
 import ListGlobalPost from "../../components/ui/ListGlobalPost/ListGlobalPost";
 import HeaderGroupSectionScreen from "./components/HeaderGroupSectionScreen";
@@ -148,7 +149,7 @@ const GroupUrbanView = (props) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.secondaryBackground }}>
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, marginTop: Constants.statusBarHeight, }}>
         <HeaderGroupSectionScreen
           item={
             itemView

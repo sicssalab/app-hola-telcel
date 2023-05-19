@@ -13,7 +13,7 @@ import experienceProfileList from "./experienceProfileListReducer";
 import magicTownProfileList from "./magicTownProfileListReducer";
 import mallsStates from "./mallsStatesReducer";
 import mallProfileList from "./mallProfileListReducer";
-
+import videoRailViewPlay from "./videoRailViewPlayReducer";
 const rootReducer = combineReducers({
     userAuth,
     audioStreaming,
@@ -29,6 +29,7 @@ const rootReducer = combineReducers({
     entertainmentProfileList,
     experienceProfileList,
     magicTownProfileList,
+    videoRailViewPlay,
 })
 
 export default rootReducer;

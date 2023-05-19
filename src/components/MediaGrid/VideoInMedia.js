@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Audio, Video, ResizeMode } from "expo-av";
 import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import audioStreamingAction from "../../actions/audioStreamingAction";
+import videoRailViewPlayAction from "../../actions/videoRailViewPlayAction";
 
 const triggerAudio = async (videoRef) => {
   await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
@@ -13,14 +14,30 @@ const VideoInMedia = (props) => {
   const { videoData: video, autoPlay, itemView, showPreview } = props;
   const [status, setStatus] = useState({}); //TODO status del video
   const videoRef = useRef(null);
-  const { audioStreaming } = useGlobalState();
+  const { audioStreaming, videoRailViewPlay } = useGlobalState();
+  const [playableDurationMillis, setPlayableDurationMillis] = useState(0);
   const dispatch = useDispatch();
-
+  const [positionMillis, setPositionMillis] = useState(0);
   const onError = (e) => {
     console.error("error cargar el video", e, itemView.name, itemView.videos);
   };
 
+  const savePlayOnlyVideo = () => {
+    console.log("play memoria a ", video.uri ? video.uri : video)
+    const auxVideoRailViewPlay = {
+      name: video.uri ? video.uri : video
+    };
+
+    videoRailViewPlayAction.update(auxVideoRailViewPlay, dispatch);
+  }
+
   useEffect(() => {
+    if(status?.playableDurationMillis)
+      setPlayableDurationMillis(status?.playableDurationMillis)
+  },[status?.playableDurationMillis])
+
+  useEffect(() => {
+
     if (status?.isPlaying) {
       let audioStop = true;
       if (itemView && itemView.hasPremium) {
@@ -31,9 +48,15 @@ const VideoInMedia = (props) => {
           onPress && onPress();
           audioStop = false;
         }
-        else triggerAudio(videoRef);
+        else {
+          //savePlayOnlyVideo();
+          triggerAudio(videoRef);
+        }
       }
-      else triggerAudio(videoRef);
+      else {
+        //savePlayOnlyVideo();
+        triggerAudio(videoRef);
+      }
 
       //TODO parar el audio si esta repoduciendo
       if (audioStop && audioStreaming.playMusic) {
@@ -42,7 +65,8 @@ const VideoInMedia = (props) => {
         inAudioStreaming.pauseAudio = true; //TODO detengo el play
         audioStreamingAction.update(inAudioStreaming, dispatch);
       }
-    } else {
+    } 
+    else {
       //TODO detuvo el video pero revisa si el audio estaba corriengo
       if (audioStreaming.playMusicAux) {
         const inAudioStreaming = { ...audioStreaming };
@@ -53,6 +77,12 @@ const VideoInMedia = (props) => {
       }
     }
   }, [status?.isPlaying, videoRef]);
+  
+  useEffect(() => {
+    if (!autoPlay) {
+      videoRef.current.pauseAsync();
+    }
+  }, [autoPlay]);
 
   // useEffect(() => {
   //   if (showPreview) {

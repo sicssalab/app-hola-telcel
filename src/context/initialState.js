@@ -86,5 +86,9 @@ export default {
         loading: false, //fetching
         complete: false,
         error: false
-    }
+    },
+    videoRailViewPlay: {
+        index: -1,
+        name: "",
+    },
 }
