@@ -19,7 +19,8 @@ import { useDispatch, useGlobalState } from "../../context/StoreProvider";
 import audioStreamingAction from "../../actions/audioStreamingAction";
 import { useNavigation } from "@react-navigation/native";
 import SceneName from "../../constants/SceneName";
-
+import mockPlaylist from "../../mocks/mockPlaylist";
+import settings from "../../settings";
 const TOP_HEIGHT = 60;
 
 export const useTopHeaderStyle = () => {
@@ -56,7 +57,6 @@ function TopHeader() {
 
     audioStreamingAction.update(inAudioStreaming, dispatch);
   };
-
   const onNavigateClick = () => {
     navigation.navigate(SceneName.Setting);
   };
@@ -95,6 +95,8 @@ function TopHeader() {
         playMusic={audioStreaming.playMusic}
         onPlayAudio={PlayAudio}
         onPauseAudio={PauseAudio}
+        playlistTab={settings.playlist.tabs}
+        itemsPlaylistTab={mockPlaylist.data}
       />
     </Container>
   );

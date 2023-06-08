@@ -13,6 +13,22 @@ const settings = {
         magicTownProfileList: "pueblos-magicos/mocksPueblosMagicosPerfiles.json",
         mallsStates: "malls/mocks-estados.json",
         mallProfileList: "malls/mocks-perfiles.json",
+    },
+    playlist: {
+        tabs: [
+            {
+                name: "Radio 24/7",
+                type: "radio",
+            },
+            {
+                name: "Podcast",
+                type: "podcast",
+            },
+            {
+                name: "Live",
+                type: "live",
+            },
+        ]
     }
 }
 

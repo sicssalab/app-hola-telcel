@@ -25,6 +25,16 @@ const RadioPlayComponent = (props) => {
     onPauseAudio && onPauseAudio();
   }
 
+  const ButtonRadio = (props) => {
+    return <View style={styles.buttonRadioContainer}>
+        <View  style={styles.buttonRadioOpacity}>
+          <View style={styles.buttonRadio}>
+            {props.children}
+          </View>
+        </View>
+    </View>
+  }
+
   return (
     <View style={styles.contaner}>
       <Text style={{ color: 'white' }}>{stacion?.name}</Text>
@@ -44,24 +54,27 @@ const RadioPlayComponent = (props) => {
                 <View style={{alignItems: "center", marginTop: 10}}>
                   {/* <Button title='Play Song' onPress={PlayAudio} />
                   <Button title='Pause Song' onPress={PauseAudio} /> */}
-                  {playMusic && (
-                    <TouchableOpacity onPress={PauseAudio}>
-                      <PauseIcon
-                        width={60}
-                        height={60}
-                        fill={themeContext.colors.text}
-                      />
-                    </TouchableOpacity>
-                  )}
-                  {!playMusic && (
-                    <TouchableOpacity onPress={PlayAudio}>
-                      <PlayIcon
-                        width={60}
-                        height={60}
-                        fill={themeContext.colors.text}
-                      />
-                    </TouchableOpacity>
-                  )}
+                  <ButtonRadio>
+                    {playMusic && (
+                      <TouchableOpacity onPress={PauseAudio}>
+                        <PauseIcon
+                          width={60}
+                          height={60}
+                          fill={"gold"}
+                        />
+                      </TouchableOpacity>
+                    )}
+                    {!playMusic && (
+                      <TouchableOpacity onPress={PlayAudio}>
+                        <PlayIcon
+                          width={60}
+                          height={60}
+                          fill={"gold"}
+                        />
+                      </TouchableOpacity>
+                    )}
+
+                  </ButtonRadio>
                 </View>
               )}
             </>
@@ -118,6 +131,33 @@ const styles = StyleSheet.create({
     top: 10,
     right: 10,
     zIndex: 1,
+  },
+  buttonRadioContainer: {
+    width: 140,
+    height: 140,
+    borderRadius: 100,
+    borderColor: "#ffd70036",
+    borderWidth: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonRadioOpacity: {
+    width: 120,
+    height: 120,
+    borderRadius: 100,
+    borderColor: "#ffd7007a",
+    borderWidth: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonRadio: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+    borderColor: "gold",
+    borderWidth: 1,
+    alignItems: "center",
+    justifyContent: "center"
   },
 });
 

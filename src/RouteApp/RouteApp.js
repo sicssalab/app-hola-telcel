@@ -27,8 +27,8 @@ const RouteApp = () => {
 
   return (
     <Stack.Navigator
-      //initialRouteName={SceneName.Home}
-      initialRouteName={SceneName.Authentication}
+      initialRouteName={SceneName.Home}
+      //initialRouteName={SceneName.Authentication}
       screenOptions={{
         headerShown: false,
         headerBackTitle: "Volver",
