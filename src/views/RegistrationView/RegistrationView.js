@@ -59,7 +59,7 @@ const RegistrationView = ({ route }) => {
         >
           <StatusBar style={themeContext.dark ? "light" : "dark"} />
           <Text fontWeight="bold" fontSize="large" style={{ marginTop: 20 }}>
-            Tú número de teléfono telcel
+            Tú número de teléfono
           </Text>
           <PhoneInput
             enablesReturnKeyAutomatically

@@ -34,7 +34,7 @@ const ModalPaymentPremium = (props) => {
             <Text style={styles.modalText}>
               El contenido que intentas visualizar, es contenido Premium. La
               suscripción tiene un costo de $ 99.00 mxn al mes.
-              con cargo a tu recibo Telcel.
+              con cargo a tu recibo.
             </Text>
             <View style={styles.fixToText}>
               <Pressable

@@ -56,7 +56,7 @@ const LoginView = () => {
     if (phoneNumber === SET_NUMBER) {
       Alert.alert(
         'Error de acceso',
-        'El número de teléfono celular no se encuentra registrado, por favor registrate y se parte de nuestra comunidad Telcel.',
+        'El número de teléfono celular no se encuentra registrado, por favor registrate y se parte de nuestra comunidad.',
       );
       setLoading(false);
       return;
@@ -82,13 +82,13 @@ const LoginView = () => {
         <StatusBar style={themeContext.dark ? 'light' : 'light'} />
         <TopCard style={{ paddingTop: 20 + insets.top }}>
           <LogoContainer>
-            <Image source={require('../../assets/images/HolaTelcel.png')} />
+            <Image source={require('../../assets/images/logo-square-transparent.png')} style={{height: 200, resizeMode: "contain"}}/>
           </LogoContainer>
           <HeroText />
         </TopCard>
         <BottomCard style={{ paddingBottom: bottomInset }}>
           <Title>
-            Ingresa tu número <Highlight>telcel</Highlight>
+            Ingresa tu número
           </Title>
           <Description>
             Envíaremos un código de verificación a tu celular para confirmar el
