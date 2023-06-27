@@ -1,14 +1,14 @@
 {
-  "displayName": "Hola Telcel",
+  "displayName": "Red Activa",
   "expo": {
-    "name": "Hola telcel",
+    "name": "Red Activa",
     "slug": "app-expo-hola-telcel",
     "privacy":"public",
     "owner": "sicssa-lab",
-    "description": "app-demo-hola-telcel",
+    "description": "Red Activa",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/logo-square.jpg",
+    "icon": "./src/assets/images/foregroundImage.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./src/assets/images/splash.png",
@@ -36,7 +36,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/logo-square.jpg",
+        "foregroundImage": "./src/assets/images/foregroundImage.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.wen3.appexpoholatelcel"
