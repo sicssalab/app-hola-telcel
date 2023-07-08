@@ -52,9 +52,9 @@ const HomeView = () => {
             mostrarok: true,
             tabBarIcon: ({ focused, color }) =>
               focused ? (
-                <EntertainmentIconActive />
+                <EntertainmentIconActive fill={themeContext.colors.primaryCDark} />
               ) : (
-                <EntertainmentIcon fill={color} />
+                <EntertainmentIcon fill={themeContext.colors.primaryC} />
               ),
           }}
           //component={EntertainmentView}
@@ -64,7 +64,7 @@ const HomeView = () => {
           name={SceneName.Avenues}
           options={{
             tabBarIcon: ({ focused, color }) =>
-              focused ? <AvenuesIcon fill={"gold"} width="30" height="30" /> : <AvenuesIcon fill={color} width="30" height="30" />,
+              focused ? <AvenuesIcon fill={themeContext.colors.secondaryCDark} width="30" height="30" /> : <AvenuesIcon fill={themeContext.colors.secondaryC} width="30" height="30" />,
           }}
           component={AvenuesView}
         />
@@ -73,9 +73,9 @@ const HomeView = () => {
           options={{
             tabBarIcon: ({ focused, color }) =>
               focused ? (
-                <ExperienceIconActive />
+                <ExperienceIconActive fill={themeContext.colors.tertiaryCDark} />
               ) : (
-                <ExperienceIcon fill={color} />
+                <ExperienceIcon fill={themeContext.colors.tertiaryC} />
               ),
           }}
           component={ExperienceView}
@@ -85,9 +85,9 @@ const HomeView = () => {
           options={{
             tabBarIcon: ({ focused, color }) =>
               focused ? (
-                <MagicTownsIcon fill={"gold"} />
+                <MagicTownsIcon fill={themeContext.colors.quaternaryCDarks} />
               ) : (
-                <MagicTownsIcon fill={color} />
+                <MagicTownsIcon fill={themeContext.colors.quaternaryC} />
               ),
           }}
           component={RenderMagicTowns}

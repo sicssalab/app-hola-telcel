@@ -58,17 +58,25 @@ export const DarkTheme = {
     ...DefaultThemeProps,
     dark: true,
     colors: {
-        primary: "#f5df4d",
+        primary: "#ffa401",
         text: "#f2f2f2",
         black: "#000", //TODO no existe dentro de la gama de colores
         grey: "#bbb",
-        background: "#111001",
+        background: "#000", //"#111001",
         secondaryBackground: "#22252e",
         whiteBackground: "#f2f2f2",
         headerBackground: "#242526",
         topHeaderBackground: "#242526",
         inputBackground: "#2222222",
         border: "#3E4042",
+        primaryC: "#ffa401",
+        secondaryC: "#4bb0e0",
+        tertiaryC: "#ce0083",
+        quaternaryC: "#94b941",
+        primaryCDark: "#f06f13",
+        secondaryCDark: "#214385",
+        tertiaryCDark: "#8900a8",
+        quaternaryCDarks: "#008538",
     },
 };
 

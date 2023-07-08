@@ -66,12 +66,13 @@ function TopHeader() {
       <LeftSide>
         <LogoWrapper>
           <Image
-            source={require("../../assets/images/HolaTelcel.png")}
+            source={require("../../assets/logos-app/logo-interno.png")}
             style={{
               flex: 1,
-              width: undefined,
-              height: undefined,
+              width: 170,
+              height: 90,
               resizeMode: "contain",
+              marginLeft: 15,
             }}
           />
         </LogoWrapper>

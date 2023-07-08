@@ -11,12 +11,12 @@
     "icon": "./src/assets/images/foregroundImage.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/images/splash.png",
+      "image": "./src/assets/logos-app/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#18191A",
-      "mdpi": "./src/assets/images/splash.png",
-      "xhdpi": "./src/assets/images/splash.png",
-      "xxhdpi": "./src/assets/images/splash.png"
+      "mdpi": "./src/assets/logos-app/splash.png",
+      "xhdpi": "./src/assets/logos-app/splash.png",
+      "xxhdpi": "./src/assets/logos-app/splash.png"
     },
     "platforms": [
       "ios",
@@ -37,7 +37,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/foregroundImage.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#000"
       },
       "package": "com.wen3.appexpoholatelcel"
     },
