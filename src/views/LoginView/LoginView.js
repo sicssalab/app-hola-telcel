@@ -82,7 +82,7 @@ const LoginView = () => {
         <StatusBar style={themeContext.dark ? 'light' : 'light'} />
         <TopCard style={{ paddingTop: 20 + insets.top }}>
           <LogoContainer>
-            <Image source={require('../../assets/images/logo-square-transparent.png')} style={{height: 200, resizeMode: "contain"}}/>
+            <Image source={require('../../assets/images/HolaTelcel2.png')} style={{height: 200, resizeMode: "contain"}}/>
           </LogoContainer>
           <HeroText />
         </TopCard>

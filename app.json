@@ -1,22 +1,22 @@
 {
-  "displayName": "Red Activa",
+  "displayName": "Red Hola Telcel",
   "expo": {
-    "name": "Red Activa",
+    "name": "Red Hola Telcel",
     "slug": "app-expo-hola-telcel",
     "privacy":"public",
     "owner": "sicssa-lab",
-    "description": "Red Activa",
+    "description": "Red Hola Telcel",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/foregroundImage.png",
-    "userInterfaceStyle": "light",
+    "icon": "./src/assets/favicon.png",
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./src/assets/images/splash.png",
+      "image": "./src/assets/images/splash2.png",
       "resizeMode": "contain",
       "backgroundColor": "#18191A",
-      "mdpi": "./src/assets/images/splash.png",
-      "xhdpi": "./src/assets/images/splash.png",
-      "xxhdpi": "./src/assets/images/splash.png"
+      "mdpi": "./src/assets/images/splash2.png",
+      "xhdpi": "./src/assets/images/splash2.png",
+      "xxhdpi": "./src/assets/images/splash2.png"
     },
     "platforms": [
       "ios",
@@ -36,8 +36,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/foregroundImage.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/assets/favicon.png",
+        "backgroundColor": "#18191A"
       },
       "package": "com.wen3.appexpoholatelcel"
     },

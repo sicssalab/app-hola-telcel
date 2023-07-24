@@ -66,7 +66,7 @@ function TopHeader() {
       <LeftSide>
         <LogoWrapper>
           <Image
-            source={require("../../assets/images/HolaTelcel.png")}
+            source={require("../../assets/images/HolaTelcel2.png")}
             style={{
               flex: 1,
               width: undefined,
